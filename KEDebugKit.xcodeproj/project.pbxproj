@@ -53,8 +53,9 @@
 		5EEB7FB226C00EA8003326C8 = {
 			isa = PBXGroup;
 			children = (
-				5EEB7FBE26C00EA8003326C8 /* KEDebugKit */,
-				5EEB7FC926C00EA8003326C8 /* KEDebugKitTests */,
+				5EEB7FBE26C00EA8003326C8 /* Sources */,
+				5EEB7FC926C00EA8003326C8 /* Unit Tests */,
+				5EEB7FD826C00F6E003326C8 /* Resources */,
 				5EEB7FBD26C00EA8003326C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,22 +69,45 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5EEB7FBE26C00EA8003326C8 /* KEDebugKit */ = {
+		5EEB7FBE26C00EA8003326C8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */,
-				5EEB7FC026C00EA8003326C8 /* Info.plist */,
 			);
-			path = KEDebugKit;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		5EEB7FC926C00EA8003326C8 /* KEDebugKitTests */ = {
+		5EEB7FC926C00EA8003326C8 /* Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5EEB7FD626C00F5D003326C8 /* Sources */,
+				5EEB7FD726C00F62003326C8 /* Resources */,
+			);
+			path = "Unit Tests";
+			sourceTree = "<group>";
+		};
+		5EEB7FD626C00F5D003326C8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5EEB7FD726C00F62003326C8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				5EEB7FCC26C00EA8003326C8 /* Info.plist */,
 			);
-			path = KEDebugKitTests;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5EEB7FD826C00F6E003326C8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5EEB7FC026C00EA8003326C8 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,14 +371,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KEDebugKit/Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaiengelhard.KEDebugKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaiengelhard.kedebugkit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -371,14 +395,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KEDebugKit/Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaiengelhard.KEDebugKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaiengelhard.kedebugkit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -391,13 +415,13 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2RZ5XH923S;
-				INFOPLIST_FILE = KEDebugKitTests/Info.plist;
+				INFOPLIST_FILE = "Unit Tests/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaiengelhard.KEDebugKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaiengelhard.kedebugkitunittests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -409,13 +433,13 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2RZ5XH923S;
-				INFOPLIST_FILE = KEDebugKitTests/Info.plist;
+				INFOPLIST_FILE = "Unit Tests/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaiengelhard.KEDebugKitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaiengelhard.kedebugkitunittests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
