@@ -89,10 +89,19 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
+		5E18C1CF26C01364009549C9 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */,
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
 		5EEB7FB226C00EA8003326C8 = {
 			isa = PBXGroup;
 			children = (
 				5EEB7FBE26C00EA8003326C8 /* Sources */,
+				5E18C1CF26C01364009549C9 /* Other Sources */,
 				5EEB7FC926C00EA8003326C8 /* Unit Tests */,
 				5EEB7FD826C00F6E003326C8 /* Resources */,
 				5EEB7FBD26C00EA8003326C8 /* Products */,
@@ -111,7 +120,6 @@
 		5EEB7FBE26C00EA8003326C8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
