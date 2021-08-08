@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E18C1D226C01429009549C9 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18C1D126C01429009549C9 /* PanelController.swift */; };
 		5EEB7FC626C00EA8003326C8 /* KEDebugKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */; };
 		5EEB7FCB26C00EA8003326C8 /* KEDebugKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */; };
 		5EEB7FCD26C00EA8003326C8 /* KEDebugKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,6 +33,7 @@
 		5E18C1C226C01272009549C9 /* Project-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Project-Release.xcconfig"; sourceTree = "<group>"; };
 		5E18C1C326C01272009549C9 /* Project-Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Project-Shared.xcconfig"; sourceTree = "<group>"; };
 		5E18C1C426C01272009549C9 /* Project-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Project-Debug.xcconfig"; sourceTree = "<group>"; };
+		5E18C1D126C01429009549C9 /* PanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
 		5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KEDebugKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KEDebugKit.h; sourceTree = "<group>"; };
 		5EEB7FC026C00EA8003326C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 			path = "Other Sources";
 			sourceTree = "<group>";
 		};
+		5E18C1D026C01415009549C9 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				5E18C1D126C01429009549C9 /* PanelController.swift */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
 		5EEB7FB226C00EA8003326C8 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +130,7 @@
 		5EEB7FBE26C00EA8003326C8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5E18C1D026C01415009549C9 /* Panel */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -229,6 +240,7 @@
 				TargetAttributes = {
 					5EEB7FBB26C00EA8003326C8 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					5EEB7FC426C00EA8003326C8 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -276,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E18C1D226C01429009549C9 /* PanelController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +329,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E18C1BC26C01272009549C9 /* KEDebugKit-Debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -323,6 +345,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E18C1BB26C01272009549C9 /* KEDebugKit-Release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -330,6 +360,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E18C1BE26C01272009549C9 /* KEDebugKit-Unit-Tests-Debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 			};
 			name = Debug;
 		};
@@ -337,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E18C1BF26C01272009549C9 /* KEDebugKit-Unit-Tests-Release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 			};
 			name = Release;
 		};
