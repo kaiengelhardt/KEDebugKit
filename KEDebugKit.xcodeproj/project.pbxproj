@@ -46,6 +46,7 @@
 		5EFF892226C01BC300E791E6 /* DebugWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugWindowController.swift; sourceTree = "<group>"; };
 		5EFF892526C01C8100E791E6 /* PassthroughWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughWindow.swift; sourceTree = "<group>"; };
 		5EFF892826C01CDC00E791E6 /* UIWindow+PreventStatusBarEventSwallowing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+PreventStatusBarEventSwallowing.swift"; sourceTree = "<group>"; };
+		5EFF892A26C02D2B00E791E6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +117,7 @@
 		5EEB7FB226C00EA8003326C8 = {
 			isa = PBXGroup;
 			children = (
+				5EFF892A26C02D2B00E791E6 /* README.md */,
 				5EEB7FBE26C00EA8003326C8 /* Sources */,
 				5E18C1CF26C01364009549C9 /* Other Sources */,
 				5EEB7FC926C00EA8003326C8 /* Unit Tests */,
