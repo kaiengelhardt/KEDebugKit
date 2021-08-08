@@ -16,6 +16,7 @@ public class DebugWindowController: UIResponder {
     init(windowScene: UIWindowScene) {
         scene = windowScene
         window = PassthroughWindow(windowScene: windowScene)
+        super.init()
         setUpUI()
     }
 
