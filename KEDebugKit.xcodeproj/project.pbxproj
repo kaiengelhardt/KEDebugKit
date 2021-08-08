@@ -26,7 +26,7 @@
 		5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KEDebugKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KEDebugKit.h; sourceTree = "<group>"; };
 		5EEB7FC026C00EA8003326C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5EEB7FC526C00EA8003326C8 /* KEDebugKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KEDebugKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EEB7FC526C00EA8003326C8 /* KEDebugKit Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KEDebugKit Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KEDebugKitTests.swift; sourceTree = "<group>"; };
 		5EEB7FCC26C00EA8003326C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */,
-				5EEB7FC526C00EA8003326C8 /* KEDebugKitTests.xctest */,
+				5EEB7FC526C00EA8003326C8 /* KEDebugKit Unit Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,9 +150,9 @@
 			productReference = 5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		5EEB7FC426C00EA8003326C8 /* KEDebugKitTests */ = {
+		5EEB7FC426C00EA8003326C8 /* KEDebugKit Unit Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5EEB7FD326C00EA8003326C8 /* Build configuration list for PBXNativeTarget "KEDebugKitTests" */;
+			buildConfigurationList = 5EEB7FD326C00EA8003326C8 /* Build configuration list for PBXNativeTarget "KEDebugKit Unit Tests" */;
 			buildPhases = (
 				5EEB7FC126C00EA8003326C8 /* Sources */,
 				5EEB7FC226C00EA8003326C8 /* Frameworks */,
@@ -163,9 +163,9 @@
 			dependencies = (
 				5EEB7FC826C00EA8003326C8 /* PBXTargetDependency */,
 			);
-			name = KEDebugKitTests;
+			name = "KEDebugKit Unit Tests";
 			productName = KEDebugKitTests;
-			productReference = 5EEB7FC526C00EA8003326C8 /* KEDebugKitTests.xctest */;
+			productReference = 5EEB7FC526C00EA8003326C8 /* KEDebugKit Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -199,7 +199,7 @@
 			projectRoot = "";
 			targets = (
 				5EEB7FBB26C00EA8003326C8 /* KEDebugKit */,
-				5EEB7FC426C00EA8003326C8 /* KEDebugKitTests */,
+				5EEB7FC426C00EA8003326C8 /* KEDebugKit Unit Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -475,7 +475,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5EEB7FD326C00EA8003326C8 /* Build configuration list for PBXNativeTarget "KEDebugKitTests" */ = {
+		5EEB7FD326C00EA8003326C8 /* Build configuration list for PBXNativeTarget "KEDebugKit Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5EEB7FD426C00EA8003326C8 /* Debug */,
