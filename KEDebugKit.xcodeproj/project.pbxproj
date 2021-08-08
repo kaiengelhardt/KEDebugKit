@@ -105,9 +105,17 @@
 		5EEB7FD826C00F6E003326C8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5EEB7FD926C0103E003326C8 /* Project Configuration */,
 				5EEB7FC026C00EA8003326C8 /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5EEB7FD926C0103E003326C8 /* Project Configuration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Project Configuration";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
