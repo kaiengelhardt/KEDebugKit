@@ -29,9 +29,9 @@
 import UIKit
 
 class PassthroughWindow: UIWindow {
-	
+
 	var onLayoutSubviews: ((UIWindow) -> Void)?
-	
+
 	override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
 		let view = super.hitTest(point, with: event)
 		if view == self || view == rootViewController?.view {
@@ -40,7 +40,7 @@ class PassthroughWindow: UIWindow {
 			return view
 		}
 	}
-	
+
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		onLayoutSubviews?(self)
