@@ -135,6 +135,7 @@
 				5EEB7FBD26C00EA8003326C8 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		5EEB7FBD26C00EA8003326C8 /* Products */ = {
 			isa = PBXGroup;
