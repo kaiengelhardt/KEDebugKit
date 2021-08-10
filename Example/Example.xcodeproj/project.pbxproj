@@ -12,7 +12,23 @@
 		5E18C1E626C015EC009549C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18C1E526C015EC009549C9 /* ViewController.swift */; };
 		5E18C1EB26C015ED009549C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E18C1EA26C015ED009549C9 /* Assets.xcassets */; };
 		5E18C1EE26C015ED009549C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E18C1EC26C015ED009549C9 /* LaunchScreen.storyboard */; };
+		5E87514126C307A5007FA2FD /* KEDebugKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E87514026C307A5007FA2FD /* KEDebugKit.framework */; };
+		5E87514226C307A5007FA2FD /* KEDebugKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5E87514026C307A5007FA2FD /* KEDebugKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5E87514326C307A5007FA2FD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5E87514226C307A5007FA2FD /* KEDebugKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5E18C1DE26C015EC009549C9 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -23,6 +39,7 @@
 		5E18C1ED26C015ED009549C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E18C1EF26C015ED009549C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E87513E26C2D6D0007FA2FD /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
+		5E87514026C307A5007FA2FD /* KEDebugKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KEDebugKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E87514126C307A5007FA2FD /* KEDebugKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +59,7 @@
 			children = (
 				5E18C1F526C015F6009549C9 /* Sources */,
 				5E18C1F626C015FE009549C9 /* Resources */,
+				5E87513F26C307A5007FA2FD /* Frameworks */,
 				5E18C1DF26C015EC009549C9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +93,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		5E87513F26C307A5007FA2FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E87514026C307A5007FA2FD /* KEDebugKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,6 +113,7 @@
 				5E18C1DA26C015EC009549C9 /* Sources */,
 				5E18C1DB26C015EC009549C9 /* Frameworks */,
 				5E18C1DC26C015EC009549C9 /* Resources */,
+				5E87514326C307A5007FA2FD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

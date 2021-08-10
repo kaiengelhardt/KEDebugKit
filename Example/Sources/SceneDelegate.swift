@@ -27,12 +27,15 @@
 //
 
 import UIKit
+import KEDebugKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
     private let rootViewController = ViewController()
+
+    private var windowController: DebugWindowController?
 
     func scene(
         _ scene: UIScene,
@@ -47,5 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
+
+        windowController = DebugWindowController(windowScene: scene)
     }
 }

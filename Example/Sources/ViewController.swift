@@ -28,4 +28,31 @@
 
 import UIKit
 
-class ViewController: UIViewController {}
+class ViewController: UIViewController {
+
+    private let button = UIButton(type: .system)
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        setUpUI()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setUpUI() {
+        var constraints: [NSLayoutConstraint] = []
+        defer {
+            NSLayoutConstraint.activate(constraints)
+        }
+
+        view.backgroundColor = .systemRed
+
+        view.addSubview(button)
+        constraints += button.constraintsMatchingCenterOfSuperview()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Tap me!", for: .normal)
+    }
+}

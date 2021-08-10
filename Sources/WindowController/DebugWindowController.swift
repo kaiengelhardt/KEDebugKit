@@ -34,8 +34,11 @@ public class DebugWindowController: UIResponder {
 	private let scene: UIWindowScene
 	private let window: PassthroughWindow
 	private let contentViewController = UIViewController()
+	private var contentView: UIView {
+		contentViewController.view
+	}
 
-	init(windowScene: UIWindowScene) {
+	public init(windowScene: UIWindowScene) {
 		scene = windowScene
 		window = PassthroughWindow(windowScene: windowScene)
 		super.init()
