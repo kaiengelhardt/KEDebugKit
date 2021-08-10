@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5E18C1D226C01429009549C9 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18C1D126C01429009549C9 /* PanelController.swift */; };
-		5E98AF6726C05397001811C5 /* KEUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98AF6626C05397001811C5 /* KEUIKit */; };
 		5E98AF6A26C053B5001811C5 /* KEFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98AF6926C053B5001811C5 /* KEFoundation */; };
 		5EEB7FC626C00EA8003326C8 /* KEDebugKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */; };
 		5EEB7FCB26C00EA8003326C8 /* KEDebugKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */; };
@@ -56,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E98AF6726C05397001811C5 /* KEUIKit in Frameworks */,
 				5E98AF6A26C053B5001811C5 /* KEFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,7 +229,6 @@
 			);
 			name = KEDebugKit;
 			packageProductDependencies = (
-				5E98AF6626C05397001811C5 /* KEUIKit */,
 				5E98AF6926C053B5001811C5 /* KEFoundation */,
 			);
 			productName = KEDebugKit;
@@ -284,7 +281,6 @@
 			);
 			mainGroup = 5EEB7FB226C00EA8003326C8;
 			packageReferences = (
-				5E98AF6526C05397001811C5 /* XCRemoteSwiftPackageReference "KEUIKit" */,
 				5E98AF6826C053B5001811C5 /* XCRemoteSwiftPackageReference "KEFoundation" */,
 			);
 			productRefGroup = 5EEB7FBD26C00EA8003326C8 /* Products */;
@@ -439,14 +435,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5E98AF6526C05397001811C5 /* XCRemoteSwiftPackageReference "KEUIKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kaiengelhardt/KEUIKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
-			};
-		};
 		5E98AF6826C053B5001811C5 /* XCRemoteSwiftPackageReference "KEFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kaiengelhardt/KEFoundation.git";
@@ -458,11 +446,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5E98AF6626C05397001811C5 /* KEUIKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5E98AF6526C05397001811C5 /* XCRemoteSwiftPackageReference "KEUIKit" */;
-			productName = KEUIKit;
-		};
 		5E98AF6926C053B5001811C5 /* KEFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5E98AF6826C053B5001811C5 /* XCRemoteSwiftPackageReference "KEFoundation" */;
