@@ -14,7 +14,6 @@
 		5EEB7FCD26C00EA8003326C8 /* KEDebugKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5EFF892326C01BC300E791E6 /* DebugWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFF892226C01BC300E791E6 /* DebugWindowController.swift */; };
 		5EFF892626C01C8100E791E6 /* PassthroughWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFF892526C01C8100E791E6 /* PassthroughWindow.swift */; };
-		5EFF892926C01CDC00E791E6 /* UIWindow+PreventStatusBarEventSwallowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFF892826C01CDC00E791E6 /* UIWindow+PreventStatusBarEventSwallowing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +45,6 @@
 		5EEB7FCC26C00EA8003326C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EFF892226C01BC300E791E6 /* DebugWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugWindowController.swift; sourceTree = "<group>"; };
 		5EFF892526C01C8100E791E6 /* PassthroughWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughWindow.swift; sourceTree = "<group>"; };
-		5EFF892826C01CDC00E791E6 /* UIWindow+PreventStatusBarEventSwallowing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+PreventStatusBarEventSwallowing.swift"; sourceTree = "<group>"; };
 		5EFF892A26C02D2B00E791E6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,7 +149,6 @@
 			children = (
 				5EFF892126C01BB300E791E6 /* WindowController */,
 				5E18C1D026C01415009549C9 /* Panel */,
-				5EFF892726C01CB700E791E6 /* Utilities */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -191,14 +188,6 @@
 				5EFF892526C01C8100E791E6 /* PassthroughWindow.swift */,
 			);
 			path = WindowController;
-			sourceTree = "<group>";
-		};
-		5EFF892726C01CB700E791E6 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				5EFF892826C01CDC00E791E6 /* UIWindow+PreventStatusBarEventSwallowing.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +251,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
+				ORGANIZATIONNAME = "Kai Engelhardt";
 				TargetAttributes = {
 					5EEB7FBB26C00EA8003326C8 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -316,7 +306,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EFF892926C01CDC00E791E6 /* UIWindow+PreventStatusBarEventSwallowing.swift in Sources */,
 				5E18C1D226C01429009549C9 /* PanelController.swift in Sources */,
 				5EFF892326C01BC300E791E6 /* DebugWindowController.swift in Sources */,
 				5EFF892626C01C8100E791E6 /* PassthroughWindow.swift in Sources */,

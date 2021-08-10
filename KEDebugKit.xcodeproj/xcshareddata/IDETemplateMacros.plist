@@ -1,6 +1,11 @@
-//
-//  Created by Kai Engelhardt on 08.08.21.
-//  Copyright © 2021 Kai Engelhardt. All rights reserved.
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FILEHEADER</key>
+	<string>
+//  Created by ___FULLUSERNAME___ on ___DATE___
+//  ___COPYRIGHT___
 //
 //  Distributed under the permissive MIT license
 //  Get the latest version from here:
@@ -24,9 +29,6 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//
-
-import XCTest
-@testable import KEDebugKit
-
-class KEDebugKitTests: XCTestCase {}
+//</string>
+</dict>
+</plist>
