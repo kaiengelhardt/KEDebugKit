@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private let rootViewController = ViewController()
 
-    private var windowController: DebugWindowController?
+    private var windowController: InstrumentWindowController?
 
     func scene(
         _ scene: UIScene,
@@ -51,6 +51,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
 
-        windowController = DebugWindowController(windowScene: scene)
+        windowController = InstrumentWindowController(windowScene: scene)
     }
 }

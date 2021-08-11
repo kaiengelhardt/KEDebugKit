@@ -13,6 +13,8 @@
 		5E87514B26C30BEE007FA2FD /* UserDefaultsInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514A26C30BEE007FA2FD /* UserDefaultsInstrument.swift */; };
 		5E87514D26C30C0D007FA2FD /* UserDefaultsInstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514C26C30C0D007FA2FD /* UserDefaultsInstrumentViewController.swift */; };
 		5E87515026C30D6F007FA2FD /* InstrumentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514F26C30D6F007FA2FD /* InstrumentWindowController.swift */; };
+		5E87515226C41123007FA2FD /* UserDefaultsChangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515126C41123007FA2FD /* UserDefaultsChangeCell.swift */; };
+		5E87515426C43788007FA2FD /* PanelToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515326C43788007FA2FD /* PanelToolbarViewController.swift */; };
 		5E98AF6A26C053B5001811C5 /* KEFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98AF6926C053B5001811C5 /* KEFoundation */; };
 		5EEB7FC626C00EA8003326C8 /* KEDebugKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */; };
 		5EEB7FCB26C00EA8003326C8 /* KEDebugKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */; };
@@ -49,6 +51,8 @@
 		5E87514A26C30BEE007FA2FD /* UserDefaultsInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInstrument.swift; sourceTree = "<group>"; };
 		5E87514C26C30C0D007FA2FD /* UserDefaultsInstrumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInstrumentViewController.swift; sourceTree = "<group>"; };
 		5E87514F26C30D6F007FA2FD /* InstrumentWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentWindowController.swift; sourceTree = "<group>"; };
+		5E87515126C41123007FA2FD /* UserDefaultsChangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsChangeCell.swift; sourceTree = "<group>"; };
+		5E87515326C43788007FA2FD /* PanelToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelToolbarViewController.swift; sourceTree = "<group>"; };
 		5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KEDebugKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KEDebugKit.h; sourceTree = "<group>"; };
 		5EEB7FC026C00EA8003326C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				5E18C1D126C01429009549C9 /* PanelController.swift */,
+				5E87515326C43788007FA2FD /* PanelToolbarViewController.swift */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			children = (
 				5E87514A26C30BEE007FA2FD /* UserDefaultsInstrument.swift */,
 				5E87514C26C30C0D007FA2FD /* UserDefaultsInstrumentViewController.swift */,
+				5E87515126C41123007FA2FD /* UserDefaultsChangeCell.swift */,
 			);
 			path = "Default Instruments";
 			sourceTree = "<group>";
@@ -382,12 +388,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E87515426C43788007FA2FD /* PanelToolbarViewController.swift in Sources */,
 				5E87515026C30D6F007FA2FD /* InstrumentWindowController.swift in Sources */,
 				5E87514926C30A65007FA2FD /* Instrument.swift in Sources */,
 				5E18C1D226C01429009549C9 /* PanelController.swift in Sources */,
 				5EFF892326C01BC300E791E6 /* OverlayWindowController.swift in Sources */,
 				5EFF892626C01C8100E791E6 /* PassthroughWindow.swift in Sources */,
 				5E87514D26C30C0D007FA2FD /* UserDefaultsInstrumentViewController.swift in Sources */,
+				5E87515226C41123007FA2FD /* UserDefaultsChangeCell.swift in Sources */,
 				5E87514726C30A45007FA2FD /* InstrumentCenter.swift in Sources */,
 				5E87514B26C30BEE007FA2FD /* UserDefaultsInstrument.swift in Sources */,
 			);

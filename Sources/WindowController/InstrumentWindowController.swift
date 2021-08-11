@@ -27,10 +27,34 @@
 //
 
 import UIKit
+import KEFoundation
 
 public class InstrumentWindowController: OverlayWindowController {
 
+	private let panelContainer = PanelController()
+	private var panelContainerView: UIView {
+		panelContainer.view
+	}
+
+	private let instrument = UserDefaultsInstrument()
+
 	public init(windowScene: UIWindowScene, instrumentCenter: InstrumentCenter = .default) {
 		super.init(windowScene: windowScene)
+		setUpUI()
+	}
+
+	private func setUpUI() {
+		contentViewController.addChild(panelContainer)
+		contentView.addSubview(panelContainerView)
+		panelContainer.didMove(toParent: contentViewController)
+		let viewController = instrument.makeViewController()
+		panelContainer.embeddedViewController = viewController
+		panelContainerView.frame = CGRect(x: 40, y: 40, width: 320, height: 500)
+
+		let switcherButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "list.bullet"), primaryAction: nil, menu: nil)
+		panelContainer.leadingBarButtonItem = switcherButton
+
+		let optionsButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: nil)
+		panelContainer.trailingBarButtonItem = optionsButton
 	}
 }

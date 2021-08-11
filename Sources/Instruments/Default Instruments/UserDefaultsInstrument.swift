@@ -27,16 +27,95 @@
 //
 
 import UIKit
+import KEFoundation
+import Combine
 
 public class UserDefaultsInstrument: NSObject, Instrument {
 
+	enum Change {
+
+		case added(key: String, value: Any)
+		case updated(key: String, previousValue: Any, newValue: Any)
+		case deleted(key: String, value: Any)
+	}
+
 	public let title = "UserDefaults"
 
-	public override init() {
+	@Published private(set) var userDefaultsDictionary: [String: Any] = [:]
+	@Published private(set) var userDefaultsDictionaryDiff: [Change] = [] {
+		didSet {
+			print(userDefaultsDictionaryDiff)
+		}
+	}
+
+	private let userDefaults: UserDefaults
+	private let notificationObserver = NotificationObserver()
+
+	public init(userDefaults: UserDefaults = .standard) {
+		self.userDefaults = userDefaults
 		super.init()
+		setUpObserving()
+	}
+
+	private func setUpObserving() {
+		userDefaultsDictionary = userDefaults.dictionaryRepresentation()
+
+		notificationObserver.when(UserDefaults.didChangeNotification, object: userDefaults) { [weak self] _ in
+			guard let self = self else {
+				return
+			}
+			let newDictionary = self.userDefaults.dictionaryRepresentation()
+			let oldDictionary = self.userDefaultsDictionary
+			self.userDefaultsDictionary = newDictionary
+			self.userDefaultsDictionaryDiff = self.diff(between: oldDictionary, and: newDictionary)
+		}
 	}
 
 	public func makeViewController() -> UIViewController {
-		return UserDefaultsInstrumentViewController()
+		return UserDefaultsInstrumentViewController(instrument: self)
+	}
+
+	private func diff(between previousDictionary: [String: Any], and newDictionary: [String: Any]) -> [Change] {
+		let previousStringDictionary = stringRepresentationDictionary(for: previousDictionary)
+		let newStringDictionary = stringRepresentationDictionary(for: newDictionary)
+
+		let previousKeys = Array(previousDictionary.keys)
+		let newKeys = Array(newDictionary.keys)
+		let allKeys = [previousKeys, newKeys].flatMap { $0 }
+
+		var diff: [Change] = []
+
+		for key in allKeys {
+			let previousValue = previousDictionary[key]
+			let previousStringValue = previousStringDictionary[key]
+			let newValue = newDictionary[key]
+			let newStringValue = newStringDictionary[key]
+			if
+				let previousValue = previousValue,
+				let newValue = newValue
+			{
+				if previousStringValue != newStringValue {
+					diff.append(.updated(key: key, previousValue: previousValue, newValue: newValue))
+				}
+			} else if let previousValue = previousValue {
+				diff.append(.deleted(key: key, value: previousValue))
+			} else if let newValue = newValue {
+				diff.append(.added(key: key, value: newValue))
+			}
+		}
+
+		return diff
+	}
+
+	private func stringRepresentationDictionary(for dictionary: [String: Any]) -> [String: String] {
+		var stringDictionary: [String: String] = [:]
+		for (key, value) in dictionary {
+			if let description = (value as? CustomStringConvertible)?.description {
+				stringDictionary[key] = description
+			} else {
+				stringDictionary[key] = "<unknown>"
+			}
+		}
+		return stringDictionary
 	}
 }

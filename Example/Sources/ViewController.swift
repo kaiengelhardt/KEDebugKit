@@ -27,10 +27,13 @@
 //
 
 import UIKit
+import KEDebugKit
 
 class ViewController: UIViewController {
 
     private let button = UIButton(type: .system)
+
+    private let instrument = UserDefaultsInstrument()
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -48,11 +51,19 @@ class ViewController: UIViewController {
             NSLayoutConstraint.activate(constraints)
         }
 
-        view.backgroundColor = .systemRed
+        view.backgroundColor = .systemBackground
 
         view.addSubview(button)
         constraints += button.constraintsMatchingCenterOfSuperview()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Tap me!", for: .normal)
+        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
+    }
+
+    @objc
+    private func tap() {
+        let randomNumber = Int.random(in: 0...100_000)
+        let key = String(randomNumber)
+        UserDefaults.standard.set(randomNumber, forKey: key)
     }
 }

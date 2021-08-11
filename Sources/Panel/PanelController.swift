@@ -27,5 +27,135 @@
 //
 
 import UIKit
+import KEFoundation
 
-open class PanelController: UIViewController {}
+class PanelController: UIViewController {
+
+	private let container = ContainerViewController()
+	var embeddedViewController: UIViewController? {
+		get {
+			container.embeddedViewController
+		}
+		set {
+			container.embeddedViewController = newValue
+			if let viewController = newValue {
+				observeTitle(of: viewController)
+			}
+		}
+	}
+	private var containerView: UIView {
+		container.view
+	}
+
+	private let toolbar = UIToolbar()
+
+	var leadingBarButtonItem: UIBarButtonItem? {
+		get {
+			if toolbar.items?.first != leadingSpaceItem {
+				return toolbar.items?.first
+			}
+			return nil
+		}
+		set {
+			if toolbar.items?.first != leadingSpaceItem {
+				toolbar.items?.removeFirst()
+			}
+			if let item = newValue {
+				toolbar.items?.insert(item, at: 0)
+			}
+		}
+	}
+
+	private let leadingSpaceItem = UIBarButtonItem(systemItem: .flexibleSpace, primaryAction: nil, menu: nil)
+
+	private let titleLabel = UILabel()
+
+	private let trailingSpaceItem = UIBarButtonItem(systemItem: .flexibleSpace, primaryAction: nil, menu: nil)
+
+	var trailingBarButtonItem: UIBarButtonItem? {
+		get {
+			if toolbar.items?.last != trailingSpaceItem {
+				return toolbar.items?.last
+			}
+			return nil
+		}
+		set {
+			if toolbar.items?.last != trailingSpaceItem {
+				toolbar.items?.removeLast()
+			}
+			if
+				let item = newValue,
+				let index = toolbar.items?.count
+			{
+				toolbar.items?.insert(item, at: index)
+			}
+		}
+	}
+
+	private var titleObservation: NSKeyValueObservation?
+
+	init() {
+		super.init(nibName: nil, bundle: nil)
+		setUpUI()
+	}
+
+	@available(*, unavailable)
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	private func setUpUI() {
+		var constraints: [NSLayoutConstraint] = []
+		defer {
+			NSLayoutConstraint.activate(constraints)
+		}
+
+		view.layer.shadowRadius = 32
+		view.layer.shadowOffset = CGSize(width: 0, height: 12)
+		view.layer.shadowOpacity = 0.333
+		view.layer.shadowColor = UIColor.black.cgColor
+
+		view.addSubview(toolbar)
+		constraints += [
+			toolbar.topAnchor.constraint(equalTo: view.topAnchor),
+			toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			toolbar.heightAnchor.constraint(equalToConstant: 44),
+		]
+		toolbar.translatesAutoresizingMaskIntoConstraints = false
+		toolbar.clipsToBounds = true
+		toolbar.layer.cornerRadius = 12
+		toolbar.items = [
+			leadingSpaceItem,
+			UIBarButtonItem(customView: titleLabel),
+			trailingSpaceItem,
+		]
+
+		titleLabel.textColor = .label
+		titleLabel.font = .preferredFont(forTextStyle: .headline)
+
+		addChild(container)
+		view.addSubview(containerView)
+		container.didMove(toParent: self)
+		constraints += [
+			containerView.topAnchor.constraint(equalTo: toolbar.bottomAnchor, constant: 8),
+			containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+		]
+		containerView.translatesAutoresizingMaskIntoConstraints = false
+		containerView.clipsToBounds = true
+		containerView.layer.cornerRadius = 12
+	}
+
+	private func observeTitle(of viewController: UIViewController) {
+		titleObservation = viewController.observe(\.title) { [weak self] viewController, _ in
+			self?.updateTitleLabel()
+		}
+		updateTitleLabel()
+	}
+
+	private func updateTitleLabel() {
+		titleLabel.text = embeddedViewController?.title
+	}
+}
