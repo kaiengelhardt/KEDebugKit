@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 10.08.21
+//  Created by Kai Engelhardt on 11.08.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -26,36 +26,39 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-public class InstrumentCenter {
+class NoInstrumentViewController: UIViewController {
 
-	public static let `default` = InstrumentCenter()
+	private let label = UILabel()
+	private let instrument: Instrument
 
-	@Published public private(set) var instruments: [Instrument] = []
+	init(instrument: Instrument) {
+		self.instrument = instrument
+		super.init(nibName: nil, bundle: nil)
+		setUpUI()
+	}
 
-	private var lastSelectedInstrument: Instrument?
-	let noInstrument = NoInstrument()
+	@available(*, unavailable)
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
-	var defaultInstrument: Instrument {
-		if lastSelectedInstrument is NoInstrument {
-			return instruments.first ?? noInstrument
-		} else {
-			return lastSelectedInstrument ?? instruments.first ?? noInstrument
+	private func setUpUI() {
+		var constraints: [NSLayoutConstraint] = []
+		defer {
+			NSLayoutConstraint.activate(constraints)
 		}
-	}
 
-	public func addInstrument(_ instrument: Instrument) {
-		instruments.append(instrument)
-	}
+		title = instrument.title
 
-	public func removeInstrument(_ instrument: Instrument) {
-		instruments.removeAll(where: {
-			instrument === $0
-		})
-	}
+		view.backgroundColor = .systemBackground
 
-	func noteLastSelectedInstrument(_ instrument: Instrument) {
-		lastSelectedInstrument = instrument
+		view.addSubview(label)
+		constraints += label.constraintsMatchingEdgesOfSuperview()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = "No instruments available :("
+		label.textColor = .label
+		label.textAlignment = .center
 	}
 }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5E18C1D226C01429009549C9 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18C1D126C01429009549C9 /* PanelController.swift */; };
+		5E58C87D26C53BD400AAEC63 /* NotificationCenterInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C87C26C53BD400AAEC63 /* NotificationCenterInstrument.swift */; };
+		5E58C87F26C53C6300AAEC63 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C87E26C53C6300AAEC63 /* NotificationCenterViewController.swift */; };
+		5E58C88126C53FAF00AAEC63 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C88026C53FAF00AAEC63 /* NotificationCell.swift */; };
 		5E87514726C30A45007FA2FD /* InstrumentCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514626C30A45007FA2FD /* InstrumentCenter.swift */; };
 		5E87514926C30A65007FA2FD /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514826C30A65007FA2FD /* Instrument.swift */; };
 		5E87514B26C30BEE007FA2FD /* UserDefaultsInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514A26C30BEE007FA2FD /* UserDefaultsInstrument.swift */; };
@@ -15,6 +18,13 @@
 		5E87515026C30D6F007FA2FD /* InstrumentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514F26C30D6F007FA2FD /* InstrumentWindowController.swift */; };
 		5E87515226C41123007FA2FD /* UserDefaultsChangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515126C41123007FA2FD /* UserDefaultsChangeCell.swift */; };
 		5E87515426C43788007FA2FD /* PanelToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515326C43788007FA2FD /* PanelToolbarViewController.swift */; };
+		5E87515626C458FB007FA2FD /* InstrumentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515526C458FB007FA2FD /* InstrumentSession.swift */; };
+		5E87515826C46082007FA2FD /* NoInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515726C46082007FA2FD /* NoInstrument.swift */; };
+		5E87515A26C460A6007FA2FD /* NoInstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515926C460A6007FA2FD /* NoInstrumentViewController.swift */; };
+		5E87515C26C4643D007FA2FD /* PasteboardInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515B26C4643D007FA2FD /* PasteboardInstrument.swift */; };
+		5E87515E26C4646C007FA2FD /* PasteboardInstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515D26C4646C007FA2FD /* PasteboardInstrumentViewController.swift */; };
+		5E87516026C46499007FA2FD /* CurrentPasteboardContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515F26C46499007FA2FD /* CurrentPasteboardContentsViewController.swift */; };
+		5E87516226C464A5007FA2FD /* PasteboardHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87516126C464A5007FA2FD /* PasteboardHistoryViewController.swift */; };
 		5E98AF6A26C053B5001811C5 /* KEFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98AF6926C053B5001811C5 /* KEFoundation */; };
 		5EEB7FC626C00EA8003326C8 /* KEDebugKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */; };
 		5EEB7FCB26C00EA8003326C8 /* KEDebugKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */; };
@@ -44,6 +54,9 @@
 		5E18C1C326C01272009549C9 /* Project-Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Project-Shared.xcconfig"; sourceTree = "<group>"; };
 		5E18C1C426C01272009549C9 /* Project-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Project-Debug.xcconfig"; sourceTree = "<group>"; };
 		5E18C1D126C01429009549C9 /* PanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
+		5E58C87C26C53BD400AAEC63 /* NotificationCenterInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterInstrument.swift; sourceTree = "<group>"; };
+		5E58C87E26C53C6300AAEC63 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
+		5E58C88026C53FAF00AAEC63 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		5E87513926C2D57D007FA2FD /* swiftlint-global.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "swiftlint-global.yml"; sourceTree = "<group>"; };
 		5E87513D26C2D68E007FA2FD /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		5E87514626C30A45007FA2FD /* InstrumentCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCenter.swift; sourceTree = "<group>"; };
@@ -53,6 +66,13 @@
 		5E87514F26C30D6F007FA2FD /* InstrumentWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentWindowController.swift; sourceTree = "<group>"; };
 		5E87515126C41123007FA2FD /* UserDefaultsChangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsChangeCell.swift; sourceTree = "<group>"; };
 		5E87515326C43788007FA2FD /* PanelToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelToolbarViewController.swift; sourceTree = "<group>"; };
+		5E87515526C458FB007FA2FD /* InstrumentSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSession.swift; sourceTree = "<group>"; };
+		5E87515726C46082007FA2FD /* NoInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInstrument.swift; sourceTree = "<group>"; };
+		5E87515926C460A6007FA2FD /* NoInstrumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInstrumentViewController.swift; sourceTree = "<group>"; };
+		5E87515B26C4643D007FA2FD /* PasteboardInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardInstrument.swift; sourceTree = "<group>"; };
+		5E87515D26C4646C007FA2FD /* PasteboardInstrumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardInstrumentViewController.swift; sourceTree = "<group>"; };
+		5E87515F26C46499007FA2FD /* CurrentPasteboardContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPasteboardContentsViewController.swift; sourceTree = "<group>"; };
+		5E87516126C464A5007FA2FD /* PasteboardHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardHistoryViewController.swift; sourceTree = "<group>"; };
 		5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KEDebugKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KEDebugKit.h; sourceTree = "<group>"; };
 		5EEB7FC026C00EA8003326C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,10 +159,42 @@
 			path = "Unit Tests";
 			sourceTree = "<group>";
 		};
+		5E58C87726C4FA8900AAEC63 /* File System Instrument */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "File System Instrument";
+			sourceTree = "<group>";
+		};
+		5E58C87826C4FA9300AAEC63 /* Resource Monitor Instrument */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Resource Monitor Instrument";
+			sourceTree = "<group>";
+		};
+		5E58C87926C4FAA800AAEC63 /* View Inspector Instrument */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Inspector Instrument";
+			sourceTree = "<group>";
+		};
+		5E58C87B26C4FAD700AAEC63 /* Notification Center Instrument */ = {
+			isa = PBXGroup;
+			children = (
+				5E58C87C26C53BD400AAEC63 /* NotificationCenterInstrument.swift */,
+				5E58C87E26C53C6300AAEC63 /* NotificationCenterViewController.swift */,
+				5E58C88026C53FAF00AAEC63 /* NotificationCell.swift */,
+			);
+			path = "Notification Center Instrument";
+			sourceTree = "<group>";
+		};
 		5E87514526C30A2B007FA2FD /* Instruments */ = {
 			isa = PBXGroup;
 			children = (
 				5E87514626C30A45007FA2FD /* InstrumentCenter.swift */,
+				5E87515526C458FB007FA2FD /* InstrumentSession.swift */,
 				5E87514826C30A65007FA2FD /* Instrument.swift */,
 				5E87514E26C30C83007FA2FD /* Default Instruments */,
 			);
@@ -152,11 +204,45 @@
 		5E87514E26C30C83007FA2FD /* Default Instruments */ = {
 			isa = PBXGroup;
 			children = (
+				5E58C87B26C4FAD700AAEC63 /* Notification Center Instrument */,
+				5E58C87926C4FAA800AAEC63 /* View Inspector Instrument */,
+				5E58C87826C4FA9300AAEC63 /* Resource Monitor Instrument */,
+				5E58C87726C4FA8900AAEC63 /* File System Instrument */,
+				5E87516426C4652B007FA2FD /* User Defaults Instrument */,
+				5E87516326C46520007FA2FD /* Pasteboard Instrument */,
+				5E87516526C46536007FA2FD /* No Instrument */,
+			);
+			path = "Default Instruments";
+			sourceTree = "<group>";
+		};
+		5E87516326C46520007FA2FD /* Pasteboard Instrument */ = {
+			isa = PBXGroup;
+			children = (
+				5E87515B26C4643D007FA2FD /* PasteboardInstrument.swift */,
+				5E87515D26C4646C007FA2FD /* PasteboardInstrumentViewController.swift */,
+				5E87515F26C46499007FA2FD /* CurrentPasteboardContentsViewController.swift */,
+				5E87516126C464A5007FA2FD /* PasteboardHistoryViewController.swift */,
+			);
+			path = "Pasteboard Instrument";
+			sourceTree = "<group>";
+		};
+		5E87516426C4652B007FA2FD /* User Defaults Instrument */ = {
+			isa = PBXGroup;
+			children = (
 				5E87514A26C30BEE007FA2FD /* UserDefaultsInstrument.swift */,
 				5E87514C26C30C0D007FA2FD /* UserDefaultsInstrumentViewController.swift */,
 				5E87515126C41123007FA2FD /* UserDefaultsChangeCell.swift */,
 			);
-			path = "Default Instruments";
+			path = "User Defaults Instrument";
+			sourceTree = "<group>";
+		};
+		5E87516526C46536007FA2FD /* No Instrument */ = {
+			isa = PBXGroup;
+			children = (
+				5E87515726C46082007FA2FD /* NoInstrument.swift */,
+				5E87515926C460A6007FA2FD /* NoInstrumentViewController.swift */,
+			);
+			path = "No Instrument";
 			sourceTree = "<group>";
 		};
 		5EEB7FB226C00EA8003326C8 = {
@@ -389,15 +475,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E87515426C43788007FA2FD /* PanelToolbarViewController.swift in Sources */,
+				5E87515626C458FB007FA2FD /* InstrumentSession.swift in Sources */,
 				5E87515026C30D6F007FA2FD /* InstrumentWindowController.swift in Sources */,
+				5E87515C26C4643D007FA2FD /* PasteboardInstrument.swift in Sources */,
+				5E58C87D26C53BD400AAEC63 /* NotificationCenterInstrument.swift in Sources */,
+				5E87516226C464A5007FA2FD /* PasteboardHistoryViewController.swift in Sources */,
+				5E87515E26C4646C007FA2FD /* PasteboardInstrumentViewController.swift in Sources */,
 				5E87514926C30A65007FA2FD /* Instrument.swift in Sources */,
+				5E58C88126C53FAF00AAEC63 /* NotificationCell.swift in Sources */,
 				5E18C1D226C01429009549C9 /* PanelController.swift in Sources */,
+				5E58C87F26C53C6300AAEC63 /* NotificationCenterViewController.swift in Sources */,
 				5EFF892326C01BC300E791E6 /* OverlayWindowController.swift in Sources */,
+				5E87515826C46082007FA2FD /* NoInstrument.swift in Sources */,
 				5EFF892626C01C8100E791E6 /* PassthroughWindow.swift in Sources */,
 				5E87514D26C30C0D007FA2FD /* UserDefaultsInstrumentViewController.swift in Sources */,
 				5E87515226C41123007FA2FD /* UserDefaultsChangeCell.swift in Sources */,
 				5E87514726C30A45007FA2FD /* InstrumentCenter.swift in Sources */,
+				5E87516026C46499007FA2FD /* CurrentPasteboardContentsViewController.swift in Sources */,
 				5E87514B26C30BEE007FA2FD /* UserDefaultsInstrument.swift in Sources */,
+				5E87515A26C460A6007FA2FD /* NoInstrumentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

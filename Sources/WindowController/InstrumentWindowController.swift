@@ -28,6 +28,7 @@
 
 import UIKit
 import KEFoundation
+import Combine
 
 public class InstrumentWindowController: OverlayWindowController {
 
@@ -36,25 +37,67 @@ public class InstrumentWindowController: OverlayWindowController {
 		panelContainer.view
 	}
 
-	private let instrument = UserDefaultsInstrument()
+	private let switcherButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet"))
+	private let optionsButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"))
+
+	private let instrumentCenter: InstrumentCenter
+	private let instrumentSession: InstrumentSession
+
+	private var cancellables = Set<AnyCancellable>()
 
 	public init(windowScene: UIWindowScene, instrumentCenter: InstrumentCenter = .default) {
+		self.instrumentCenter = instrumentCenter
+		instrumentSession = InstrumentSession(instrumentCenter: instrumentCenter)
 		super.init(windowScene: windowScene)
 		setUpUI()
+		setUpObserving()
 	}
 
 	private func setUpUI() {
+		instrumentCenter.addInstrument(UserDefaultsInstrument())
+		instrumentCenter.addInstrument(PasteboardInstrument())
+		instrumentCenter.addInstrument(NotificationCenterInstrument())
+
 		contentViewController.addChild(panelContainer)
 		contentView.addSubview(panelContainerView)
 		panelContainer.didMove(toParent: contentViewController)
-		let viewController = instrument.makeViewController()
-		panelContainer.embeddedViewController = viewController
 		panelContainerView.frame = CGRect(x: 40, y: 40, width: 320, height: 500)
 
-		let switcherButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "list.bullet"), primaryAction: nil, menu: nil)
-		panelContainer.leadingBarButtonItem = switcherButton
-
-		let optionsButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: nil)
 		panelContainer.trailingBarButtonItem = optionsButton
+
+		updateSwitcherButton()
+	}
+
+	private func setUpObserving() {
+		instrumentSession.$currentlyShownInstrument.sink { [weak self] instrument in
+			guard let self = self else {
+				return
+			}
+			self.panelContainer.embeddedViewController = self.instrumentSession.viewController(for: instrument)
+		}
+		.store(in: &cancellables)
+
+		instrumentCenter.$instruments.sink { [weak self] _ in
+			self?.updateSwitcherButton()
+		}
+		.store(in: &cancellables)
+	}
+
+	private func updateSwitcherButton() {
+		if instrumentCenter.instruments.isEmpty {
+			panelContainer.leadingBarButtonItem = nil
+		} else {
+			panelContainer.leadingBarButtonItem = switcherButton
+
+			let switcherActions = instrumentCenter.instruments.map { instrument in
+				UIAction(title: instrument.title) { [weak self] _ in
+					guard let self = self else {
+						return
+					}
+					self.instrumentSession.currentlyShownInstrument = instrument
+				}
+			}
+			switcherButton.menu = UIMenu(children: switcherActions)
+		}
 	}
 }

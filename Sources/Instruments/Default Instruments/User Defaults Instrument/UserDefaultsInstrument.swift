@@ -39,7 +39,7 @@ public class UserDefaultsInstrument: NSObject, Instrument {
 		case deleted(key: String, value: Any)
 	}
 
-	public let title = "UserDefaults"
+	public let title = "User Defaults"
 
 	@Published private(set) var userDefaultsDictionary: [String: Any] = [:]
 	@Published private(set) var userDefaultsDictionaryDiff: [Change] = [] {

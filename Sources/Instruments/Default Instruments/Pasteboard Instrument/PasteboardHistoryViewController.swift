@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 10.08.21
+//  Created by Kai Engelhardt on 11.08.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -26,36 +26,27 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
+import KEFoundation
 
-public class InstrumentCenter {
+class PasteboardHistoryViewController: ContainerViewController {
 
-	public static let `default` = InstrumentCenter()
+	private let instrument: PasteboardInstrument
 
-	@Published public private(set) var instruments: [Instrument] = []
-
-	private var lastSelectedInstrument: Instrument?
-	let noInstrument = NoInstrument()
-
-	var defaultInstrument: Instrument {
-		if lastSelectedInstrument is NoInstrument {
-			return instruments.first ?? noInstrument
-		} else {
-			return lastSelectedInstrument ?? instruments.first ?? noInstrument
-		}
+	private let tableViewController = UITableViewController()
+	private var tableView: UITableView {
+		tableViewController.tableView
 	}
 
-	public func addInstrument(_ instrument: Instrument) {
-		instruments.append(instrument)
+	init(instrument: PasteboardInstrument) {
+		self.instrument = instrument
+		super.init(nibName: nil, bundle: nil)
+		setUpUI()
 	}
 
-	public func removeInstrument(_ instrument: Instrument) {
-		instruments.removeAll(where: {
-			instrument === $0
-		})
-	}
-
-	func noteLastSelectedInstrument(_ instrument: Instrument) {
-		lastSelectedInstrument = instrument
+	private func setUpUI() {
+		title = "History"
+		tabBarItem.image = UIImage(systemName: "clock")
+		embeddedViewController = tableViewController
 	}
 }

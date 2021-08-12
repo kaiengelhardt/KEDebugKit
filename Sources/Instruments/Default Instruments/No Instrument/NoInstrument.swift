@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 10.08.21
+//  Created by Kai Engelhardt on 11.08.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -26,36 +26,13 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-public class InstrumentCenter {
+class NoInstrument: Instrument {
 
-	public static let `default` = InstrumentCenter()
+	let title = "No Instrument"
 
-	@Published public private(set) var instruments: [Instrument] = []
-
-	private var lastSelectedInstrument: Instrument?
-	let noInstrument = NoInstrument()
-
-	var defaultInstrument: Instrument {
-		if lastSelectedInstrument is NoInstrument {
-			return instruments.first ?? noInstrument
-		} else {
-			return lastSelectedInstrument ?? instruments.first ?? noInstrument
-		}
-	}
-
-	public func addInstrument(_ instrument: Instrument) {
-		instruments.append(instrument)
-	}
-
-	public func removeInstrument(_ instrument: Instrument) {
-		instruments.removeAll(where: {
-			instrument === $0
-		})
-	}
-
-	func noteLastSelectedInstrument(_ instrument: Instrument) {
-		lastSelectedInstrument = instrument
+	func makeViewController() -> UIViewController {
+		return NoInstrumentViewController(instrument: self)
 	}
 }

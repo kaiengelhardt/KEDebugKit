@@ -66,6 +66,8 @@ class UserDefaultsInstrumentViewController: ContainerViewController {
 
 		embeddedViewController = navController
 		navController.viewControllers = [tableViewController]
+		tableViewController.title = "Changes"
+		navController.hidesBarsOnSwipe = true
 
 		dataSource = UITableViewDiffableDataSource(tableView: tableView) { [weak self] tableView, indexPath, event in
 			guard let self = self else {

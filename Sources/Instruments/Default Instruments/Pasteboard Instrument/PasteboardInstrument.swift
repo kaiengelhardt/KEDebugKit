@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 10.08.21
+//  Created by Kai Engelhardt on 11.08.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -26,36 +26,28 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
+import KEFoundation
 
-public class InstrumentCenter {
+public class PasteboardInstrument: Instrument {
 
-	public static let `default` = InstrumentCenter()
+	public let title = "Pasteboard"
 
-	@Published public private(set) var instruments: [Instrument] = []
+	private let pasteboard: UIPasteboard
 
-	private var lastSelectedInstrument: Instrument?
-	let noInstrument = NoInstrument()
+	private let notificationObserver = NotificationObserver()
 
-	var defaultInstrument: Instrument {
-		if lastSelectedInstrument is NoInstrument {
-			return instruments.first ?? noInstrument
-		} else {
-			return lastSelectedInstrument ?? instruments.first ?? noInstrument
+	public init(pasteboard: UIPasteboard = .general) {
+		self.pasteboard = pasteboard
+		setUpObserving()
+	}
+
+	private func setUpObserving() {
+		notificationObserver.when(UIPasteboard.changedNotification, object: pasteboard) { notification in
 		}
 	}
 
-	public func addInstrument(_ instrument: Instrument) {
-		instruments.append(instrument)
-	}
-
-	public func removeInstrument(_ instrument: Instrument) {
-		instruments.removeAll(where: {
-			instrument === $0
-		})
-	}
-
-	func noteLastSelectedInstrument(_ instrument: Instrument) {
-		lastSelectedInstrument = instrument
+	public func makeViewController() -> UIViewController {
+		return PasteboardInstrumentViewController(instrument: self)
 	}
 }

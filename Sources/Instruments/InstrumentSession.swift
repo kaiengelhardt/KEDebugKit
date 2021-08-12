@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 10.08.21
+//  Created by Kai Engelhardt on 11.08.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -26,36 +26,34 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
-public class InstrumentCenter {
+class InstrumentSession {
 
-	public static let `default` = InstrumentCenter()
-
-	@Published public private(set) var instruments: [Instrument] = []
-
-	private var lastSelectedInstrument: Instrument?
-	let noInstrument = NoInstrument()
-
-	var defaultInstrument: Instrument {
-		if lastSelectedInstrument is NoInstrument {
-			return instruments.first ?? noInstrument
-		} else {
-			return lastSelectedInstrument ?? instruments.first ?? noInstrument
+	@Published var currentlyShownInstrument: Instrument {
+		didSet {
+			instrumentCenter.noteLastSelectedInstrument(currentlyShownInstrument)
 		}
 	}
 
-	public func addInstrument(_ instrument: Instrument) {
-		instruments.append(instrument)
+	private let instrumentCenter: InstrumentCenter
+
+	private var viewControllerForInstrument: [ObjectIdentifier: UIViewController] = [:]
+
+	init(instrumentCenter: InstrumentCenter) {
+		self.instrumentCenter = instrumentCenter
+		currentlyShownInstrument = instrumentCenter.defaultInstrument
 	}
 
-	public func removeInstrument(_ instrument: Instrument) {
-		instruments.removeAll(where: {
-			instrument === $0
-		})
-	}
-
-	func noteLastSelectedInstrument(_ instrument: Instrument) {
-		lastSelectedInstrument = instrument
+	func viewController(for instrument: Instrument) -> UIViewController {
+		let identifier = ObjectIdentifier(instrument)
+		let viewController = viewControllerForInstrument[identifier]
+		if let viewController = viewController {
+			return viewController
+		} else {
+			let viewController = instrument.makeViewController()
+			viewControllerForInstrument[identifier] = viewController
+			return viewController
+		}
 	}
 }
