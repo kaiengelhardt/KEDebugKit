@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 11.08.21
+//  Created by Kai Engelhardt on 12.08.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -29,44 +29,25 @@
 import UIKit
 import KEFoundation
 
-public class PasteboardInstrument: Instrument {
+class UserDefaultsBrowserViewController: ContainerViewController {
 
-	public let title = "Pasteboard"
+	private let instrument: UserDefaultsInstrument
 
-	private let pasteboard: UIPasteboard
-
-	private let notificationObserver = NotificationObserver()
-
-	private var lastChangeCount: Int
-	@AutoInvalidatingObject private var timer: Timer?
-
-	public init(pasteboard: UIPasteboard = .general) {
-		self.pasteboard = pasteboard
-		lastChangeCount = pasteboard.changeCount
-		setUpObserving()
+	private let tableViewController = UITableViewController()
+	private var tableView: UITableView {
+		tableViewController.tableView
 	}
 
-	private func setUpObserving() {
-		notificationObserver.when(UIPasteboard.changedNotification, object: pasteboard) { [weak self] notification in
-			guard let self = self else {
-				return
-			}
-			print("[PB] Notification: \(notification)")
-			print("[PB] Items: \(self.pasteboard.items)")
-		}
-
-		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-			guard let self = self else {
-				return
-			}
-			if self.pasteboard.changeCount != self.lastChangeCount {
-				self.lastChangeCount = self.pasteboard.changeCount
-				print("[PB] Items: \(self.pasteboard.items)")
-			}
-		}
+	init(instrument: UserDefaultsInstrument) {
+		self.instrument = instrument
+		super.init(nibName: nil, bundle: nil)
+		setUpUI()
 	}
 
-	public func makeViewController() -> UIViewController {
-		return PasteboardInstrumentViewController(instrument: self)
+	private func setUpUI() {
+		title = "Browser"
+		tabBarItem.image = UIImage(systemName: "switch.2")
+
+		embeddedViewController = tableViewController
 	}
 }

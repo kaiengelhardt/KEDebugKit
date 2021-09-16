@@ -30,22 +30,29 @@ import UIKit
 import KEFoundation
 import Combine
 
-class NotificationCenterViewController: ContainerViewController {
+class UserDefaultsChangesViewController: ContainerViewController {
 
-	private let instrument: NotificationCenterInstrument
-
-	private let navController = UINavigationController()
+	private let instrument: UserDefaultsInstrument
 
 	private let tableViewController = UITableViewController()
 	private var tableView: UITableView {
 		tableViewController.tableView
 	}
 
-	private var dataSource: UITableViewDiffableDataSource<Int, NotificationEntry>?
+	private var changes: [UserDefaultsChangeViewModel] = [] {
+		didSet {
+			var snapshot = NSDiffableDataSourceSnapshot<Int, UserDefaultsChangeViewModel>()
+			snapshot.appendSections([0])
+			snapshot.appendItems(changes)
+			dataSource?.apply(snapshot, animatingDifferences: !oldValue.isEmpty)
+		}
+	}
+
+	private var dataSource: UITableViewDiffableDataSource<Int, UserDefaultsChangeViewModel>?
 
 	private var cancellables = Set<AnyCancellable>()
 
-	init(instrument: NotificationCenterInstrument) {
+	init(instrument: UserDefaultsInstrument) {
 		self.instrument = instrument
 		super.init(nibName: nil, bundle: nil)
 		setUpUI()
@@ -53,38 +60,48 @@ class NotificationCenterViewController: ContainerViewController {
 	}
 
 	private func setUpUI() {
-		title = instrument.title
-		embeddedViewController = navController
-		navController.viewControllers = [tableViewController]
-		tableViewController.title = "History"
+		title = "Changes"
+		tabBarItem.image = UIImage(systemName: "flowchart")
 
-		dataSource = UITableViewDiffableDataSource(
-			tableView: tableView
-		) { [weak self] tableView, indexPath, itemIdentifier in
+		embeddedViewController = tableViewController
+
+		dataSource = UITableViewDiffableDataSource(tableView: tableView) { [weak self] tableView, indexPath, event in
 			guard let self = self else {
 				return nil
 			}
-			let entry = self.instrument.notificationHistory[indexPath.row]
+			let change = self.changes[indexPath.row]
 			// swiftlint:disable:next force_cast
-			let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! NotificationCell
-			cell.configure(with: entry)
+			let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserDefaultsChangeCell
+			cell.configure(with: change.change)
 			return cell
 		}
 
 		tableView.dataSource = dataSource
-		tableView.register(NotificationCell.self, forCellReuseIdentifier: "Cell")
+		tableView.register(UserDefaultsChangeCell.self, forCellReuseIdentifier: "Cell")
 	}
 
 	private func setUpObserving() {
-		instrument.$notificationHistory.sink { [weak self] entries in
+		instrument.$userDefaultsDictionaryDiff.sink { [weak self] changes in
 			guard let self = self else {
 				return
 			}
-			var snapshot = NSDiffableDataSourceSnapshot<Int, NotificationEntry>()
-			snapshot.appendSections([0])
-			snapshot.appendItems(entries.reversed())
-			self.dataSource?.apply(snapshot)
+			let changeModels = changes.map(UserDefaultsChangeViewModel.init(change:))
+			self.changes.insert(contentsOf: changeModels, at: 0)
 		}
 		.store(in: &cancellables)
+	}
+}
+
+private struct UserDefaultsChangeViewModel: Hashable {
+
+	private let id = UUID()
+	let change: UserDefaultsInstrument.Change
+
+	static func == (lhs: UserDefaultsChangeViewModel, rhs: UserDefaultsChangeViewModel) -> Bool {
+		return lhs.id == rhs.id
+	}
+
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(id)
 	}
 }

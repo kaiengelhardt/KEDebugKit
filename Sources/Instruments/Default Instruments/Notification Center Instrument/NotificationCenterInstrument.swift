@@ -33,6 +33,17 @@ import Combine
 
 public class NotificationCenterInstrument: Instrument {
 
+	public struct Options: OptionSet, RawRepresentable {
+
+		public static let trackPrivateNotifications = Self(rawValue: 1 << 0)
+
+		public let rawValue: Int
+
+		public init(rawValue: Int) {
+			self.rawValue = rawValue
+		}
+	}
+
 	public let title = "Notification Center"
 
 	private let notificationCenter: NotificationCenter
@@ -57,12 +68,38 @@ public class NotificationCenterInstrument: Instrument {
 			guard let self = self else {
 				return
 			}
+
+			if let view = notification.object as? UIView {
+				if view.window?.tag == 696_969 {
+//					print("Ignored notification from debug window \(notification.name.rawValue)")
+					return
+				}
+			}
+
+			let notificationNames = [
+				"NSTextStorageWillProcessEditingNotification",
+				"NSTextStorageDidProcessEditingNotification",
+				"NSTextViewWillChangeNotifyingTextViewNotification",
+			]
+
+			if notificationNames.contains(notification.name.rawValue) {
+//				print("Ignored notification from well known names \(notification.name.rawValue) \(notification.object)")
+				return
+			}
+
+			if notification.name.rawValue.starts(with: "_") {
+//				print("Ignored notification which is private \(notification.name.rawValue)")
+				return
+			}
+
 			DispatchQueue.main.async {
 				var notificationHistory = self.notificationHistory
 				let entry = NotificationEntry(observationDate: Date(), notification: notification)
 				notificationHistory.append(entry)
 				self.notificationHistory = notificationHistory.suffix(self.historySize)
 			}
+
+			print(notification)
 		}
 	}
 

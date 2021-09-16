@@ -39,7 +39,9 @@ class NotificationCell: UITableViewCell {
 
 	private let stackView = UIStackView()
 	private let dateLabel = UILabel()
-	private let nameLabel = UILabel()
+	private let nameTextView = UITextView()
+	private let objectLabel = UILabel()
+	private let userInfoLabel = UILabel()
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -63,30 +65,66 @@ class NotificationCell: UITableViewCell {
 		stackView.axis = .vertical
 		stackView.alignment = .fill
 		stackView.distribution = .fill
-		stackView.spacing = UIStackView.spacingUseSystem
+		stackView.spacing = 4
 
-		stackView.addArrangedSubview(dateLabel)
+		let topView = UIView()
+		stackView.addArrangedSubview(topView)
+
+		topView.addSubview(nameTextView)
+		constraints += nameTextView.constraintsMatchingSizeOfSuperview()
+		nameTextView.translatesAutoresizingMaskIntoConstraints = false
+		nameTextView.textAlignment = .left
+		nameTextView.font = .systemFont(ofSize: 14, weight: .semibold)
+		nameTextView.textColor = .label
+		nameTextView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		nameTextView.textContainer.lineFragmentPadding = 0
+		nameTextView.isScrollEnabled = false
+		nameTextView.isEditable = false
+
+		topView.addSubview(dateLabel)
+		constraints += [
+			dateLabel.topAnchor.constraint(equalTo: topView.topAnchor),
+			dateLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor),
+		]
+		dateLabel.translatesAutoresizingMaskIntoConstraints = false
 		dateLabel.textAlignment = .right
 		dateLabel.font = .systemFont(ofSize: 14, weight: .medium)
 		dateLabel.textColor = .secondaryLabel
 
-		stackView.addArrangedSubview(nameLabel)
-		nameLabel.textAlignment = .left
-		nameLabel.font = .systemFont(ofSize: 14, weight: .semibold)
-		nameLabel.textColor = .label
-		nameLabel.numberOfLines = 0
+		stackView.addArrangedSubview(objectLabel)
+		objectLabel.textAlignment = .left
+		objectLabel.font = .systemFont(ofSize: 14, weight: .medium)
+		objectLabel.textColor = .secondaryLabel
+		objectLabel.numberOfLines = 0
+
+		stackView.addArrangedSubview(userInfoLabel)
+		userInfoLabel.textAlignment = .left
+		userInfoLabel.font = .systemFont(ofSize: 14, weight: .medium)
+		userInfoLabel.textColor = .tertiaryLabel
+		userInfoLabel.numberOfLines = 0
 
 		accessoryType = .disclosureIndicator
 	}
 
 	func configure(with notificationEntry: NotificationEntry) {
 		dateLabel.text = Self.dateFormatter.string(from: notificationEntry.observationDate)
-		nameLabel.text = notificationEntry.notification.name.rawValue
+		nameTextView.text = notificationEntry.notification.name.rawValue
+		if let object = notificationEntry.notification.object {
+			let type = type(of: object)
+			objectLabel.text = String(describing: type)
+		} else {
+			objectLabel.text = "<nil>"
+		}
+		userInfoLabel.text = notificationEntry.notification.userInfo.debugDescription
 	}
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		nameLabel.preferredMaxLayoutWidth = stackView.bounds.width
-		dateLabel.preferredMaxLayoutWidth = stackView.bounds.width
+		var dateLabelFrame = dateLabel.frame
+		dateLabelFrame = dateLabelFrame.insetBy(insets: UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0))
+		nameTextView.textContainer.exclusionPaths = [UIBezierPath(rect: dateLabelFrame)]
+		objectLabel.preferredMaxLayoutWidth = stackView.bounds.width
+		userInfoLabel.preferredMaxLayoutWidth = stackView.bounds.width
+		super.layoutSubviews()
 	}
 }

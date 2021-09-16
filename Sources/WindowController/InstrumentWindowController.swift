@@ -66,6 +66,8 @@ public class InstrumentWindowController: OverlayWindowController {
 		panelContainer.trailingBarButtonItem = optionsButton
 
 		updateSwitcherButton()
+
+		window.tag = 696_969
 	}
 
 	private func setUpObserving() {

@@ -34,78 +34,41 @@ class UserDefaultsInstrumentViewController: ContainerViewController {
 
 	private let instrument: UserDefaultsInstrument
 
-	private let navController = UINavigationController()
+	private let tabController = UITabBarController()
 
-	private let tableViewController = UITableViewController()
-	private var tableView: UITableView {
-		tableViewController.tableView
-	}
-
-	private var changes: [UserDefaultsChangeViewModel] = [] {
-		didSet {
-			var snapshot = NSDiffableDataSourceSnapshot<Int, UserDefaultsChangeViewModel>()
-			snapshot.appendSections([0])
-			snapshot.appendItems(changes)
-			dataSource?.apply(snapshot, animatingDifferences: !oldValue.isEmpty)
-		}
-	}
-
-	private var dataSource: UITableViewDiffableDataSource<Int, UserDefaultsChangeViewModel>?
-
-	private var cancellables = Set<AnyCancellable>()
+	private let userDefaultsBrowserNavigationController = UINavigationController()
+	private let userDefaultsBrowserViewController: UserDefaultsBrowserViewController
+	private let userDefaultsChangesNavigationController = UINavigationController()
+	private let userDefaultsChangesViewController: UserDefaultsChangesViewController
 
 	init(instrument: UserDefaultsInstrument) {
 		self.instrument = instrument
+		userDefaultsBrowserViewController = UserDefaultsBrowserViewController(instrument: instrument)
+		userDefaultsChangesViewController = UserDefaultsChangesViewController(instrument: instrument)
 		super.init(nibName: nil, bundle: nil)
 		setUpUI()
-		setUpObserving()
 	}
 
 	private func setUpUI() {
 		title = instrument.title
+		embeddedViewController = tabController
+		view.backgroundColor = .systemBackground
 
-		embeddedViewController = navController
-		navController.viewControllers = [tableViewController]
-		tableViewController.title = "Changes"
-		navController.hidesBarsOnSwipe = true
+		tabController.viewControllers = [
+			userDefaultsBrowserNavigationController,
+			userDefaultsChangesNavigationController,
+		]
 
-		dataSource = UITableViewDiffableDataSource(tableView: tableView) { [weak self] tableView, indexPath, event in
-			guard let self = self else {
-				return nil
-			}
-			let change = self.changes[indexPath.row]
-			// swiftlint:disable:next force_cast
-			let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserDefaultsChangeCell
-			cell.configure(with: change.change)
-			return cell
-		}
+		userDefaultsBrowserNavigationController.viewControllers = [
+			userDefaultsBrowserViewController,
+		]
+		userDefaultsChangesNavigationController.viewControllers = [
+			userDefaultsChangesViewController,
+		]
 
-		tableView.dataSource = dataSource
-		tableView.register(UserDefaultsChangeCell.self, forCellReuseIdentifier: "Cell")
-	}
-
-	private func setUpObserving() {
-		instrument.$userDefaultsDictionaryDiff.sink { [weak self] changes in
-			guard let self = self else {
-				return
-			}
-			let changeModels = changes.map(UserDefaultsChangeViewModel.init(change:))
-			self.changes.insert(contentsOf: changeModels, at: 0)
-		}
-		.store(in: &cancellables)
-	}
-}
-
-private struct UserDefaultsChangeViewModel: Hashable {
-
-	private let id = UUID()
-	let change: UserDefaultsInstrument.Change
-
-	static func == (lhs: UserDefaultsChangeViewModel, rhs: UserDefaultsChangeViewModel) -> Bool {
-		return lhs.id == rhs.id
-	}
-
-	func hash(into hasher: inout Hasher) {
-		hasher.combine(id)
+		setOverrideTraitCollection(UITraitCollection(traitsFrom: [
+			UITraitCollection(horizontalSizeClass: .compact),
+			UITraitCollection(verticalSizeClass: .compact),
+		]), forChild: tabController)
 	}
 }
