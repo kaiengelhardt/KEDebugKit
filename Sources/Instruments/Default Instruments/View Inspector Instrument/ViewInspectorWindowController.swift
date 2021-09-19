@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 08.08.21.
+//  Created by Kai Engelhardt on 16.09.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -29,16 +29,22 @@
 import UIKit
 import KEFoundation
 
-public class OverlayWindowController: UIResponder {
+class ViewInspectorWindowController: UIResponder {
 
-	let window: PassthroughWindow
-	let contentViewController = UIViewController()
-	var contentView: UIView {
-		contentViewController.view
+	var isInspectingViews: Bool {
+		get {
+			window.isInspectingViews
+		}
+		set {
+			window.isInspectingViews = newValue
+		}
 	}
 
-	public init(windowScene: UIWindowScene) {
-		window = PassthroughWindow(windowScene: windowScene)
+	private let window: ViewInspectorWindow
+	private let rootViewController = ViewInspectorWindowRootViewController()
+
+	init(windowScene: UIWindowScene) {
+		window = ViewInspectorWindow(windowScene: windowScene)
 		super.init()
 		setUpUI(scene: windowScene)
 	}
@@ -46,7 +52,22 @@ public class OverlayWindowController: UIResponder {
 	private func setUpUI(scene: UIWindowScene) {
 		window.bounds = scene.screen.bounds
 		window.setFrameToBeNotEntirelyFullscreenToPreventThisWindowFromSwallowingStatusBarEvents()
-		window.rootViewController = contentViewController
+		window.rootViewController = rootViewController
 		window.makeKeyAndVisible()
+
+		rootViewController.onTouchesEnded = { [weak self] touches, event in
+			guard let self = self else {
+				return
+			}
+		}
+	}
+}
+
+private class ViewInspectorWindowRootViewController: UIViewController {
+
+	var onTouchesEnded: ((Set<UITouch>, UIEvent?) -> Void)?
+
+	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+		onTouchesEnded?(touches, event)
 	}
 }

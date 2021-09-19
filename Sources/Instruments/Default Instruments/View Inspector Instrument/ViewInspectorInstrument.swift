@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 08.08.21.
+//  Created by Kai Engelhardt on 16.09.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -27,26 +27,35 @@
 //
 
 import UIKit
-import KEFoundation
+import Combine
 
-public class OverlayWindowController: UIResponder {
+public class ViewInspectorInstrument: Instrument {
 
-	let window: PassthroughWindow
-	let contentViewController = UIViewController()
-	var contentView: UIView {
-		contentViewController.view
+	public let title = "View Inspector"
+
+	private let subject: PassthroughSubject<UIView?, Never>
+
+	let viewInspectionResult = CurrentValueSubject<ViewInspectionResult?, Never>(nil)
+
+	private var cancellables = Set<AnyCancellable>()
+
+	public init(subject: PassthroughSubject<UIView?, Never>) {
+		self.subject = subject
+		setUpObserving()
 	}
 
-	public init(windowScene: UIWindowScene) {
-		window = PassthroughWindow(windowScene: windowScene)
-		super.init()
-		setUpUI(scene: windowScene)
+	public func makeViewController() -> UIViewController {
+		return ViewInspectionResultViewController(instrument: self)
 	}
 
-	private func setUpUI(scene: UIWindowScene) {
-		window.bounds = scene.screen.bounds
-		window.setFrameToBeNotEntirelyFullscreenToPreventThisWindowFromSwallowingStatusBarEvents()
-		window.rootViewController = contentViewController
-		window.makeKeyAndVisible()
+	private func setUpObserving() {
+		subject.map { view in
+			guard let view = view else {
+				return nil
+			}
+			return ViewInspectionResult(view: view)
+		}
+		.subscribe(viewInspectionResult)
+		.store(in: &cancellables)
 	}
 }

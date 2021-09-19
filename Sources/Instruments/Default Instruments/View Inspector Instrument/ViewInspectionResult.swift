@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 08.08.21.
+//  Created by Kai Engelhardt on 16.09.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -27,26 +27,8 @@
 //
 
 import UIKit
-import KEFoundation
 
-public class OverlayWindowController: UIResponder {
+public struct ViewInspectionResult {
 
-	let window: PassthroughWindow
-	let contentViewController = UIViewController()
-	var contentView: UIView {
-		contentViewController.view
-	}
-
-	public init(windowScene: UIWindowScene) {
-		window = PassthroughWindow(windowScene: windowScene)
-		super.init()
-		setUpUI(scene: windowScene)
-	}
-
-	private func setUpUI(scene: UIWindowScene) {
-		window.bounds = scene.screen.bounds
-		window.setFrameToBeNotEntirelyFullscreenToPreventThisWindowFromSwallowingStatusBarEvents()
-		window.rootViewController = contentViewController
-		window.makeKeyAndVisible()
-	}
+	public let view: UIView
 }

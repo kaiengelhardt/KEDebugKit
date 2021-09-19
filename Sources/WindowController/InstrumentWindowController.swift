@@ -49,15 +49,17 @@ public class InstrumentWindowController: OverlayWindowController {
 		self.instrumentCenter = instrumentCenter
 		instrumentSession = InstrumentSession(instrumentCenter: instrumentCenter)
 		super.init(windowScene: windowScene)
+
 		setUpUI()
 		setUpObserving()
+
+//		instrumentCenter.addInstrument(ViewInspectorInstrument(subject: ))
+//		instrumentCenter.addInstrument(UserDefaultsInstrument())
+//		instrumentCenter.addInstrument(PasteboardInstrument())
+//		instrumentCenter.addInstrument(NotificationCenterInstrument())
 	}
 
 	private func setUpUI() {
-		instrumentCenter.addInstrument(UserDefaultsInstrument())
-		instrumentCenter.addInstrument(PasteboardInstrument())
-		instrumentCenter.addInstrument(NotificationCenterInstrument())
-
 		contentViewController.addChild(panelContainer)
 		contentView.addSubview(panelContainerView)
 		panelContainer.didMove(toParent: contentViewController)
@@ -65,7 +67,7 @@ public class InstrumentWindowController: OverlayWindowController {
 
 		panelContainer.trailingBarButtonItem = optionsButton
 
-		updateSwitcherButton()
+		updateSwitcherButton(instruments: [])
 
 		window.tag = 696_969
 	}
@@ -79,19 +81,19 @@ public class InstrumentWindowController: OverlayWindowController {
 		}
 		.store(in: &cancellables)
 
-		instrumentCenter.$instruments.sink { [weak self] _ in
-			self?.updateSwitcherButton()
+		instrumentCenter.$instruments.sink { [weak self] instruments in
+			self?.updateSwitcherButton(instruments: instruments)
 		}
 		.store(in: &cancellables)
 	}
 
-	private func updateSwitcherButton() {
-		if instrumentCenter.instruments.isEmpty {
+	private func updateSwitcherButton(instruments: [Instrument]) {
+		if instruments.isEmpty {
 			panelContainer.leadingBarButtonItem = nil
 		} else {
 			panelContainer.leadingBarButtonItem = switcherButton
 
-			let switcherActions = instrumentCenter.instruments.map { instrument in
+			let switcherActions = instruments.map { instrument in
 				UIAction(title: instrument.title) { [weak self] _ in
 					guard let self = self else {
 						return
