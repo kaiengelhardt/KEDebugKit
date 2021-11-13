@@ -28,20 +28,29 @@
 
 import UIKit
 import Combine
+import KEFoundation
 
-class ViewInspectionResultViewController: UIViewController {
+class ViewInspectionResultViewController: ContainerViewController {
 
 	private let instrument: ViewInspectorInstrument
 
-	private let addressLabel = UILabel()
-	private let accessibilityIDLabel = UILabel()
-	private let frameLabel = UILabel()
+	private var dataSource: UICollectionViewDiffableDataSource<String, String>?
+
+	private let collectionViewController: UICollectionViewController
+	private var collectionView: UICollectionView {
+		collectionViewController.collectionView
+	}
 
 	private var cancellables = Set<AnyCancellable>()
 
 	init(instrument: ViewInspectorInstrument) {
+		let configuration = UICollectionLayoutListConfiguration(appearance: .sidebar)
+		let layout = UICollectionViewCompositionalLayout.list(using: configuration)
+		collectionViewController = UICollectionViewController(collectionViewLayout: layout)
 		self.instrument = instrument
+
 		super.init(nibName: nil, bundle: nil)
+
 		setUpUI()
 		setUpObserving()
 	}
@@ -52,40 +61,45 @@ class ViewInspectionResultViewController: UIViewController {
 	}
 
 	private func setUpUI() {
-		var constraints: [NSLayoutConstraint] = []
-		defer {
-			NSLayoutConstraint.activate(constraints)
-		}
-
 		title = instrument.title
+		view.backgroundColor = .systemBackground
 
-		let stackView = UIStackView()
-		view.addSubview(stackView)
-		constraints += stackView.constraintsMatchingCenterOfSuperview()
-		stackView.translatesAutoresizingMaskIntoConstraints = false
+		embeddedViewController = collectionViewController
+		dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { [weak self] collectionView, indexPath, itemIdentifier in
+			guard let self = self else {
+				return nil
+			}
+			return self.dequeueCell(using: collectionView, at: indexPath, for: itemIdentifier)
+		}
+		collectionView.dataSource = dataSource
 
-		stackView.axis = .vertical
-		stackView.alignment = .fill
-		stackView.distribution = .fill
-		stackView.spacing = UIStackView.spacingUseSystem
-
-		stackView.addArrangedSubview(addressLabel)
-		stackView.addArrangedSubview(accessibilityIDLabel)
-		stackView.addArrangedSubview(frameLabel)
+		let inspectButton = UIBarButtonItem(
+			image: UIImage(systemName: "scope"),
+			style: .plain,
+			target: self,
+			action: #selector(inspect)
+		)
+		navigationItem.rightBarButtonItem = inspectButton
 	}
 
 	private func setUpObserving() {
-		instrument.viewInspectionResult.sink { completion in
-		} receiveValue: { [weak self] result in
+		instrument.viewInspectionResults.sink { completion in
+		} receiveValue: { [weak self] results in
 			guard let self = self else {
 				return
 			}
-			if let result = result {
-				self.frameLabel.text = result.view.frame.debugDescription
-				self.accessibilityIDLabel.text = result.view.accessibilityIdentifier
-				self.addressLabel.text = ObjectIdentifier(result.view).debugDescription
-			}
+			print(self)
+			print(results)
 		}
 		.store(in: &cancellables)
+	}
+
+	@objc
+	private func inspect() {
+		instrument.beginInspecting()
+	}
+
+	private func dequeueCell(using collectionView: UICollectionView, at indexPath: IndexPath, for item: String) -> UICollectionViewCell? {
+		return nil
 	}
 }

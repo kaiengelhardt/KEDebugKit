@@ -33,29 +33,89 @@ public class ViewInspectorInstrument: Instrument {
 
 	public let title = "View Inspector"
 
-	private let subject: PassthroughSubject<UIView?, Never>
+	let viewInspectionResults = CurrentValueSubject<[ViewInspectionResult], Never>([])
 
-	let viewInspectionResult = CurrentValueSubject<ViewInspectionResult?, Never>(nil)
+	private var windowControllers: [InstrumentSession: ViewInspectorWindowController] = [:]
+	private var instrumentSessions: [ViewInspectorWindowController: InstrumentSession] = [:]
 
 	private var cancellables = Set<AnyCancellable>()
 
-	public init(subject: PassthroughSubject<UIView?, Never>) {
-		self.subject = subject
-		setUpObserving()
-	}
+	public init() {}
 
 	public func makeViewController() -> UIViewController {
-		return ViewInspectionResultViewController(instrument: self)
+		let navigationController = UINavigationController()
+		let viewController = ViewInspectionResultViewController(instrument: self)
+		navigationController.viewControllers = [viewController]
+		return navigationController
 	}
 
-	private func setUpObserving() {
-		subject.map { view in
-			guard let view = view else {
-				return nil
-			}
-			return ViewInspectionResult(view: view)
+	public func didBecomeActive(in session: InstrumentSession) {
+		let windowController = ViewInspectorWindowController(windowScene: session.windowScene)
+		windowControllers[session] = windowController
+		instrumentSessions[windowController] = session
+		windowController.delegate = self
+	}
+
+	public func didResignActive(in session: InstrumentSession) {
+		if let windowController = windowControllers[session] {
+			instrumentSessions[windowController] = nil
 		}
-		.subscribe(viewInspectionResult)
-		.store(in: &cancellables)
+		windowControllers[session] = nil
+	}
+
+	func beginInspecting() {
+		for windowController in windowControllers.values {
+			windowController.isInspectingViews = true
+		}
+	}
+
+	func endInspecting() {
+		for windowController in windowControllers.values {
+			windowController.isInspectingViews = false
+		}
+	}
+
+	private func findViews(at location: CGPoint, in view: UIView) -> [UIView] {
+		var allSubviews = [view]
+		appendAllSubviews(of: view, to: &allSubviews)
+		let filterdSubviews = allSubviews.filter { view in
+			view.frame.contains(location)
+		}
+		return filterdSubviews
+	}
+
+	private func appendAllSubviews(of view: UIView, to queue: inout [UIView]) {
+		queue.append(contentsOf: view.subviews)
+		for subview in view.subviews {
+			appendAllSubviews(of: subview, to: &queue)
+		}
+	}
+}
+
+extension ViewInspectorInstrument: ViewInspectorWindowControllerDelegate {
+
+	func viewInspectorWindowConroller(
+		_ windowController: ViewInspectorWindowController,
+		didPerformTapAtLocation location: CGPoint
+	) {
+		endInspecting()
+
+		guard let session = instrumentSessions[windowController] else {
+			return
+		}
+
+		var allViews: [UIView] = []
+
+		for window in session.windowScene.windows {
+			let convertedLocation = window.convert(location, from: windowController.window)
+			let views = findViews(at: convertedLocation, in: window)
+			allViews.append(contentsOf: views)
+		}
+
+		let results = allViews.map {
+			ViewInspectionResult(view: $0)
+		}
+
+		viewInspectionResults.send(results)
 	}
 }

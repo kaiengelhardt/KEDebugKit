@@ -33,4 +33,13 @@ public protocol Instrument: AnyObject {
 	var title: String { get }
 
 	func makeViewController() -> UIViewController
+
+	func didBecomeActive(in session: InstrumentSession)
+	func didResignActive(in session: InstrumentSession)
+}
+
+extension Instrument {
+
+	public func didBecomeActive(in session: InstrumentSession) {}
+	public func didResignActive(in session: InstrumentSession) {}
 }

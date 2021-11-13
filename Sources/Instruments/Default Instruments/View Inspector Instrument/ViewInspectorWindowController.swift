@@ -29,7 +29,17 @@
 import UIKit
 import KEFoundation
 
+protocol ViewInspectorWindowControllerDelegate: AnyObject {
+
+	func viewInspectorWindowConroller(
+		_ windowController: ViewInspectorWindowController,
+		didPerformTapAtLocation location: CGPoint
+	)
+}
+
 class ViewInspectorWindowController: UIResponder {
+
+	weak var delegate: ViewInspectorWindowControllerDelegate?
 
 	var isInspectingViews: Bool {
 		get {
@@ -37,16 +47,21 @@ class ViewInspectorWindowController: UIResponder {
 		}
 		set {
 			window.isInspectingViews = newValue
+			rootViewController.view.backgroundColor = isInspectingViews ? .systemBlue.withAlphaComponent(0.1) : .clear
 		}
 	}
 
-	private let window: ViewInspectorWindow
+	let window: ViewInspectorWindow
 	private let rootViewController = ViewInspectorWindowRootViewController()
 
 	init(windowScene: UIWindowScene) {
 		window = ViewInspectorWindow(windowScene: windowScene)
 		super.init()
 		setUpUI(scene: windowScene)
+	}
+
+	deinit {
+		window.removeFromSuperview()
 	}
 
 	private func setUpUI(scene: UIWindowScene) {
@@ -56,9 +71,15 @@ class ViewInspectorWindowController: UIResponder {
 		window.makeKeyAndVisible()
 
 		rootViewController.onTouchesEnded = { [weak self] touches, event in
-			guard let self = self else {
+			guard
+				let self = self,
+				let touch = touches.first
+			else {
 				return
 			}
+
+			let location = touch.location(in: self.window)
+			self.delegate?.viewInspectorWindowConroller(self, didPerformTapAtLocation: location)
 		}
 	}
 }

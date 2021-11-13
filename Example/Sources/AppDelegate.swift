@@ -27,9 +27,23 @@
 //
 
 import UIKit
+import KEDebugKit
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder {
+
+    private func setUpInstruments() {
+        let viewInspectorInstrument = ViewInspectorInstrument()
+        InstrumentCenter.default.addInstrument(viewInspectorInstrument)
+    }
+}
+
+extension AppDelegate: UIApplicationDelegate {
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        setUpInstruments()
+        return true
+    }
 
     func application(
         _ application: UIApplication,

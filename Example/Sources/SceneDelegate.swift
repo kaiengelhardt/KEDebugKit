@@ -29,13 +29,16 @@
 import UIKit
 import KEDebugKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder {
 
     var window: UIWindow?
 
     private let rootViewController = ViewController()
 
     private var windowController: InstrumentWindowController?
+}
+
+extension SceneDelegate: UIWindowSceneDelegate {
 
     func scene(
         _ scene: UIScene,
@@ -51,6 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
 
-        windowController = InstrumentWindowController(windowScene: scene)
+        let session = InstrumentSession(windowScene: scene)
+        windowController = InstrumentWindowController(instrumentSession: session)
     }
 }

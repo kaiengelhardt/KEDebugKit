@@ -40,15 +40,13 @@ public class InstrumentWindowController: OverlayWindowController {
 	private let switcherButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet"))
 	private let optionsButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"))
 
-	private let instrumentCenter: InstrumentCenter
 	private let instrumentSession: InstrumentSession
 
 	private var cancellables = Set<AnyCancellable>()
 
-	public init(windowScene: UIWindowScene, instrumentCenter: InstrumentCenter = .default) {
-		self.instrumentCenter = instrumentCenter
-		instrumentSession = InstrumentSession(instrumentCenter: instrumentCenter)
-		super.init(windowScene: windowScene)
+	public init(instrumentSession: InstrumentSession) {
+		self.instrumentSession = instrumentSession
+		super.init(windowScene: instrumentSession.windowScene)
 
 		setUpUI()
 		setUpObserving()
@@ -81,7 +79,7 @@ public class InstrumentWindowController: OverlayWindowController {
 		}
 		.store(in: &cancellables)
 
-		instrumentCenter.$instruments.sink { [weak self] instruments in
+		instrumentSession.instrumentCenter.$instruments.sink { [weak self] instruments in
 			self?.updateSwitcherButton(instruments: instruments)
 		}
 		.store(in: &cancellables)

@@ -28,20 +28,25 @@
 
 import UIKit
 
-class InstrumentSession {
+public class InstrumentSession: Hashable {
 
 	@Published var currentlyShownInstrument: Instrument {
 		didSet {
+			oldValue.didResignActive(in: self)
 			instrumentCenter.noteLastSelectedInstrument(currentlyShownInstrument)
+			currentlyShownInstrument.didBecomeActive(in: self)
 		}
 	}
 
-	private let instrumentCenter: InstrumentCenter
+	public let instrumentCenter: InstrumentCenter
 
 	private var viewControllerForInstrument: [ObjectIdentifier: UIViewController] = [:]
 
-	init(instrumentCenter: InstrumentCenter) {
+	let windowScene: UIWindowScene
+
+	public init(windowScene: UIWindowScene, instrumentCenter: InstrumentCenter = .default) {
 		self.instrumentCenter = instrumentCenter
+		self.windowScene = windowScene
 		currentlyShownInstrument = instrumentCenter.defaultInstrument
 	}
 
@@ -55,5 +60,14 @@ class InstrumentSession {
 			viewControllerForInstrument[identifier] = viewController
 			return viewController
 		}
+	}
+
+	public func hash(into hasher: inout Hasher) {
+		let objectID = ObjectIdentifier(self)
+		hasher.combine(objectID)
+	}
+
+	public static func == (lhs: InstrumentSession, rhs: InstrumentSession) -> Bool {
+		return lhs === rhs
 	}
 }
