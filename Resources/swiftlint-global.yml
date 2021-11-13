@@ -162,7 +162,6 @@ opt_in_rules:
     - switch_case_alignment
     - switch_case_on_newline
     - syntactic_sugar
-    - test_case_accessibility
     - toggle_bool
     - trailing_comma
     - trailing_newline
@@ -226,6 +225,7 @@ disabled_rules:
     - required_enum_case
     - sorted_imports
     - strict_fileprivate
+	- test_case_accessibility
     - todo
     - trailing_closure
     - type_contents_order
