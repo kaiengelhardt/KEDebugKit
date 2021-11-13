@@ -71,7 +71,6 @@ public class NotificationCenterInstrument: Instrument {
 
 			if let view = notification.object as? UIView {
 				if view.window?.tag == 696_969 {
-//					print("Ignored notification from debug window \(notification.name.rawValue)")
 					return
 				}
 			}
@@ -83,12 +82,10 @@ public class NotificationCenterInstrument: Instrument {
 			]
 
 			if notificationNames.contains(notification.name.rawValue) {
-//				print("Ignored notification from well known names \(notification.name.rawValue) \(notification.object)")
 				return
 			}
 
 			if notification.name.rawValue.starts(with: "_") {
-//				print("Ignored notification which is private \(notification.name.rawValue)")
 				return
 			}
 
