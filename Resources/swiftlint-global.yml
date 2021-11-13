@@ -185,7 +185,6 @@ opt_in_rules:
     - vertical_whitespace_closing_braces
     - vertical_whitespace
     - void_return
-    - weak_delegate
     - xct_specific_matcher
     - xctfail_message
     - yoda_condition
@@ -236,6 +235,9 @@ disabled_rules:
     - vertical_parameter_alignment
     - vertical_whitespace_between_cases
     - vertical_whitespace_opening_braces
+    # For now we are disabling this rule,
+    # because it produces too many false positives.
+    - weak_delegate
 
 # MARK: - Rule Configurations
 
