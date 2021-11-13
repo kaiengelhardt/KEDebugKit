@@ -256,26 +256,11 @@ generic_type_name:
     max_length: 50
 
 identifier_name:
-    min_length: 2
+    min_length: 1
     max_length: 70
     allowed_symbols:
         - "_"
         - "."
-    excluded:
-        - id
-        - i
-        - j
-        - k
-        - x
-        - y
-        - z
-        - w
-        - r
-        - g
-        - b
-        - a
-        - t
-        - c
 
 large_tuple:
     warning: 4
