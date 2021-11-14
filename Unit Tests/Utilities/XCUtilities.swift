@@ -55,15 +55,38 @@ func XCTAssertContainsIdentical(
 	file: StaticString = #file,
 	line: UInt = #line
 ) {
-	let array = try! arrayExpression()
 	let object = try! objectExpression()
+	let arrayContainsObject = array(arrayExpression, containsIdentical: object)
+	if !arrayContainsObject {
+		let failureMessage = constructFailureMessage("Array does not contain \(object)", message: message)
+		XCTFail(failureMessage, file: file, line: line)
+	}
+}
+
+func XCTAssertDoesNotContainIdentical(
+	_ arrayExpression: @autoclosure () throws -> [AnyObject],
+	_ objectExpression: @autoclosure () throws -> AnyObject,
+	_ message: @autoclosure () -> String = "",
+	file: StaticString = #file,
+	line: UInt = #line
+) {
+	let object = try! objectExpression()
+	let arrayContainsObject = array(arrayExpression, containsIdentical: object)
+	if arrayContainsObject {
+		let failureMessage = constructFailureMessage("Array contains \(object)", message: message)
+		XCTFail(failureMessage, file: file, line: line)
+	}
+}
+
+private func array(
+	_ arrayExpression: () throws -> [AnyObject],
+	containsIdentical object: AnyObject
+) -> Bool {
+	let array = try! arrayExpression()
 	let arrayContainsObject = array.contains(where: {
 		$0 === object
 	})
-	if !arrayContainsObject {
-		let failureMessage = constructFailureMessage("\(object) is not contained in array", message: message)
-		XCTFail(failureMessage, file: file, line: line)
-	}
+	return arrayContainsObject
 }
 
 private func constructFailureMessage(_ failureTitle: String, message: () -> String) -> String {
