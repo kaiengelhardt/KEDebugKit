@@ -225,7 +225,7 @@ disabled_rules:
     - required_enum_case
     - sorted_imports
     - strict_fileprivate
-	- test_case_accessibility
+    - test_case_accessibility
     - todo
     - trailing_closure
     - type_contents_order
