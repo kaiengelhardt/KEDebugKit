@@ -40,9 +40,11 @@ func XCTAssertSame(
 	let left = try! expression1()
 	let right = try! expression2()
 	if left !== right {
-		let message = message()
-		let messagePart = message.isEmpty ? "" : " - \(message)"
-		XCTFail("\(left) is not the same as \(right)\(messagePart)", file: file, line: line)
+		let failureMessage = constructFailureMessage(
+			"\(left) is not the same as \(right) is not contained in array",
+			message: message
+		)
+		XCTFail(failureMessage, file: file, line: line)
 	}
 }
 
@@ -59,8 +61,13 @@ func XCTAssertContainsIdentical(
 		$0 === object
 	})
 	if !arrayContainsObject {
-		let message = message()
-		let messagePart = message.isEmpty ? "" : " - \(message)"
-		XCTFail("\(object) is not the contained in array\(messagePart)", file: file, line: line)
+		let failureMessage = constructFailureMessage("\(object) is not contained in array", message: message)
+		XCTFail(failureMessage, file: file, line: line)
 	}
+}
+
+private func constructFailureMessage(_ failureTitle: String, message: () -> String) -> String {
+	let message = message()
+	let messagePart = message.isEmpty ? "" : " - \(message)"
+	return "\(failureTitle)\(messagePart)"
 }
