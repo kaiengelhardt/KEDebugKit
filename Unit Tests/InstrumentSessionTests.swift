@@ -114,7 +114,7 @@ class InstrumentSessionTests: XCTestCase {
 
 		XCTAssertSame(viewController1, viewController2)
 		XCTAssertSame(otherViewController1, otherViewController2)
-		XCTAssertDifferent(viewController1, otherViewController1)
+		XCTAssertNotSame(viewController1, otherViewController1)
 	}
 
 	func testViewControllersAreOnlyCreatedIfInstrumentIsInInstrumentCenter() {

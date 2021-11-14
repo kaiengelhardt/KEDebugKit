@@ -66,7 +66,7 @@ func XCTAssertSame(
 	}
 }
 
-func XCTAssertDifferent(
+func XCTAssertNotSame(
 	_ expression1: @autoclosure () throws -> AnyObject,
 	_ expression2: @autoclosure () throws -> AnyObject,
 	_ message: @autoclosure () -> String = "",
@@ -84,7 +84,7 @@ func XCTAssertDifferent(
 	}
 }
 
-func XCTAssertDifferent(
+func XCTAssertNotSame(
 	_ expression1: @autoclosure () throws -> AnyObject?,
 	_ expression2: @autoclosure () throws -> AnyObject?,
 	_ message: @autoclosure () -> String = "",
