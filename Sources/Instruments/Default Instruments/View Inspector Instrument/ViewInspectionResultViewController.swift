@@ -65,7 +65,9 @@ class ViewInspectionResultViewController: ContainerViewController {
 		view.backgroundColor = .systemBackground
 
 		embeddedViewController = collectionViewController
-		dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { [weak self] collectionView, indexPath, itemIdentifier in
+		dataSource = UICollectionViewDiffableDataSource(
+			collectionView: collectionView
+		) { [weak self] collectionView, indexPath, itemIdentifier in
 			guard let self = self else {
 				return nil
 			}
@@ -99,7 +101,11 @@ class ViewInspectionResultViewController: ContainerViewController {
 		instrument.beginInspecting()
 	}
 
-	private func dequeueCell(using collectionView: UICollectionView, at indexPath: IndexPath, for item: String) -> UICollectionViewCell? {
+	private func dequeueCell(
+		using collectionView: UICollectionView,
+		at indexPath: IndexPath,
+		for item: String
+	) -> UICollectionViewCell? {
 		return nil
 	}
 }
