@@ -16,6 +16,7 @@
 		5E58C88526C57AD000AAEC63 /* UserDefaultsChangesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C88426C57AD000AAEC63 /* UserDefaultsChangesViewController.swift */; };
 		5E621CA52741C75200D8AFAE /* MockWindowSceneWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E621CA42741C75200D8AFAE /* MockWindowSceneWrapper.swift */; };
 		5E621CA62741C75800D8AFAE /* MockInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E621CA22741C70400D8AFAE /* MockInstrument.swift */; };
+		5E621CA82741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E621CA72741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift */; };
 		5E86B01227410E800064CA1A /* InstrumentCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86B01127410E800064CA1A /* InstrumentCenterTests.swift */; };
 		5E86B014274115970064CA1A /* InstrumentSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86B013274115970064CA1A /* InstrumentSessionTests.swift */; };
 		5E86B01A274133DC0064CA1A /* WindowSceneWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86B018274132310064CA1A /* WindowSceneWrapper.swift */; };
@@ -74,6 +75,7 @@
 		5E58C88426C57AD000AAEC63 /* UserDefaultsChangesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsChangesViewController.swift; sourceTree = "<group>"; };
 		5E621CA22741C70400D8AFAE /* MockInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInstrument.swift; sourceTree = "<group>"; };
 		5E621CA42741C75200D8AFAE /* MockWindowSceneWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWindowSceneWrapper.swift; sourceTree = "<group>"; };
+		5E621CA72741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInstrumentTests.swift; sourceTree = "<group>"; };
 		5E86B01127410E800064CA1A /* InstrumentCenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCenterTests.swift; sourceTree = "<group>"; };
 		5E86B013274115970064CA1A /* InstrumentSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSessionTests.swift; sourceTree = "<group>"; };
 		5E86B018274132310064CA1A /* WindowSceneWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSceneWrapper.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */,
 				5E86B01127410E800064CA1A /* InstrumentCenterTests.swift */,
 				5E86B013274115970064CA1A /* InstrumentSessionTests.swift */,
+				5E621CA72741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E621CA82741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift in Sources */,
 				5E621CA62741C75800D8AFAE /* MockInstrument.swift in Sources */,
 				5EEB7FCB26C00EA8003326C8 /* KEDebugKitTests.swift in Sources */,
 				5E621CA52741C75200D8AFAE /* MockWindowSceneWrapper.swift in Sources */,
