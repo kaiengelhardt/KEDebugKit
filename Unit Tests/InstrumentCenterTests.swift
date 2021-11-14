@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 10.08.21
+//  Created by Kai Engelhardt on 14.11.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -26,38 +26,20 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import XCTest
+@testable import KEDebugKit
 
-public class InstrumentCenter {
+class InstrumentCenterTests: XCTestCase {
 
-	public static let `default` = InstrumentCenter()
-
-	@Published public private(set) var instruments: [Instrument] = []
-
-	private var lastSelectedInstrument: Instrument?
-	let noInstrument = NoInstrument()
-
-	public init() {}
-
-	var defaultInstrument: Instrument {
-		if lastSelectedInstrument is NoInstrument {
-			return instruments.first ?? noInstrument
-		} else {
-			return lastSelectedInstrument ?? instruments.first ?? noInstrument
-		}
+	func testDefaultInstrumentIsNoInstrument() {
+		let instrumentCenter = InstrumentCenter()
+		XCTAssert(instrumentCenter.defaultInstrument is NoInstrument)
 	}
 
-	public func addInstrument(_ instrument: Instrument) {
-		instruments.append(instrument)
-	}
-
-	public func removeInstrument(_ instrument: Instrument) {
-		instruments.removeAll(where: {
-			instrument === $0
-		})
-	}
-
-	func noteLastSelectedInstrument(_ instrument: Instrument) {
-		lastSelectedInstrument = instrument
+	func testDefaultInstrumentIsFirstInstrument() {
+		let instrumentCenter = InstrumentCenter()
+		let instrument = UserDefaultsInstrument()
+		instrumentCenter.addInstrument(instrument)
+		XCTAssert(instrumentCenter.defaultInstrument === instrument)
 	}
 }
