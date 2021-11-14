@@ -146,4 +146,16 @@ class InstrumentSessionTests: XCTestCase {
 		XCTAssertNil(viewController3)
 		XCTAssertNil(otherViewController3)
 	}
+
+	func testViewControllersArePurgedWhenCorrespondingInstrumentIsRemovedFromCenter() {
+		let instrument = MockInstrument()
+		instrumentCenter.addInstrument(instrument)
+		weak var viewController = instrumentSession.viewController(for: instrument)
+
+		XCTAssertNotNil(viewController)
+
+		instrumentCenter.removeInstrument(instrument)
+
+		XCTAssertNil(viewController)
+	}
 }

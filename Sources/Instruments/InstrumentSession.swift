@@ -72,6 +72,7 @@ public class InstrumentSession: Hashable {
 			{
 				self.currentlyShownInstrument = firstInstrument
 			}
+			self.purgeUnneededViewControllers(forNewInstruments: instruments)
 		}
 		.store(in: &cancellables)
 	}
@@ -102,5 +103,16 @@ public class InstrumentSession: Hashable {
 
 	public static func == (lhs: InstrumentSession, rhs: InstrumentSession) -> Bool {
 		return lhs === rhs
+	}
+
+	private func purgeUnneededViewControllers(forNewInstruments instruments: [Instrument]) {
+		let instrumentIdentifiers = instruments.map {
+			ObjectIdentifier($0)
+		}
+		for instrumentIdentifier in viewControllerForInstrument.keys {
+			if !instrumentIdentifiers.contains(instrumentIdentifier) {
+				viewControllerForInstrument[instrumentIdentifier] = nil
+			}
+		}
 	}
 }
