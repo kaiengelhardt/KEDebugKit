@@ -116,4 +116,34 @@ class InstrumentSessionTests: XCTestCase {
 		XCTAssertSame(otherViewController1, otherViewController2)
 		XCTAssertDifferent(viewController1, otherViewController1)
 	}
+
+	func testViewControllersAreOnlyCreatedIfInstrumentIsInInstrumentCenter() {
+		let otherInstrumentSession = InstrumentSession(
+			windowSceneWrapper: MockWindowSceneWrapper(),
+			instrumentCenter: instrumentCenter
+		)
+		let instrument = MockInstrument()
+
+		let viewController1 = instrumentSession.viewController(for: instrument)
+		let otherViewController1 = otherInstrumentSession.viewController(for: instrument)
+
+		XCTAssertNil(viewController1)
+		XCTAssertNil(otherViewController1)
+
+		instrumentCenter.addInstrument(instrument)
+
+		let viewController2 = instrumentSession.viewController(for: instrument)
+		let otherViewController2 = otherInstrumentSession.viewController(for: instrument)
+
+		XCTAssertNotNil(viewController2)
+		XCTAssertNotNil(otherViewController2)
+
+		instrumentCenter.removeInstrument(instrument)
+
+		let viewController3 = instrumentSession.viewController(for: instrument)
+		let otherViewController3 = otherInstrumentSession.viewController(for: instrument)
+
+		XCTAssertNil(viewController3)
+		XCTAssertNil(otherViewController3)
+	}
 }

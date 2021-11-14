@@ -76,7 +76,14 @@ public class InstrumentSession: Hashable {
 		.store(in: &cancellables)
 	}
 
-	func viewController(for instrument: Instrument) -> UIViewController {
+	func viewController(for instrument: Instrument) -> UIViewController? {
+		let instrumentIsInInstrumentCenter = instrumentCenter.instruments.contains(where: { otherInstrument in
+			instrument === otherInstrument
+		})
+		guard instrumentIsInInstrumentCenter else {
+			return nil
+		}
+
 		let identifier = ObjectIdentifier(instrument)
 		let viewController = viewControllerForInstrument[identifier]
 		if let viewController = viewController {
