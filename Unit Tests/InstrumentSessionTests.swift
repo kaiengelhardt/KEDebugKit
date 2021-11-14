@@ -48,13 +48,33 @@ class InstrumentSessionTests: XCTestCase {
 	}
 
 	func testCurrentlyShownInstrumentIsLastSelectedInstrumentWhenAddingFirstInstrument() {
-		// MARK: Given
 		let instrument = UserDefaultsInstrument()
 
-		// MARK: When
 		instrumentCenter.addInstrument(instrument)
 
-		// MARK: Then
 		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+	}
+
+	func testCurrentlyShownInstrumentIsLastSelectedInstrumentWhenSettingTheCurrentInstrument() {
+		let instrument1 = UserDefaultsInstrument()
+		let instrument2 = UserDefaultsInstrument()
+		let instrument3 = UserDefaultsInstrument()
+
+		instrumentCenter.addInstrument(instrument1)
+		instrumentCenter.addInstrument(instrument2)
+		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument1)
+
+		instrumentSession.currentlyShownInstrument = instrument2
+		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument2)
+
+		instrumentCenter.addInstrument(instrument3)
+		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument2)
+
+		instrumentSession.currentlyShownInstrument = instrument3
+		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument3)
 	}
 }
