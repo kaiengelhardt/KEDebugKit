@@ -41,7 +41,25 @@ func XCTAssertSame(
 	let right = try! expression2()
 	if left !== right {
 		let failureMessage = constructFailureMessage(
-			"\(left) is not the same as \(right) is not contained in array",
+			"\(left) is not the same as \(right)",
+			message: message
+		)
+		XCTFail(failureMessage, file: file, line: line)
+	}
+}
+
+func XCTAssertDifferent(
+	_ expression1: @autoclosure () throws -> AnyObject,
+	_ expression2: @autoclosure () throws -> AnyObject,
+	_ message: @autoclosure () -> String = "",
+	file: StaticString = #file,
+	line: UInt = #line
+) {
+	let left = try! expression1()
+	let right = try! expression2()
+	if left === right {
+		let failureMessage = constructFailureMessage(
+			"\(left) is the same as \(right)",
 			message: message
 		)
 		XCTFail(failureMessage, file: file, line: line)
