@@ -27,32 +27,12 @@
 //
 
 import UIKit
+@testable import KEDebugKit
 
-protocol WindowSceneWrapperProtocol {
+struct MockWindowSceneWrapper: WindowSceneWrapperProtocol {
 
-	var windows: [UIWindow] { get }
-	var screenBounds: CGRect { get }
+	var windows: [UIWindow] = []
+	var screenBounds = CGRect.zero
 
-	func configureScene(on window: UIWindow)
-}
-
-struct WindowSceneWrapper: WindowSceneWrapperProtocol {
-
-	private let windowScene: UIWindowScene
-
-	var windows: [UIWindow] {
-		windowScene.windows
-	}
-
-	var screenBounds: CGRect {
-		windowScene.screen.bounds
-	}
-
-	init(windowScene: UIWindowScene) {
-		self.windowScene = windowScene
-	}
-
-	func configureScene(on window: UIWindow) {
-		window.windowScene = windowScene
-	}
+	func configureScene(on window: UIWindow) {}
 }
