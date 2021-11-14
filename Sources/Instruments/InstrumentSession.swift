@@ -27,6 +27,7 @@
 //
 
 import UIKit
+import Combine
 
 public class InstrumentSession: Hashable {
 
@@ -44,6 +45,8 @@ public class InstrumentSession: Hashable {
 
 	let windowSceneWrapper: WindowSceneWrapperProtocol
 
+	private var cancellables = Set<AnyCancellable>()
+
 	public convenience init(windowScene: UIWindowScene, instrumentCenter: InstrumentCenter = .default) {
 		self.init(
 			windowSceneWrapper: WindowSceneWrapper(windowScene: windowScene),
@@ -55,6 +58,22 @@ public class InstrumentSession: Hashable {
 		self.windowSceneWrapper = windowSceneWrapper
 		self.instrumentCenter = instrumentCenter
 		currentlyShownInstrument = instrumentCenter.defaultInstrument
+		setUpObserving()
+	}
+
+	private func setUpObserving() {
+		instrumentCenter.$instruments.sink { [weak self] instruments in
+			guard let self = self else {
+				return
+			}
+			if
+				self.currentlyShownInstrument is NoInstrument,
+				let firstInstrument = instruments.first
+			{
+				self.currentlyShownInstrument = firstInstrument
+			}
+		}
+		.store(in: &cancellables)
 	}
 
 	func viewController(for instrument: Instrument) -> UIViewController {

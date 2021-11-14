@@ -70,7 +70,8 @@ public class InstrumentWindowController: OverlayWindowController {
 			guard let self = self else {
 				return
 			}
-			self.panelContainer.embeddedViewController = self.instrumentSession.viewController(for: instrument)
+			let viewController = self.instrumentSession.viewController(for: instrument)
+			self.panelContainer.embeddedViewController = viewController
 		}
 		.store(in: &cancellables)
 
