@@ -61,4 +61,56 @@ class InstrumentCenterTests: XCTestCase {
 		instrumentCenter.setLastSelectedInstrument(instrument3)
 		XCTAssert(instrumentCenter.defaultInstrument === instrument3)
 	}
+
+	func testInstrumentsAreEmptyAfterInitialization() {
+		let instrumentCenter = InstrumentCenter()
+		XCTAssert(instrumentCenter.instruments.isEmpty)
+	}
+
+	func testInstrumentsAreAddedProperly() {
+		let instrumentCenter = InstrumentCenter()
+		let instrument1 = UserDefaultsInstrument()
+		let instrument2 = UserDefaultsInstrument()
+
+		instrumentCenter.addInstrument(instrument1)
+		XCTAssert(instrumentCenter.instruments.count == 1)
+		XCTAssert(
+			instrumentCenter.instruments.contains(where: { instrument in
+				instrument === instrument1
+			})
+		)
+
+		instrumentCenter.addInstrument(instrument2)
+		XCTAssert(instrumentCenter.instruments.count == 2)
+		XCTAssert(
+			instrumentCenter.instruments.contains(where: { instrument in
+				instrument === instrument1
+			})
+		)
+		XCTAssert(
+			instrumentCenter.instruments.contains(where: { instrument in
+				instrument === instrument2
+			})
+		)
+	}
+
+	func testInstrumentsAreRemovedProperly() {
+		let instrumentCenter = InstrumentCenter()
+		let instrument1 = UserDefaultsInstrument()
+		let instrument2 = UserDefaultsInstrument()
+
+		instrumentCenter.addInstrument(instrument1)
+		instrumentCenter.addInstrument(instrument2)
+
+		instrumentCenter.removeInstrument(instrument1)
+		XCTAssert(instrumentCenter.instruments.count == 1)
+		XCTAssert(
+			!instrumentCenter.instruments.contains(where: { instrument in
+				instrument === instrument1
+			})
+		)
+
+		instrumentCenter.removeInstrument(instrument2)
+		XCTAssert(instrumentCenter.instruments.isEmpty)
+	}
 }
