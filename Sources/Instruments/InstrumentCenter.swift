@@ -57,7 +57,7 @@ public class InstrumentCenter {
 		})
 	}
 
-	func noteLastSelectedInstrument(_ instrument: Instrument) {
+	func setLastSelectedInstrument(_ instrument: Instrument) {
 		lastSelectedInstrument = instrument
 	}
 }

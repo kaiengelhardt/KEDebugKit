@@ -33,7 +33,7 @@ public class InstrumentSession: Hashable {
 	@Published var currentlyShownInstrument: Instrument {
 		didSet {
 			oldValue.didResignActive(in: self)
-			instrumentCenter.noteLastSelectedInstrument(currentlyShownInstrument)
+			instrumentCenter.setLastSelectedInstrument(currentlyShownInstrument)
 			currentlyShownInstrument.didBecomeActive(in: self)
 		}
 	}
