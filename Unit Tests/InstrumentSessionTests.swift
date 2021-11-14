@@ -48,7 +48,7 @@ class InstrumentSessionTests: XCTestCase {
 	}
 
 	func testCurrentlyShownInstrumentIsLastSelectedInstrumentWhenAddingFirstInstrument() {
-		let instrument = UserDefaultsInstrument()
+		let instrument = MockInstrument()
 
 		instrumentCenter.addInstrument(instrument)
 
@@ -56,9 +56,9 @@ class InstrumentSessionTests: XCTestCase {
 	}
 
 	func testCurrentlyShownInstrumentIsLastSelectedInstrumentWhenSettingTheCurrentInstrument() {
-		let instrument1 = UserDefaultsInstrument()
-		let instrument2 = UserDefaultsInstrument()
-		let instrument3 = UserDefaultsInstrument()
+		let instrument1 = MockInstrument()
+		let instrument2 = MockInstrument()
+		let instrument3 = MockInstrument()
 
 		instrumentCenter.addInstrument(instrument1)
 		instrumentCenter.addInstrument(instrument2)

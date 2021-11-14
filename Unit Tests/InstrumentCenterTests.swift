@@ -38,16 +38,16 @@ class InstrumentCenterTests: XCTestCase {
 
 	func testDefaultInstrumentIsFirstInstrument() {
 		let instrumentCenter = InstrumentCenter()
-		let instrument = UserDefaultsInstrument()
+		let instrument = MockInstrument()
 		instrumentCenter.addInstrument(instrument)
 		XCTAssertSame(instrumentCenter.defaultInstrument, instrument)
 	}
 
 	func testLastSelectedInstrumentIsDefaultInstrument() {
 		let instrumentCenter = InstrumentCenter()
-		let instrument1 = UserDefaultsInstrument()
-		let instrument2 = UserDefaultsInstrument()
-		let instrument3 = UserDefaultsInstrument()
+		let instrument1 = MockInstrument()
+		let instrument2 = MockInstrument()
+		let instrument3 = MockInstrument()
 
 		instrumentCenter.addInstrument(instrument1)
 		instrumentCenter.addInstrument(instrument2)
@@ -69,8 +69,8 @@ class InstrumentCenterTests: XCTestCase {
 
 	func testInstrumentsAreAddedProperly() {
 		let instrumentCenter = InstrumentCenter()
-		let instrument1 = UserDefaultsInstrument()
-		let instrument2 = UserDefaultsInstrument()
+		let instrument1 = MockInstrument()
+		let instrument2 = MockInstrument()
 
 		instrumentCenter.addInstrument(instrument1)
 		XCTAssert(instrumentCenter.instruments.count == 1)
@@ -84,8 +84,8 @@ class InstrumentCenterTests: XCTestCase {
 
 	func testInstrumentsAreRemovedProperly() {
 		let instrumentCenter = InstrumentCenter()
-		let instrument1 = UserDefaultsInstrument()
-		let instrument2 = UserDefaultsInstrument()
+		let instrument1 = MockInstrument()
+		let instrument2 = MockInstrument()
 
 		instrumentCenter.addInstrument(instrument1)
 		instrumentCenter.addInstrument(instrument2)
