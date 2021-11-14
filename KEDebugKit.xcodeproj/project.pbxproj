@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E18C1D226C01429009549C9 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18C1D126C01429009549C9 /* PanelController.swift */; };
-		5E304BFE27413F9D002F917D /* XCTAssertSame.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86B01C27413E130064CA1A /* XCTAssertSame.swift.swift */; };
+		5E304BFE27413F9D002F917D /* XCUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86B01C27413E130064CA1A /* XCUtilities.swift */; };
 		5E58C87D26C53BD400AAEC63 /* NotificationCenterInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C87C26C53BD400AAEC63 /* NotificationCenterInstrument.swift */; };
 		5E58C87F26C53C6300AAEC63 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C87E26C53C6300AAEC63 /* NotificationCenterViewController.swift */; };
 		5E58C88126C53FAF00AAEC63 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C88026C53FAF00AAEC63 /* NotificationCell.swift */; };
@@ -73,7 +73,7 @@
 		5E86B01127410E800064CA1A /* InstrumentCenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCenterTests.swift; sourceTree = "<group>"; };
 		5E86B013274115970064CA1A /* InstrumentSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSessionTests.swift; sourceTree = "<group>"; };
 		5E86B018274132310064CA1A /* WindowSceneWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSceneWrapper.swift; sourceTree = "<group>"; };
-		5E86B01C27413E130064CA1A /* XCTAssertSame.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTAssertSame.swift.swift; sourceTree = "<group>"; };
+		5E86B01C27413E130064CA1A /* XCUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUtilities.swift; sourceTree = "<group>"; };
 		5E87513926C2D57D007FA2FD /* swiftlint-global.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "swiftlint-global.yml"; sourceTree = "<group>"; usesTabs = 0; };
 		5E87513D26C2D68E007FA2FD /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; usesTabs = 0; };
 		5E87514626C30A45007FA2FD /* InstrumentCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCenter.swift; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 		5E86B01B27413DF90064CA1A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				5E86B01C27413E130064CA1A /* XCTAssertSame.swift.swift */,
+				5E86B01C27413E130064CA1A /* XCUtilities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -552,7 +552,7 @@
 			files = (
 				5EEB7FCB26C00EA8003326C8 /* KEDebugKitTests.swift in Sources */,
 				5E86B01227410E800064CA1A /* InstrumentCenterTests.swift in Sources */,
-				5E304BFE27413F9D002F917D /* XCTAssertSame.swift.swift in Sources */,
+				5E304BFE27413F9D002F917D /* XCUtilities.swift in Sources */,
 				5E86B014274115970064CA1A /* InstrumentSessionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

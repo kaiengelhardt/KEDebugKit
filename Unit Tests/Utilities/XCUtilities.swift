@@ -45,3 +45,22 @@ func XCTAssertSame(
 		XCTFail("\(left) is not the same as \(right)\(messagePart)", file: file, line: line)
 	}
 }
+
+func XCTAssertContainsIdentical(
+	_ arrayExpression: @autoclosure () throws -> [AnyObject],
+	_ objectExpression: @autoclosure () throws -> AnyObject,
+	_ message: @autoclosure () -> String = "",
+	file: StaticString = #file,
+	line: UInt = #line
+) {
+	let array = try! arrayExpression()
+	let object = try! objectExpression()
+	let arrayContainsObject = array.contains(where: {
+		$0 === object
+	})
+	if !arrayContainsObject {
+		let message = message()
+		let messagePart = message.isEmpty ? "" : " - \(message)"
+		XCTFail("\(object) is not the contained in array\(messagePart)", file: file, line: line)
+	}
+}

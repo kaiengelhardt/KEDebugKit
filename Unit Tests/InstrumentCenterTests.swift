@@ -74,24 +74,12 @@ class InstrumentCenterTests: XCTestCase {
 
 		instrumentCenter.addInstrument(instrument1)
 		XCTAssert(instrumentCenter.instruments.count == 1)
-		XCTAssert(
-			instrumentCenter.instruments.contains(where: { instrument in
-				instrument === instrument1
-			})
-		)
+		XCTAssertContainsIdentical(instrumentCenter.instruments, instrument1)
 
 		instrumentCenter.addInstrument(instrument2)
 		XCTAssert(instrumentCenter.instruments.count == 2)
-		XCTAssert(
-			instrumentCenter.instruments.contains(where: { instrument in
-				instrument === instrument1
-			})
-		)
-		XCTAssert(
-			instrumentCenter.instruments.contains(where: { instrument in
-				instrument === instrument2
-			})
-		)
+		XCTAssertContainsIdentical(instrumentCenter.instruments, instrument1)
+		XCTAssertContainsIdentical(instrumentCenter.instruments, instrument2)
 	}
 
 	func testInstrumentsAreRemovedProperly() {
