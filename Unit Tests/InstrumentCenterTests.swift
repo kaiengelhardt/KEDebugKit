@@ -92,11 +92,7 @@ class InstrumentCenterTests: XCTestCase {
 
 		instrumentCenter.removeInstrument(instrument1)
 		XCTAssert(instrumentCenter.instruments.count == 1)
-		XCTAssert(
-			!instrumentCenter.instruments.contains(where: { instrument in
-				instrument === instrument1
-			})
-		)
+		XCTAssertDoesNotContainIdentical(instrumentCenter.instruments, instrument1)
 
 		instrumentCenter.removeInstrument(instrument2)
 		XCTAssert(instrumentCenter.instruments.isEmpty)
