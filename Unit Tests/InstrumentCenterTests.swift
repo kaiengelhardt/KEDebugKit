@@ -42,4 +42,23 @@ class InstrumentCenterTests: XCTestCase {
 		instrumentCenter.addInstrument(instrument)
 		XCTAssert(instrumentCenter.defaultInstrument === instrument)
 	}
+
+	func testLastSelectedInstrumentIsDefaultInstrument() {
+		let instrumentCenter = InstrumentCenter()
+		let instrument1 = UserDefaultsInstrument()
+		let instrument2 = UserDefaultsInstrument()
+		let instrument3 = UserDefaultsInstrument()
+
+		instrumentCenter.addInstrument(instrument1)
+		instrumentCenter.addInstrument(instrument2)
+		instrumentCenter.addInstrument(instrument3)
+
+		XCTAssert(instrumentCenter.defaultInstrument === instrument1)
+
+		instrumentCenter.setLastSelectedInstrument(instrument2)
+		XCTAssert(instrumentCenter.defaultInstrument === instrument2)
+
+		instrumentCenter.setLastSelectedInstrument(instrument3)
+		XCTAssert(instrumentCenter.defaultInstrument === instrument3)
+	}
 }
