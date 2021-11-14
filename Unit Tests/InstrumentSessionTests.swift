@@ -77,4 +77,25 @@ class InstrumentSessionTests: XCTestCase {
 		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
 		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument3)
 	}
+
+	func testInstrumentDidBecomeActive() {
+		let instrument1 = MockInstrument()
+		let instrument2 = MockInstrument()
+
+		instrumentCenter.addInstrument(instrument1)
+		instrumentCenter.addInstrument(instrument2)
+
+		XCTAssertTrue(instrument1.didBecomeActiveInSessionWasCalled)
+		XCTAssertFalse(instrument1.didResignActiveInSessionWasCalled)
+		XCTAssertFalse(instrument2.didBecomeActiveInSessionWasCalled)
+		XCTAssertFalse(instrument2.didResignActiveInSessionWasCalled)
+
+		instrument1.didBecomeActiveInSessionWasCalled = false
+		instrumentSession.currentlyShownInstrument = instrument2
+
+		XCTAssertFalse(instrument1.didBecomeActiveInSessionWasCalled)
+		XCTAssertTrue(instrument1.didResignActiveInSessionWasCalled)
+		XCTAssertTrue(instrument2.didBecomeActiveInSessionWasCalled)
+		XCTAssertFalse(instrument2.didResignActiveInSessionWasCalled)
+	}
 }
