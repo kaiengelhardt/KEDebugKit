@@ -70,8 +70,8 @@
 		5E58C88426C57AD000AAEC63 /* UserDefaultsChangesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsChangesViewController.swift; sourceTree = "<group>"; };
 		5E86B01127410E800064CA1A /* InstrumentCenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCenterTests.swift; sourceTree = "<group>"; };
 		5E86B018274132310064CA1A /* WindowSceneWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSceneWrapper.swift; sourceTree = "<group>"; };
-		5E87513926C2D57D007FA2FD /* swiftlint-global.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "swiftlint-global.yml"; sourceTree = "<group>"; };
-		5E87513D26C2D68E007FA2FD /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
+		5E87513926C2D57D007FA2FD /* swiftlint-global.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "swiftlint-global.yml"; sourceTree = "<group>"; usesTabs = 0; };
+		5E87513D26C2D68E007FA2FD /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; usesTabs = 0; };
 		5E87514626C30A45007FA2FD /* InstrumentCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCenter.swift; sourceTree = "<group>"; };
 		5E87514826C30A65007FA2FD /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		5E87514A26C30BEE007FA2FD /* UserDefaultsInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInstrument.swift; sourceTree = "<group>"; };
