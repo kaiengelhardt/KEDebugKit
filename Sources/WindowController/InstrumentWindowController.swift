@@ -46,15 +46,10 @@ public class InstrumentWindowController: OverlayWindowController {
 
 	public init(instrumentSession: InstrumentSession) {
 		self.instrumentSession = instrumentSession
-		super.init(windowScene: instrumentSession.windowScene)
+		super.init(windowSceneWrapper: instrumentSession.windowSceneWrapper)
 
 		setUpUI()
 		setUpObserving()
-
-//		instrumentCenter.addInstrument(ViewInspectorInstrument(subject: ))
-//		instrumentCenter.addInstrument(UserDefaultsInstrument())
-//		instrumentCenter.addInstrument(PasteboardInstrument())
-//		instrumentCenter.addInstrument(NotificationCenterInstrument())
 	}
 
 	private func setUpUI() {

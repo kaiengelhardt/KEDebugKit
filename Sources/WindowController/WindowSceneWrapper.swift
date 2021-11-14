@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 08.08.21.
+//  Created by Kai Engelhardt on 14.11.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -28,30 +28,39 @@
 
 import UIKit
 
-class PassthroughWindow: UIWindow {
+protocol WindowSceneWrapperProtocol {
 
-	var onLayoutSubviews: ((UIWindow) -> Void)?
+	var windows: [UIWindow] { get }
+	var screenBounds: CGRect { get }
 
-	init() {
-		super.init(frame: .zero)
-		backgroundColor = nil
+	func configureScene(on window: UIWindow)
+}
+
+struct WindowSceneWrapper: WindowSceneWrapperProtocol {
+
+	private let windowScene: UIWindowScene
+
+	var windows: [UIWindow] {
+		windowScene.windows
 	}
 
-	required init?(coder: NSCoder) {
-		super.init(coder: coder)
+	var screenBounds: CGRect {
+		windowScene.screen.bounds
 	}
 
-	override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-		let view = super.hitTest(point, with: event)
-		if view == self || view == rootViewController?.view {
-			return nil
-		} else {
-			return view
-		}
+	init(windowScene: UIWindowScene) {
+		self.windowScene = windowScene
 	}
 
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		onLayoutSubviews?(self)
+	func configureScene(on window: UIWindow) {
+		window.windowScene = windowScene
 	}
+}
+
+struct MockWindowSceneWrapper: WindowSceneWrapperProtocol {
+
+	var windows: [UIWindow] = []
+	var screenBounds = CGRect.zero
+
+	func configureScene(on window: UIWindow) {}
 }

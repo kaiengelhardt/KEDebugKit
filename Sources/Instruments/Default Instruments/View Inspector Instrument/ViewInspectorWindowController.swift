@@ -54,18 +54,19 @@ class ViewInspectorWindowController: UIResponder {
 	let window: ViewInspectorWindow
 	private let rootViewController = ViewInspectorWindowRootViewController()
 
-	init(windowScene: UIWindowScene) {
-		window = ViewInspectorWindow(windowScene: windowScene)
+	init(windowSceneWrapper: WindowSceneWrapperProtocol) {
+		window = ViewInspectorWindow()
 		super.init()
-		setUpUI(scene: windowScene)
+		setUpUI(windowSceneWrapper: windowSceneWrapper)
 	}
 
 	deinit {
 		window.removeFromSuperview()
 	}
 
-	private func setUpUI(scene: UIWindowScene) {
-		window.bounds = scene.screen.bounds
+	private func setUpUI(windowSceneWrapper: WindowSceneWrapperProtocol) {
+		windowSceneWrapper.configureScene(on: window)
+		window.bounds = windowSceneWrapper.screenBounds
 		window.setFrameToBeNotEntirelyFullscreenToPreventThisWindowFromSwallowingStatusBarEvents()
 		window.rootViewController = rootViewController
 		window.makeKeyAndVisible()

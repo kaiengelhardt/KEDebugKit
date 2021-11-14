@@ -37,14 +37,15 @@ public class OverlayWindowController: UIResponder {
 		contentViewController.view
 	}
 
-	public init(windowScene: UIWindowScene) {
-		window = PassthroughWindow(windowScene: windowScene)
+	init(windowSceneWrapper: WindowSceneWrapperProtocol) {
+		window = PassthroughWindow()
 		super.init()
-		setUpUI(scene: windowScene)
+		setUpUI(windowSceneWrapper: windowSceneWrapper)
 	}
 
-	private func setUpUI(scene: UIWindowScene) {
-		window.bounds = scene.screen.bounds
+	private func setUpUI(windowSceneWrapper: WindowSceneWrapperProtocol) {
+		windowSceneWrapper.configureScene(on: window)
+		window.bounds = windowSceneWrapper.screenBounds
 		window.setFrameToBeNotEntirelyFullscreenToPreventThisWindowFromSwallowingStatusBarEvents()
 		window.rootViewController = contentViewController
 		window.makeKeyAndVisible()

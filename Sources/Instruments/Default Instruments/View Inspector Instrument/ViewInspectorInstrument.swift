@@ -50,7 +50,7 @@ public class ViewInspectorInstrument: Instrument {
 	}
 
 	public func didBecomeActive(in session: InstrumentSession) {
-		let windowController = ViewInspectorWindowController(windowScene: session.windowScene)
+		let windowController = ViewInspectorWindowController(windowSceneWrapper: session.windowSceneWrapper)
 		windowControllers[session] = windowController
 		instrumentSessions[windowController] = session
 		windowController.delegate = self
@@ -106,7 +106,7 @@ extension ViewInspectorInstrument: ViewInspectorWindowControllerDelegate {
 
 		var allViews: [UIView] = []
 
-		for window in session.windowScene.windows {
+		for window in session.windowSceneWrapper.windows {
 			let convertedLocation = window.convert(location, from: windowController.window)
 			let views = findViews(at: convertedLocation, in: window)
 			allViews.append(contentsOf: views)

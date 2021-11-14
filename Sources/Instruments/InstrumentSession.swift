@@ -42,11 +42,18 @@ public class InstrumentSession: Hashable {
 
 	private var viewControllerForInstrument: [ObjectIdentifier: UIViewController] = [:]
 
-	let windowScene: UIWindowScene
+	let windowSceneWrapper: WindowSceneWrapperProtocol
 
-	public init(windowScene: UIWindowScene, instrumentCenter: InstrumentCenter = .default) {
+	public convenience init(windowScene: UIWindowScene, instrumentCenter: InstrumentCenter = .default) {
+		self.init(
+			windowSceneWrapper: WindowSceneWrapper(windowScene: windowScene),
+			instrumentCenter: instrumentCenter
+		)
+	}
+
+	init(windowSceneWrapper: WindowSceneWrapperProtocol, instrumentCenter: InstrumentCenter) {
+		self.windowSceneWrapper = windowSceneWrapper
 		self.instrumentCenter = instrumentCenter
-		self.windowScene = windowScene
 		currentlyShownInstrument = instrumentCenter.defaultInstrument
 	}
 
