@@ -59,7 +59,7 @@ func XCTAssertSame(
 	let right = try! expression2()
 	if left !== right {
 		let failureMessage = constructFailureMessage(
-			"\(left) is not the same as \(right)",
+			"\(String(describing: left)) is not the same as \(String(describing: right))",
 			message: message
 		)
 		XCTFail(failureMessage, file: file, line: line)
@@ -95,7 +95,7 @@ func XCTAssertNotSame(
 	let right = try! expression2()
 	if left === right {
 		let failureMessage = constructFailureMessage(
-			"\(left) is the same as \(right)",
+			"\(String(describing: left)) is the same as \(String(describing: right))",
 			message: message
 		)
 		XCTFail(failureMessage, file: file, line: line)
