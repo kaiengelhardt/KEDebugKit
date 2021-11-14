@@ -98,4 +98,22 @@ class InstrumentSessionTests: XCTestCase {
 		XCTAssertTrue(instrument2.didBecomeActiveInSessionWasCalled)
 		XCTAssertFalse(instrument2.didResignActiveInSessionWasCalled)
 	}
+
+	func testInstrumentViewControllerIsCachedPerSession() {
+		let otherInstrumentSession = InstrumentSession(
+			windowSceneWrapper: MockWindowSceneWrapper(),
+			instrumentCenter: instrumentCenter
+		)
+		let instrument = MockInstrument()
+		instrumentCenter.addInstrument(instrument)
+
+		let viewController1 = instrumentSession.viewController(for: instrument)
+		let viewController2 = instrumentSession.viewController(for: instrument)
+		let otherViewController1 = otherInstrumentSession.viewController(for: instrument)
+		let otherViewController2 = otherInstrumentSession.viewController(for: instrument)
+
+		XCTAssertSame(viewController1, viewController2)
+		XCTAssertSame(otherViewController1, otherViewController2)
+		XCTAssertDifferent(viewController1, otherViewController1)
+	}
 }
