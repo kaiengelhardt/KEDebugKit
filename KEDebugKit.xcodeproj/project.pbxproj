@@ -41,7 +41,6 @@
 		5EDE263B26F33F91004F1017 /* ViewInspectorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263A26F33F91004F1017 /* ViewInspectorWindow.swift */; };
 		5EDE263D26F33FA3004F1017 /* ViewInspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263C26F33FA3004F1017 /* ViewInspectorWindowController.swift */; };
 		5EEB7FC626C00EA8003326C8 /* KEDebugKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */; };
-		5EEB7FCB26C00EA8003326C8 /* KEDebugKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */; };
 		5EEB7FCD26C00EA8003326C8 /* KEDebugKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5EFF892326C01BC300E791E6 /* OverlayWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFF892226C01BC300E791E6 /* OverlayWindowController.swift */; };
 		5EFF892626C01C8100E791E6 /* PassthroughWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFF892526C01C8100E791E6 /* PassthroughWindow.swift */; };
@@ -105,7 +104,6 @@
 		5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KEDebugKit.h; sourceTree = "<group>"; };
 		5EEB7FC026C00EA8003326C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EEB7FC526C00EA8003326C8 /* KEDebugKit Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KEDebugKit Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KEDebugKitTests.swift; sourceTree = "<group>"; };
 		5EEB7FCC26C00EA8003326C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EFF892226C01BC300E791E6 /* OverlayWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowController.swift; sourceTree = "<group>"; };
 		5EFF892526C01C8100E791E6 /* PassthroughWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughWindow.swift; sourceTree = "<group>"; };
@@ -334,7 +332,6 @@
 			children = (
 				5E621CA12741C6F500D8AFAE /* Mocks */,
 				5E86B01B27413DF90064CA1A /* Utilities */,
-				5EEB7FCA26C00EA8003326C8 /* KEDebugKitTests.swift */,
 				5E86B01127410E800064CA1A /* InstrumentCenterTests.swift */,
 				5E86B013274115970064CA1A /* InstrumentSessionTests.swift */,
 				5E621CA72741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift */,
@@ -569,7 +566,6 @@
 			files = (
 				5E621CA82741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift in Sources */,
 				5E621CA62741C75800D8AFAE /* MockInstrument.swift in Sources */,
-				5EEB7FCB26C00EA8003326C8 /* KEDebugKitTests.swift in Sources */,
 				5E621CA52741C75200D8AFAE /* MockWindowSceneWrapper.swift in Sources */,
 				5E86B01227410E800064CA1A /* InstrumentCenterTests.swift in Sources */,
 				5E304BFE27413F9D002F917D /* XCUtilities.swift in Sources */,
