@@ -35,7 +35,7 @@ public class ViewInspectorInstrument: Instrument {
 
 	let viewInspectionResults = CurrentValueSubject<[ViewInspectionResult], Never>([])
 
-	private var windowControllers: [InstrumentSession: ViewInspectorWindowController] = [:]
+	private(set) var windowControllers: [InstrumentSession: ViewInspectorWindowController] = [:]
 	private var instrumentSessions: [ViewInspectorWindowController: InstrumentSession] = [:]
 
 	private var cancellables = Set<AnyCancellable>()
