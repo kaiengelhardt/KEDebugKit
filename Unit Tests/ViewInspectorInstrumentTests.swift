@@ -55,4 +55,9 @@ class ViewInspectorInstrumentTests: XCTestCase {
 	func testWindowControllerIsCreatedForInstrumentSession() {
 		XCTAssertNotNil(instrument.windowControllers[instrumentSession])
 	}
+
+	func testWindowControllerIsRemovedWhenInstrumentIsRemoved() {
+		instrumentCenter.removeInstrument(instrument)
+		XCTAssertNil(instrument.windowControllers[instrumentSession])
+	}
 }
