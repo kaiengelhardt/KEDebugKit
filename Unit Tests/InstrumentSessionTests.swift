@@ -90,7 +90,7 @@ class InstrumentSessionTests: XCTestCase {
 		XCTAssertFalse(instrument2.didBecomeActiveInSessionWasCalled)
 		XCTAssertFalse(instrument2.didResignActiveInSessionWasCalled)
 
-		instrument1.didBecomeActiveInSessionWasCalled = false
+		instrument1.resetTestVariables()
 		instrumentSession.currentlyShownInstrument = instrument2
 
 		XCTAssertFalse(instrument1.didBecomeActiveInSessionWasCalled)

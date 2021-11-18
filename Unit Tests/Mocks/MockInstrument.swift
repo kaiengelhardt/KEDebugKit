@@ -47,4 +47,9 @@ class MockInstrument: Instrument {
 	func didResignActive(in session: InstrumentSession) {
 		didResignActiveInSessionWasCalled = true
 	}
+
+	func resetTestVariables() {
+		didBecomeActiveInSessionWasCalled = false
+		didResignActiveInSessionWasCalled = false
+	}
 }
