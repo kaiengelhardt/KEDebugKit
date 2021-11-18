@@ -33,23 +33,23 @@ class MockInstrument: Instrument {
 
 	let title = "Mock Instrument"
 
-	var didBecomeActiveInSessionWasCalled = false
-	var didResignActiveInSessionWasCalled = false
+	var didBecomeActiveInSessionCallCount = 0
+	var didResignActiveInSessionCallCount = 0
 
 	func makeViewController() -> UIViewController {
 		return UIViewController()
 	}
 
 	func didBecomeActive(in session: InstrumentSession) {
-		didBecomeActiveInSessionWasCalled = true
+		didBecomeActiveInSessionCallCount += 1
 	}
 
 	func didResignActive(in session: InstrumentSession) {
-		didResignActiveInSessionWasCalled = true
+		didResignActiveInSessionCallCount += 1
 	}
 
 	func resetTestVariables() {
-		didBecomeActiveInSessionWasCalled = false
-		didResignActiveInSessionWasCalled = false
+		didBecomeActiveInSessionCallCount = 0
+		didResignActiveInSessionCallCount = 0
 	}
 }

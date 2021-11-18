@@ -85,27 +85,31 @@ class InstrumentSessionTests: XCTestCase {
 		instrumentCenter.addInstrument(instrument1)
 		instrumentCenter.addInstrument(instrument2)
 
-		XCTAssertTrue(instrument1.didBecomeActiveInSessionWasCalled)
-		XCTAssertFalse(instrument1.didResignActiveInSessionWasCalled)
-		XCTAssertFalse(instrument2.didBecomeActiveInSessionWasCalled)
-		XCTAssertFalse(instrument2.didResignActiveInSessionWasCalled)
+		XCTAssertEqual(instrument1.didBecomeActiveInSessionCallCount, 1)
+		XCTAssertEqual(instrument1.didResignActiveInSessionCallCount, 0)
+		XCTAssertEqual(instrument2.didBecomeActiveInSessionCallCount, 0)
+		XCTAssertEqual(instrument2.didResignActiveInSessionCallCount, 0)
 
 		instrument1.resetTestVariables()
 		instrumentSession.currentlyShownInstrument = instrument2
 
-		XCTAssertFalse(instrument1.didBecomeActiveInSessionWasCalled)
-		XCTAssertTrue(instrument1.didResignActiveInSessionWasCalled)
-		XCTAssertTrue(instrument2.didBecomeActiveInSessionWasCalled)
-		XCTAssertFalse(instrument2.didResignActiveInSessionWasCalled)
+		XCTAssertEqual(instrument1.didBecomeActiveInSessionCallCount, 0)
+		XCTAssertEqual(instrument1.didResignActiveInSessionCallCount, 1)
+		XCTAssertEqual(instrument2.didBecomeActiveInSessionCallCount, 1)
+		XCTAssertEqual(instrument2.didResignActiveInSessionCallCount, 0)
 	}
 
 	func testInstruemntDidResignActiveAfterItHasBeenRemovedFromInstrumentCenter() {
 		let instrument = MockInstrument()
 		instrumentCenter.addInstrument(instrument)
-		XCTAssertTrue(instrument.didBecomeActiveInSessionWasCalled)
+
+		XCTAssertEqual(instrument.didBecomeActiveInSessionCallCount, 1)
+		XCTAssertEqual(instrument.didResignActiveInSessionCallCount, 0)
 
 		instrumentCenter.removeInstrument(instrument)
-		XCTAssertTrue(instrument.didResignActiveInSessionWasCalled)
+
+		XCTAssertEqual(instrument.didBecomeActiveInSessionCallCount, 1)
+		XCTAssertEqual(instrument.didResignActiveInSessionCallCount, 1)
 	}
 
 	func testInstrumentViewControllerIsCachedPerSession() {
