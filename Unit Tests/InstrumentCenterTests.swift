@@ -97,4 +97,44 @@ class InstrumentCenterTests: XCTestCase {
 		instrumentCenter.removeInstrument(instrument2)
 		XCTAssert(instrumentCenter.instruments.isEmpty)
 	}
+
+	func testDefaultInstrumentIsNoLongerDefaultInstrumentAfterItHasBeenRemoved() {
+		let instrumentCenter = InstrumentCenter()
+		let instrument1 = MockInstrument()
+		let instrument2 = MockInstrument()
+
+		instrumentCenter.addInstrument(instrument1)
+		instrumentCenter.addInstrument(instrument2)
+
+		XCTAssertSame(instrumentCenter.defaultInstrument, instrument1)
+
+		instrumentCenter.removeInstrument(instrument1)
+
+		XCTAssertSame(instrumentCenter.defaultInstrument, instrument2)
+
+		instrumentCenter.removeInstrument(instrument2)
+
+		XCTAssertTrue(instrumentCenter.defaultInstrument is NoInstrument)
+	}
+
+	func testDefaultInstrumentIsNoLongerDefaultInstrumentAfterItHasBeenRemovedAndItHasBeenTheLastSelectedInstrument() {
+		let instrumentCenter = InstrumentCenter()
+		let instrument1 = MockInstrument()
+		let instrument2 = MockInstrument()
+
+		instrumentCenter.addInstrument(instrument1)
+		instrumentCenter.addInstrument(instrument2)
+
+		instrumentCenter.setLastSelectedInstrument(instrument2)
+
+		XCTAssertSame(instrumentCenter.defaultInstrument, instrument2)
+
+		instrumentCenter.removeInstrument(instrument2)
+
+		XCTAssertSame(instrumentCenter.defaultInstrument, instrument1)
+
+		instrumentCenter.removeInstrument(instrument1)
+
+		XCTAssertTrue(instrumentCenter.defaultInstrument is NoInstrument)
+	}
 }

@@ -47,14 +47,17 @@ public class InstrumentCenter {
 		}
 	}
 
-	public func addInstrument(_ instrument: Instrument) {
-		instruments.append(instrument)
+	public func addInstrument(_ addedInstrument: Instrument) {
+		instruments.append(addedInstrument)
 	}
 
-	public func removeInstrument(_ instrument: Instrument) {
+	public func removeInstrument(_ removedInstrument: Instrument) {
 		instruments.removeAll(where: {
-			instrument === $0
+			removedInstrument === $0
 		})
+		if lastSelectedInstrument === removedInstrument {
+			lastSelectedInstrument = nil
+		}
 	}
 
 	func setLastSelectedInstrument(_ instrument: Instrument) {
