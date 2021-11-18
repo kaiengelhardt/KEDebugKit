@@ -62,17 +62,27 @@ public class InstrumentSession: Hashable {
 	}
 
 	private func setUpObserving() {
-		instrumentCenter.$instruments.sink { [weak self] instruments in
+		instrumentCenter.$instruments.sink { [weak self] newInstruments in
 			guard let self = self else {
 				return
 			}
 			if
 				self.currentlyShownInstrument is NoInstrument,
-				let firstInstrument = instruments.first
+				let firstInstrument = newInstruments.first
 			{
 				self.currentlyShownInstrument = firstInstrument
 			}
-			self.purgeUnneededViewControllers(forNewInstruments: instruments)
+			self.purgeUnneededViewControllers(forNewInstruments: newInstruments)
+			let removedInstruments = self.removedInstruments(
+				betweenPreviousInstruments: self.instrumentCenter.instruments,
+				andNewInstruemnts: newInstruments
+			)
+			let currentlyShownInstrumentWasRemoved = removedInstruments.contains(where: { instrument in
+				instrument === self.currentlyShownInstrument
+			})
+			if currentlyShownInstrumentWasRemoved {
+				self.currentlyShownInstrument.didResignActive(in: self)
+			}
 		}
 		.store(in: &cancellables)
 	}
@@ -103,6 +113,17 @@ public class InstrumentSession: Hashable {
 
 	public static func == (lhs: InstrumentSession, rhs: InstrumentSession) -> Bool {
 		return lhs === rhs
+	}
+
+	private func removedInstruments(
+		betweenPreviousInstruments previousInstruments: [Instrument],
+		andNewInstruemnts newInstruments: [Instrument]
+	) -> [Instrument] {
+		return previousInstruments.filter { previousInstrument in
+			return !newInstruments.contains { newInstrument in
+				return previousInstrument === newInstrument
+			}
+		}
 	}
 
 	private func purgeUnneededViewControllers(forNewInstruments instruments: [Instrument]) {
