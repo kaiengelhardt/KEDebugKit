@@ -30,7 +30,7 @@
 
 import XCTest
 
-func XCTAssertSame(
+func XCTAssertIdentical(
 	_ expression1: @autoclosure () throws -> AnyObject,
 	_ expression2: @autoclosure () throws -> AnyObject,
 	_ message: @autoclosure () -> String = "",
@@ -48,7 +48,7 @@ func XCTAssertSame(
 	}
 }
 
-func XCTAssertSame(
+func XCTAssertIdentical(
 	_ expression1: @autoclosure () throws -> AnyObject?,
 	_ expression2: @autoclosure () throws -> AnyObject?,
 	_ message: @autoclosure () -> String = "",
@@ -66,7 +66,7 @@ func XCTAssertSame(
 	}
 }
 
-func XCTAssertNotSame(
+func XCTAssertNotIdentical(
 	_ expression1: @autoclosure () throws -> AnyObject,
 	_ expression2: @autoclosure () throws -> AnyObject,
 	_ message: @autoclosure () -> String = "",
@@ -84,7 +84,7 @@ func XCTAssertNotSame(
 	}
 }
 
-func XCTAssertNotSame(
+func XCTAssertNotIdentical(
 	_ expression1: @autoclosure () throws -> AnyObject?,
 	_ expression2: @autoclosure () throws -> AnyObject?,
 	_ message: @autoclosure () -> String = "",

@@ -40,7 +40,7 @@ class InstrumentCenterTests: XCTestCase {
 		let instrumentCenter = InstrumentCenter()
 		let instrument = MockInstrument()
 		instrumentCenter.addInstrument(instrument)
-		XCTAssertSame(instrumentCenter.defaultInstrument, instrument)
+		XCTAssertIdentical(instrumentCenter.defaultInstrument, instrument)
 	}
 
 	func testLastSelectedInstrumentIsDefaultInstrument() {
@@ -53,13 +53,13 @@ class InstrumentCenterTests: XCTestCase {
 		instrumentCenter.addInstrument(instrument2)
 		instrumentCenter.addInstrument(instrument3)
 
-		XCTAssertSame(instrumentCenter.defaultInstrument, instrument1)
+		XCTAssertIdentical(instrumentCenter.defaultInstrument, instrument1)
 
 		instrumentCenter.setLastSelectedInstrument(instrument2)
-		XCTAssertSame(instrumentCenter.defaultInstrument, instrument2)
+		XCTAssertIdentical(instrumentCenter.defaultInstrument, instrument2)
 
 		instrumentCenter.setLastSelectedInstrument(instrument3)
-		XCTAssertSame(instrumentCenter.defaultInstrument, instrument3)
+		XCTAssertIdentical(instrumentCenter.defaultInstrument, instrument3)
 	}
 
 	func testInstrumentsAreEmptyAfterInitialization() {

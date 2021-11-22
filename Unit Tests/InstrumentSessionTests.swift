@@ -52,7 +52,7 @@ class InstrumentSessionTests: XCTestCase {
 
 		instrumentCenter.addInstrument(instrument)
 
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
 	}
 
 	func testCurrentlyShownInstrumentIsLastSelectedInstrumentWhenSettingTheCurrentInstrument() {
@@ -62,20 +62,20 @@ class InstrumentSessionTests: XCTestCase {
 
 		instrumentCenter.addInstrument(instrument1)
 		instrumentCenter.addInstrument(instrument2)
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument1)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrument1)
 
 		instrumentSession.currentlyShownInstrument = instrument2
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument2)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrument2)
 
 		instrumentCenter.addInstrument(instrument3)
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument2)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrument2)
 
 		instrumentSession.currentlyShownInstrument = instrument3
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument3)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrumentCenter.defaultInstrument)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrument3)
 	}
 
 	func testInstrumentDidBecomeActive() {
@@ -125,9 +125,9 @@ class InstrumentSessionTests: XCTestCase {
 		let otherViewController1 = otherInstrumentSession.viewController(for: instrument)
 		let otherViewController2 = otherInstrumentSession.viewController(for: instrument)
 
-		XCTAssertSame(viewController1, viewController2)
-		XCTAssertSame(otherViewController1, otherViewController2)
-		XCTAssertNotSame(viewController1, otherViewController1)
+		XCTAssertIdentical(viewController1, viewController2)
+		XCTAssertIdentical(otherViewController1, otherViewController2)
+		XCTAssertNotIdentical(viewController1, otherViewController1)
 	}
 
 	func testViewControllersAreOnlyCreatedIfInstrumentIsInInstrumentCenter() {
