@@ -60,4 +60,31 @@ class ViewInspectorInstrumentTests: XCTestCase {
 		instrumentCenter.removeInstrument(instrument)
 		XCTAssertNil(instrument.windowControllers[instrumentSession])
 	}
+
+	func testNoWindowControllerIsInspectingViewsInitially() {
+		let noWindowControllerIsInspectingViews = instrument.windowControllers.values
+			.allSatisfy { windowController in
+				!windowController.isInspectingViews
+			}
+		XCTAssertTrue(noWindowControllerIsInspectingViews)
+	}
+
+	func testAllWindowControllersAreInspectingViewsAfterBeginningInspecting() {
+		instrument.beginInspecting()
+		let allWindowControllersAreInspectingViews = instrument.windowControllers.values
+			.allSatisfy { windowController in
+				windowController.isInspectingViews
+			}
+		XCTAssertTrue(allWindowControllersAreInspectingViews)
+	}
+
+	func testNoWindowControllerIsInspectingViewsAfterEndingInspecting() {
+		instrument.beginInspecting()
+		instrument.endInspecting()
+		let noWindowControllerIsInspectingViews = instrument.windowControllers.values
+			.allSatisfy { windowController in
+				!windowController.isInspectingViews
+			}
+		XCTAssertTrue(noWindowControllerIsInspectingViews)
+	}
 }
