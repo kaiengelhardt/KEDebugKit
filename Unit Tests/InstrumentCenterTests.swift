@@ -106,11 +106,11 @@ class InstrumentCenterTests: XCTestCase {
 		instrumentCenter.addInstrument(instrument1)
 		instrumentCenter.addInstrument(instrument2)
 
-		XCTAssertSame(instrumentCenter.defaultInstrument, instrument1)
+		XCTAssertIdentical(instrumentCenter.defaultInstrument, instrument1)
 
 		instrumentCenter.removeInstrument(instrument1)
 
-		XCTAssertSame(instrumentCenter.defaultInstrument, instrument2)
+		XCTAssertIdentical(instrumentCenter.defaultInstrument, instrument2)
 
 		instrumentCenter.removeInstrument(instrument2)
 
@@ -127,11 +127,11 @@ class InstrumentCenterTests: XCTestCase {
 
 		instrumentCenter.setLastSelectedInstrument(instrument2)
 
-		XCTAssertSame(instrumentCenter.defaultInstrument, instrument2)
+		XCTAssertIdentical(instrumentCenter.defaultInstrument, instrument2)
 
 		instrumentCenter.removeInstrument(instrument2)
 
-		XCTAssertSame(instrumentCenter.defaultInstrument, instrument1)
+		XCTAssertIdentical(instrumentCenter.defaultInstrument, instrument1)
 
 		instrumentCenter.removeInstrument(instrument1)
 

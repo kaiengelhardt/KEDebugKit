@@ -180,6 +180,6 @@ class InstrumentSessionTests: XCTestCase {
 		instrumentCenter.addInstrument(instrument2)
 		instrumentCenter.removeInstrument(instrument1)
 
-		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument2)
+		XCTAssertIdentical(instrumentSession.currentlyShownInstrument, instrument2)
 	}
 }
