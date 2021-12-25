@@ -15,18 +15,15 @@ let package = Package(
     ],
     dependencies: [
         .package(
+            name: "KEFoundation",
             url: "https://github.com/kaiengelhardt/kefoundation.git",
-            from: "0.0.1"
-        ),
-        .package(
-            url: "https://github.com/kaiengelhardt/keuikit.git",
-            from: "0.0.1"
+            from: "0.1.0"
         ),
     ],
     targets: [
         .target(
             name: "KEDebugKit",
-            dependencies: [],
+            dependencies: ["KEFoundation"],
             path: "Sources"
         ),
         .testTarget(

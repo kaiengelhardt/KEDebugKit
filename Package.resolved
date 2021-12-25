@@ -6,17 +6,8 @@
         "repositoryURL": "https://github.com/kaiengelhardt/kefoundation.git",
         "state": {
           "branch": null,
-          "revision": "2121e6dbc462d940c38deead8d7525ccb58979bd",
-          "version": "0.0.1"
-        }
-      },
-      {
-        "package": "KEUIKit",
-        "repositoryURL": "https://github.com/kaiengelhardt/keuikit.git",
-        "state": {
-          "branch": null,
-          "revision": "77375dd3f7e1805bbf6b790cb2de57cc65de0350",
-          "version": "0.0.1"
+          "revision": "08e5c110e6cb4319acdc69dff646e497730fecc1",
+          "version": "0.1.7"
         }
       }
     ]
