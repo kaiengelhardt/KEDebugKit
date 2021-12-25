@@ -27,12 +27,13 @@
 //
 
 import Foundation
+import KEFoundation
 
 public class InstrumentCenter {
 
 	public static let `default` = InstrumentCenter()
 
-	@Published public private(set) var instruments: [Instrument] = []
+	@Observable public private(set) var instruments: [Instrument] = []
 
 	private var lastSelectedInstrument: Instrument?
 	let noInstrument = NoInstrument()
@@ -52,12 +53,12 @@ public class InstrumentCenter {
 	}
 
 	public func removeInstrument(_ removedInstrument: Instrument) {
-		instruments.removeAll(where: {
-			removedInstrument === $0
-		})
 		if lastSelectedInstrument === removedInstrument {
 			lastSelectedInstrument = nil
 		}
+		instruments.removeAll(where: {
+			removedInstrument === $0
+		})
 	}
 
 	func setLastSelectedInstrument(_ instrument: Instrument) {

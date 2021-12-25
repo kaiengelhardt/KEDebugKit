@@ -28,11 +28,15 @@
 
 import UIKit
 import Combine
+import KEFoundation
 
 public class InstrumentSession: Hashable {
 
-	@Published var currentlyShownInstrument: Instrument {
+	@Observable var currentlyShownInstrument: Instrument {
 		didSet {
+			guard currentlyShownInstrument !== oldValue else {
+				return
+			}
 			oldValue.didResignActive(in: self)
 			instrumentCenter.setLastSelectedInstrument(currentlyShownInstrument)
 			currentlyShownInstrument.didBecomeActive(in: self)
@@ -62,29 +66,31 @@ public class InstrumentSession: Hashable {
 	}
 
 	private func setUpObserving() {
-		instrumentCenter.$instruments.sink { [weak self] newInstruments in
-			guard let self = self else {
-				return
+		instrumentCenter.$instruments
+			.withPrevious([])
+			.sink { [weak self] oldInstruments, newInstruments in
+				guard let self = self else {
+					return
+				}
+				if
+					self.currentlyShownInstrument is NoInstrument,
+					let firstInstrument = newInstruments.first
+				{
+					self.currentlyShownInstrument = firstInstrument
+				}
+				self.purgeUnneededViewControllers(forNewInstruments: newInstruments)
+				let removedInstruments = self.removedInstruments(
+					betweenPreviousInstruments: oldInstruments,
+					andNewInstruemnts: newInstruments
+				)
+				let currentlyShownInstrumentWasRemoved = removedInstruments.contains(where: { instrument in
+					instrument === self.currentlyShownInstrument
+				})
+				if currentlyShownInstrumentWasRemoved {
+					self.currentlyShownInstrument = self.instrumentCenter.defaultInstrument
+				}
 			}
-			if
-				self.currentlyShownInstrument is NoInstrument,
-				let firstInstrument = newInstruments.first
-			{
-				self.currentlyShownInstrument = firstInstrument
-			}
-			self.purgeUnneededViewControllers(forNewInstruments: newInstruments)
-			let removedInstruments = self.removedInstruments(
-				betweenPreviousInstruments: self.instrumentCenter.instruments,
-				andNewInstruemnts: newInstruments
-			)
-			let currentlyShownInstrumentWasRemoved = removedInstruments.contains(where: { instrument in
-				instrument === self.currentlyShownInstrument
-			})
-			if currentlyShownInstrumentWasRemoved {
-				self.currentlyShownInstrument.didResignActive(in: self)
-			}
-		}
-		.store(in: &cancellables)
+			.store(in: &cancellables)
 	}
 
 	func viewController(for instrument: Instrument) -> UIViewController? {

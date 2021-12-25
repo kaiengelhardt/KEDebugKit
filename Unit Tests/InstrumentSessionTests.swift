@@ -171,4 +171,15 @@ class InstrumentSessionTests: XCTestCase {
 
 		XCTAssertNil(viewController)
 	}
+
+	func testCurrentlyShownInstrumentIsNoLongerCurrentlyShownInstrumentAfterItHasBeenRemoved() {
+		let instrument1 = MockInstrument()
+		let instrument2 = MockInstrument()
+
+		instrumentCenter.addInstrument(instrument1)
+		instrumentCenter.addInstrument(instrument2)
+		instrumentCenter.removeInstrument(instrument1)
+
+		XCTAssertSame(instrumentSession.currentlyShownInstrument, instrument2)
+	}
 }
