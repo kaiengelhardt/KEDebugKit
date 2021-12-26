@@ -118,7 +118,7 @@ class InstrumentSessionTests: XCTestCase {
 		instrument.resetTestVariables()
 
 		let mockWindowSceneWrapper = MockWindowSceneWrapper()
-		let session = InstrumentSession(
+		_ = InstrumentSession(
 			windowSceneWrapper: mockWindowSceneWrapper,
 			instrumentCenter: instrumentCenter
 		)
