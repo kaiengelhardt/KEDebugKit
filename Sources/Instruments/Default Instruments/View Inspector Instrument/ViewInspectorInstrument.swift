@@ -33,7 +33,7 @@ public class ViewInspectorInstrument: Instrument {
 
 	public let title = "View Inspector"
 
-	let viewInspectionResults = CurrentValueSubject<[ViewInspectionResult], Never>([])
+	let viewInspectionResult = CurrentValueSubject<ViewInspectionResult, Never>(ViewInspectionResult(rootItems: []))
 
 	private(set) var windowControllers: [InstrumentSession: ViewInspectorWindowController] = [:]
 	private var instrumentSessions: [ViewInspectorWindowController: InstrumentSession] = [:]
@@ -99,23 +99,5 @@ extension ViewInspectorInstrument: ViewInspectorWindowControllerDelegate {
 		didPerformTapAtLocation location: CGPoint
 	) {
 		endInspecting()
-
-		guard let session = instrumentSessions[windowController] else {
-			return
-		}
-
-		var allViews: [UIView] = []
-
-		for window in session.windowSceneWrapper.windows {
-			let convertedLocation = window.convert(location, from: windowController.window)
-			let views = findViews(at: convertedLocation, in: window)
-			allViews.append(contentsOf: views)
-		}
-
-		let results = allViews.map {
-			ViewInspectionResult(view: $0)
-		}
-
-		viewInspectionResults.send(results)
 	}
 }
