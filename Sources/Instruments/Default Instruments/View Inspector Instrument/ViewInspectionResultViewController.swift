@@ -41,8 +41,6 @@ class ViewInspectionResultViewController: ContainerViewController {
 		collectionViewController.collectionView
 	}
 
-	private var cancellables = Set<AnyCancellable>()
-
 	init(instrument: ViewInspectorInstrument) {
 		let configuration = UICollectionLayoutListConfiguration(appearance: .sidebar)
 		let layout = UICollectionViewCompositionalLayout.list(using: configuration)
@@ -52,7 +50,6 @@ class ViewInspectionResultViewController: ContainerViewController {
 		super.init(nibName: nil, bundle: nil)
 
 		setUpUI()
-		setUpObserving()
 	}
 
 	@available(*, unavailable)
@@ -82,18 +79,6 @@ class ViewInspectionResultViewController: ContainerViewController {
 			action: #selector(inspect)
 		)
 		navigationItem.rightBarButtonItem = inspectButton
-	}
-
-	private func setUpObserving() {
-		instrument.viewInspectionResults.sink { completion in
-		} receiveValue: { [weak self] results in
-			guard let self = self else {
-				return
-			}
-			print(self)
-			print(results)
-		}
-		.store(in: &cancellables)
 	}
 
 	@objc
