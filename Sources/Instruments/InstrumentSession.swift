@@ -62,6 +62,7 @@ public class InstrumentSession: Hashable {
 		self.windowSceneWrapper = windowSceneWrapper
 		self.instrumentCenter = instrumentCenter
 		currentlyShownInstrument = instrumentCenter.defaultInstrument
+		instrumentCenter.defaultInstrument.didBecomeActive(in: self)
 		setUpObserving()
 	}
 

@@ -112,6 +112,20 @@ class InstrumentSessionTests: XCTestCase {
 		XCTAssertEqual(instrument.didResignActiveInSessionCallCount, 1)
 	}
 
+	func testInstrumentdidBecomeActiveForDefaultInstrumentAfterNewSessionIsAdded() {
+		let instrument = MockInstrument()
+		instrumentCenter.addInstrument(instrument)
+		instrument.resetTestVariables()
+
+		let mockWindowSceneWrapper = MockWindowSceneWrapper()
+		let session = InstrumentSession(
+			windowSceneWrapper: mockWindowSceneWrapper,
+			instrumentCenter: instrumentCenter
+		)
+
+		XCTAssertEqual(instrument.didBecomeActiveInSessionCallCount, 1)
+	}
+
 	func testInstrumentViewControllerIsCachedPerSession() {
 		let otherInstrumentSession = InstrumentSession(
 			windowSceneWrapper: MockWindowSceneWrapper(),
