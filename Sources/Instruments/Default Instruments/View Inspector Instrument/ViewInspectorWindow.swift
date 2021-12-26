@@ -33,6 +33,15 @@ class ViewInspectorWindow: UIWindow {
 
 	var isInspectingViews = false
 
+	init() {
+		super.init(frame: .zero)
+		backgroundColor = nil
+	}
+
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+	}
+
 	override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
 		let view = super.hitTest(point, with: event)
 		if view == self || view == rootViewController?.view && !isInspectingViews {
