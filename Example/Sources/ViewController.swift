@@ -33,8 +33,6 @@ class ViewController: UIViewController {
 
     private let button = UIButton(type: .system)
 
-    private let instrument = UserDefaultsInstrument()
-
     init() {
         super.init(nibName: nil, bundle: nil)
         setUpUI()
