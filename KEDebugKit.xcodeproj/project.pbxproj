@@ -14,6 +14,8 @@
 		5E58C88126C53FAF00AAEC63 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C88026C53FAF00AAEC63 /* NotificationCell.swift */; };
 		5E58C88326C57AC400AAEC63 /* UserDefaultsBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C88226C57AC400AAEC63 /* UserDefaultsBrowserViewController.swift */; };
 		5E58C88526C57AD000AAEC63 /* UserDefaultsChangesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E58C88426C57AD000AAEC63 /* UserDefaultsChangesViewController.swift */; };
+		5E60A74827791395004CBFB7 /* String+Indented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E60A74727791395004CBFB7 /* String+Indented.swift */; };
+		5E60A74A277913B7004CBFB7 /* String+IndentedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E60A749277913B7004CBFB7 /* String+IndentedTests.swift */; };
 		5E621CA52741C75200D8AFAE /* MockWindowSceneWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E621CA42741C75200D8AFAE /* MockWindowSceneWrapper.swift */; };
 		5E621CA62741C75800D8AFAE /* MockInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E621CA22741C70400D8AFAE /* MockInstrument.swift */; };
 		5E621CA82741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E621CA72741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift */; };
@@ -73,6 +75,8 @@
 		5E58C88026C53FAF00AAEC63 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		5E58C88226C57AC400AAEC63 /* UserDefaultsBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsBrowserViewController.swift; sourceTree = "<group>"; };
 		5E58C88426C57AD000AAEC63 /* UserDefaultsChangesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsChangesViewController.swift; sourceTree = "<group>"; };
+		5E60A74727791395004CBFB7 /* String+Indented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Indented.swift"; sourceTree = "<group>"; };
+		5E60A749277913B7004CBFB7 /* String+IndentedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+IndentedTests.swift"; sourceTree = "<group>"; };
 		5E621CA22741C70400D8AFAE /* MockInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInstrument.swift; sourceTree = "<group>"; };
 		5E621CA42741C75200D8AFAE /* MockWindowSceneWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWindowSceneWrapper.swift; sourceTree = "<group>"; };
 		5E621CA72741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsInstrumentTests.swift; sourceTree = "<group>"; };
@@ -223,6 +227,14 @@
 			path = "Notification Center Instrument";
 			sourceTree = "<group>";
 		};
+		5E60A74627791387004CBFB7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5E60A74727791395004CBFB7 /* String+Indented.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		5E621CA12741C6F500D8AFAE /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +337,7 @@
 				5E87514526C30A2B007FA2FD /* Instruments */,
 				5EFF892126C01BB300E791E6 /* WindowController */,
 				5E18C1D026C01415009549C9 /* Panel */,
+				5E60A74627791387004CBFB7 /* Utilities */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -338,6 +351,7 @@
 				5E86B013274115970064CA1A /* InstrumentSessionTests.swift */,
 				5E621CA72741CFDF00D8AFAE /* UserDefaultsInstrumentTests.swift */,
 				5ECAAA49274539AE00CD569C /* ViewInspectorInstrumentTests.swift */,
+				5E60A749277913B7004CBFB7 /* String+IndentedTests.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -537,6 +551,7 @@
 				5E87515626C458FB007FA2FD /* InstrumentSession.swift in Sources */,
 				5E87515026C30D6F007FA2FD /* InstrumentWindowController.swift in Sources */,
 				5E87515C26C4643D007FA2FD /* PasteboardInstrument.swift in Sources */,
+				5E60A74827791395004CBFB7 /* String+Indented.swift in Sources */,
 				5E58C87D26C53BD400AAEC63 /* NotificationCenterInstrument.swift in Sources */,
 				5E87516226C464A5007FA2FD /* PasteboardHistoryViewController.swift in Sources */,
 				5E58C88526C57AD000AAEC63 /* UserDefaultsChangesViewController.swift in Sources */,
@@ -572,6 +587,7 @@
 				5E621CA52741C75200D8AFAE /* MockWindowSceneWrapper.swift in Sources */,
 				5E86B01227410E800064CA1A /* InstrumentCenterTests.swift in Sources */,
 				5E304BFE27413F9D002F917D /* XCUtilities.swift in Sources */,
+				5E60A74A277913B7004CBFB7 /* String+IndentedTests.swift in Sources */,
 				5ECAAA4A274539AE00CD569C /* ViewInspectorInstrumentTests.swift in Sources */,
 				5E86B014274115970064CA1A /* InstrumentSessionTests.swift in Sources */,
 			);
