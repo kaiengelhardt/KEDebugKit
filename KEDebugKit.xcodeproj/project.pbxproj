@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E0C7B85277A545B0072DFD8 /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B84277A545B0072DFD8 /* PassthroughView.swift */; };
+		5E0C7B87277A54BD0072DFD8 /* InstrumentRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B86277A54BD0072DFD8 /* InstrumentRootViewController.swift */; };
 		5E18C1D226C01429009549C9 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18C1D126C01429009549C9 /* PanelController.swift */; };
 		5E304BFE27413F9D002F917D /* XCUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86B01C27413E130064CA1A /* XCUtilities.swift */; };
 		5E60A74827791395004CBFB7 /* String+Indented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E60A74727791395004CBFB7 /* String+Indented.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E0C7B84277A545B0072DFD8 /* PassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughView.swift; sourceTree = "<group>"; };
+		5E0C7B86277A54BD0072DFD8 /* InstrumentRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentRootViewController.swift; sourceTree = "<group>"; };
 		5E18C1BA26C01272009549C9 /* KEDebugKit-Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Shared.xcconfig"; sourceTree = "<group>"; };
 		5E18C1BB26C01272009549C9 /* KEDebugKit-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Release.xcconfig"; sourceTree = "<group>"; };
 		5E18C1BC26C01272009549C9 /* KEDebugKit-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Debug.xcconfig"; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 				5E87514F26C30D6F007FA2FD /* InstrumentWindowController.swift */,
 				5EFF892526C01C8100E791E6 /* PassthroughWindow.swift */,
 				5E86B018274132310064CA1A /* WindowSceneWrapper.swift */,
+				5E0C7B84277A545B0072DFD8 /* PassthroughView.swift */,
+				5E0C7B86277A54BD0072DFD8 /* InstrumentRootViewController.swift */,
 			);
 			path = WindowController;
 			sourceTree = "<group>";
@@ -468,12 +474,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E87515426C43788007FA2FD /* PanelToolbarViewController.swift in Sources */,
+				5E0C7B85277A545B0072DFD8 /* PassthroughView.swift in Sources */,
 				5E87515626C458FB007FA2FD /* InstrumentSession.swift in Sources */,
 				5E87515026C30D6F007FA2FD /* InstrumentWindowController.swift in Sources */,
 				5E60A74827791395004CBFB7 /* String+Indented.swift in Sources */,
 				5EDE263526F331FD004F1017 /* ViewInspectorInstrument.swift in Sources */,
 				5E87514926C30A65007FA2FD /* Instrument.swift in Sources */,
 				5EDE263726F33245004F1017 /* ViewInspectionResult.swift in Sources */,
+				5E0C7B87277A54BD0072DFD8 /* InstrumentRootViewController.swift in Sources */,
 				5E18C1D226C01429009549C9 /* PanelController.swift in Sources */,
 				5EFF892326C01BC300E791E6 /* OverlayWindowController.swift in Sources */,
 				5EDE263B26F33F91004F1017 /* ViewInspectorWindow.swift in Sources */,

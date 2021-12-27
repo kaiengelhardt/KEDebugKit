@@ -1,5 +1,5 @@
 //
-//  Created by Kai Engelhardt on 10.08.21
+//  Created by Kai Engelhardt on 27.12.21
 //  Copyright © 2021 Kai Engelhardt. All rights reserved.
 //
 //  Distributed under the permissive MIT license
@@ -27,36 +27,15 @@
 //
 
 import UIKit
-import KEFoundation
 
-public class InstrumentWindowController: OverlayWindowController {
+class PassthroughView: UIView {
 
-	private let instrumentRootViewController: InstrumentRootViewController
-	private var instrumentRootView: UIView {
-		instrumentRootViewController.view
-	}
-
-	public init(instrumentSession: InstrumentSession) {
-		instrumentRootViewController = InstrumentRootViewController(instrumentSession: instrumentSession)
-
-		super.init(windowSceneWrapper: instrumentSession.windowSceneWrapper)
-
-		setUpUI()
-	}
-
-	private func setUpUI() {
-		var constraints: [NSLayoutConstraint] = []
-		defer {
-			NSLayoutConstraint.activate(constraints)
+	override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+		let view = super.hitTest(point, with: event)
+		if view == self {
+			return nil
+		} else {
+			return view
 		}
-
-		contentViewController.addChild(instrumentRootViewController)
-		contentView.addSubview(instrumentRootView)
-		instrumentRootViewController.didMove(toParent: contentViewController)
-
-		instrumentRootView.translatesAutoresizingMaskIntoConstraints = false
-		constraints += instrumentRootView.constraintsMatchingEdgesOfSuperview()
-
-		window.tag = 696_969
 	}
 }
