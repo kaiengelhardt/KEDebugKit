@@ -81,12 +81,6 @@ class RegularPanelLayoutManagerTests: XCTestCase {
 		XCTAssertEqual(panelView.frame, CGRect(x: 704, y: 368, width: 320, height: 400))
 	}
 
-	func testLayoutHasHalfHeightOfContainerForSufficientlyLargeContainer() {
-		containingView.bounds.size.height = 1_000
-		setFrame(frame: .init(size: .regular, horizontalPosition: .leading, verticalPosition: .top))
-		XCTAssertEqual(panelView.frame.height, 500)
-	}
-
 	func testLeadingLargeLayout() {
 		setFrame(frame: .init(size: .large, horizontalPosition: .leading, verticalPosition: .top))
 		XCTAssertEqual(panelView.frame, CGRect(x: 0, y: 0, width: 320, height: 768))
@@ -105,6 +99,22 @@ class RegularPanelLayoutManagerTests: XCTestCase {
 	func testTrailingExtraLargeLayout() {
 		setFrame(frame: .init(size: .extraLarge, horizontalPosition: .trailing, verticalPosition: .top))
 		XCTAssertEqual(panelView.frame, CGRect(x: 512, y: 0, width: 512, height: 768))
+	}
+
+	func testLayoutHasHalfHeightOfContainerForSufficientlyLargeContainer() {
+		containingView.bounds.size.height = 1_000
+		setFrame(frame: .init(size: .regular, horizontalPosition: .leading, verticalPosition: .top))
+		XCTAssertEqual(panelView.frame.height, 500)
+	}
+
+	func testRegularOrLargeLayoutIsNotLargerThanWidthOfContainerForSmallContainers() {
+		containingView.bounds.size.width = 400
+
+		setFrame(frame: .init(size: .regular, horizontalPosition: .leading, verticalPosition: .top))
+		XCTAssertEqual(panelView.frame.width, 200)
+
+		setFrame(frame: .init(size: .large, horizontalPosition: .leading, verticalPosition: .top))
+		XCTAssertEqual(panelView.frame.width, 200)
 	}
 
 	func testInactiveLayoutManagerInstallsNoConstraints() {

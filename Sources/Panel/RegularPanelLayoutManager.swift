@@ -100,7 +100,12 @@ class RegularPanelLayoutManager {
 
 		if frame.size == .regular || frame.size == .large {
 			constraints += [
-				layoutSurface.widthAnchor.constraint(equalToConstant: 320),
+				layoutSurface.widthAnchor.constraint(lessThanOrEqualToConstant: 320),
+				layoutSurface.widthAnchor.constraint(
+					equalTo: containingLayoutSurface.widthAnchor,
+					multiplier: 0.5
+				)
+					.with(priority: .defaultHigh),
 			]
 		}
 
