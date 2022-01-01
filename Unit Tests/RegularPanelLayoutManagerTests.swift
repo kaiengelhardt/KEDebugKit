@@ -59,9 +59,48 @@ class RegularPanelLayoutManagerTests: XCTestCase {
 		)
 	}
 
-	func testTopLeftRegularLayout() {
-		layoutManager.frame = .init(size: .regular, horizontalPosition: .leading, verticalPosition: .top)
-		containingView.layoutIfNeeded()
+	func testTopLeadingRegularLayout() {
+		setFrame(frame: .init(size: .regular, horizontalPosition: .leading, verticalPosition: .top))
 		XCTAssertEqual(panelView.frame, CGRect(x: 0, y: 0, width: 320, height: 400))
+	}
+
+	func testTopTrailingLayout() {
+		setFrame(frame: .init(size: .regular, horizontalPosition: .trailing, verticalPosition: .top))
+		XCTAssertEqual(panelView.frame, CGRect(x: 704, y: 0, width: 320, height: 400))
+	}
+
+	func testBottomLeadingRegularLayout() {
+		setFrame(frame: .init(size: .regular, horizontalPosition: .leading, verticalPosition: .bottom))
+		XCTAssertEqual(panelView.frame, CGRect(x: 0, y: 368, width: 320, height: 400))
+	}
+
+	func testBottomTrailingLayout() {
+		setFrame(frame: .init(size: .regular, horizontalPosition: .trailing, verticalPosition: .bottom))
+		XCTAssertEqual(panelView.frame, CGRect(x: 704, y: 368, width: 320, height: 400))
+	}
+
+	func testLeadingLargeLayout() {
+		setFrame(frame: .init(size: .large, horizontalPosition: .leading, verticalPosition: .top))
+		XCTAssertEqual(panelView.frame, CGRect(x: 0, y: 0, width: 320, height: 768))
+	}
+
+	func testTrailingLargeLayout() {
+		setFrame(frame: .init(size: .large, horizontalPosition: .trailing, verticalPosition: .top))
+		XCTAssertEqual(panelView.frame, CGRect(x: 704, y: 0, width: 320, height: 768))
+	}
+
+	func testLeadingExtraLargeLayout() {
+		setFrame(frame: .init(size: .extraLarge, horizontalPosition: .leading, verticalPosition: .top))
+		XCTAssertEqual(panelView.frame, CGRect(x: 0, y: 0, width: 512, height: 768))
+	}
+
+	func testTrailingExtraLargeLayout() {
+		setFrame(frame: .init(size: .extraLarge, horizontalPosition: .trailing, verticalPosition: .top))
+		XCTAssertEqual(panelView.frame, CGRect(x: 512, y: 0, width: 512, height: 768))
+	}
+
+	private func setFrame(frame: RegularPanelLayoutManager.Frame) {
+		layoutManager.frame = frame
+		containingView.layoutIfNeeded()
 	}
 }
