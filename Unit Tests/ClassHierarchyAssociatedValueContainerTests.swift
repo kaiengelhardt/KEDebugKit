@@ -40,11 +40,11 @@ class ClassHierarchyAssociatedValueContainerTests: XCTestCase {
 		container = ClassHierarchyAssociatedValueContainer()
 	}
 
-	func testContainerDoesNotContainValueForClassThatWasNotAdded() {
+	func testContainerDoesNotContainValueForUnknwonClass() {
 		XCTAssertFalse(container.containsValue(for: UIView.self))
 	}
 
-	func testContainerContainsValueForClassThatWasAdded() {
+	func testContainerContainsValueForKnownClass() {
 		container.setValue("Test", for: UIView.self)
 		XCTAssertTrue(container.containsValue(for: UIView.self))
 	}
@@ -60,5 +60,93 @@ class ClassHierarchyAssociatedValueContainerTests: XCTestCase {
 
 		XCTAssertEqual(container.value(for: UIView.self), "Test 1")
 		XCTAssertEqual(container.value(for: UIResponder.self), "Test 2")
+	}
+
+	func testValueIsRemoved() {
+		container.setValue("Test 1", for: UIView.self)
+		container.setValue(nil, for: UIView.self)
+	}
+
+	func testValueHierarchyForSingleClass() {
+		container.setValue("Test", for: UIView.self)
+		XCTAssertEqual(
+			container.valueHierarchy(startingAt: UIView.self),
+			[
+				ClassValueAssociation(class: UIView.self, value: "Test"),
+			]
+		)
+	}
+
+	func testValueHierarchyForMultipleClasses() {
+		container.setValue("Test 1", for: UIView.self)
+		container.setValue("Test 2", for: UIButton.self)
+		container.setValue("Test 3", for: UIControl.self)
+		XCTAssertEqual(
+			container.valueHierarchy(startingAt: UIButton.self),
+			[
+				ClassValueAssociation(class: UIButton.self, value: "Test 2"),
+				ClassValueAssociation(class: UIControl.self, value: "Test 3"),
+				ClassValueAssociation(class: UIView.self, value: "Test 1"),
+			]
+		)
+	}
+
+	func testValueHierarchyForMultipleClassesWithGaps() {
+		container.setValue("Test 1", for: UIView.self)
+		XCTAssertEqual(
+			container.valueHierarchy(startingAt: UIButton.self),
+			[
+				ClassValueAssociation(class: UIView.self, value: "Test 1"),
+			]
+		)
+
+		container.setValue("Test 2", for: UIButton.self)
+		XCTAssertEqual(
+			container.valueHierarchy(startingAt: UIButton.self),
+			[
+				ClassValueAssociation(class: UIButton.self, value: "Test 2"),
+				ClassValueAssociation(class: UIView.self, value: "Test 1"),
+			]
+		)
+	}
+
+	func testValueHierarchyForMultipleUnrelatedClasses() {
+		container.setValue("Test 1", for: UIView.self)
+		container.setValue("Test 2", for: UIControl.self)
+		container.setValue("Test 3", for: UIButton.self)
+		container.setValue("Test 4", for: UISlider.self)
+		container.setValue("Test 5", for: UIImage.self)
+		XCTAssertEqual(
+			container.valueHierarchy(startingAt: UIButton.self),
+			[
+				ClassValueAssociation(class: UIButton.self, value: "Test 3"),
+				ClassValueAssociation(class: UIControl.self, value: "Test 2"),
+				ClassValueAssociation(class: UIView.self, value: "Test 1"),
+			]
+		)
+
+		XCTAssertEqual(
+			container.valueHierarchy(startingAt: UISlider.self),
+			[
+				ClassValueAssociation(class: UISlider.self, value: "Test 4"),
+				ClassValueAssociation(class: UIControl.self, value: "Test 2"),
+				ClassValueAssociation(class: UIView.self, value: "Test 1"),
+			]
+		)
+
+		XCTAssertEqual(
+			container.valueHierarchy(startingAt: UIImage.self),
+			[
+				ClassValueAssociation(class: UIImage.self, value: "Test 5"),
+			]
+		)
+	}
+
+	func testValueHierarchyForUnknownClass() {
+		XCTAssertEqual(container.valueHierarchy(startingAt: UIView.self), [])
+
+		container.setValue("Test", for: UIButton.self)
+
+		XCTAssertEqual(container.valueHierarchy(startingAt: UIView.self), [])
 	}
 }

@@ -28,7 +28,7 @@
 
 import Foundation
 
-struct ClassHierarchyAssociatedValueContainer<Value> {
+struct ClassHierarchyAssociatedValueContainer<Value: Equatable> {
 
 	private var values: [String: Value] = [:]
 
@@ -36,7 +36,7 @@ struct ClassHierarchyAssociatedValueContainer<Value> {
 		return String(describing: `class`)
 	}
 
-	mutating func setValue(_ value: Value, for `class`: AnyClass) {
+	mutating func setValue(_ value: Value?, for `class`: AnyClass) {
 		values[key(for: `class`)] = value
 	}
 
@@ -46,5 +46,28 @@ struct ClassHierarchyAssociatedValueContainer<Value> {
 
 	func containsValue(for `class`: AnyClass) -> Bool {
 		return values[key(for: `class`)] != nil
+	}
+
+	func valueHierarchy(startingAt `class`: AnyClass) -> [ClassValueAssociation<Value>] {
+		var classValueAssociations: [ClassValueAssociation<Value>] = []
+		var _currentClass: AnyClass? = `class`
+		while let currentClass = _currentClass {
+			if let value = value(for: currentClass) {
+				let association = ClassValueAssociation(class: currentClass, value: value)
+				classValueAssociations.append(association)
+			}
+			_currentClass = currentClass.superclass()
+		}
+		return classValueAssociations
+	}
+}
+
+struct ClassValueAssociation<Value: Equatable>: Equatable {
+
+	let `class`: AnyClass
+	let value: Value
+
+	static func == (lhs: ClassValueAssociation<Value>, rhs: ClassValueAssociation<Value>) -> Bool {
+		return String(describing: lhs.class) == String(describing: rhs.class) && lhs.value == rhs.value
 	}
 }
