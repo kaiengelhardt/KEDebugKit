@@ -34,14 +34,34 @@ import XCTest
 class RegularPanelLayoutManagerTests: XCTestCase {
 
 	private var layoutManager: RegularPanelLayoutManager!
+	private var panelView: UIView!
+	private var containingView: UIView!
 
 	override func setUpWithError() throws {
 		try super.setUpWithError()
+
+		containingView = UIView()
+		containingView.frame = CGRect(x: 0, y: 0, width: 1_024, height: 768)
+
+		panelView = UIView()
+		panelView.translatesAutoresizingMaskIntoConstraints = false
+		containingView.addSubview(panelView)
+
 		let frame = RegularPanelLayoutManager.Frame(
 			size: .regular,
 			horizontalPosition: .leading,
 			verticalPosition: .top
 		)
-		layoutManager = RegularPanelLayoutManager(frame: frame)
+		layoutManager = RegularPanelLayoutManager(
+			frame: frame,
+			layoutSurface: panelView,
+			containingLayoutSurface: containingView
+		)
+	}
+
+	func testTopLeftRegularLayout() {
+		layoutManager.frame = .init(size: .regular, horizontalPosition: .leading, verticalPosition: .top)
+		containingView.layoutIfNeeded()
+		XCTAssertEqual(panelView.frame, CGRect(x: 0, y: 0, width: 320, height: 400))
 	}
 }

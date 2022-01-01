@@ -32,10 +32,25 @@ import UIKit
 
 class RegularPanelLayoutManager {
 
-	var frame: Frame
+	var frame: Frame {
+		didSet {
+			updateConstraints()
+		}
+	}
 
-	init(frame: Frame, layoutSurface: LayoutSurface) {
+	private let layoutSurface: LayoutSurface
+	private let containingLayoutSurface: LayoutSurface
+
+	@ActiveConstraint private var constraints: [NSLayoutConstraint] = []
+
+	init(
+		frame: Frame = Frame(size: .regular, horizontalPosition: .leading, verticalPosition: .top),
+		layoutSurface: LayoutSurface,
+		containingLayoutSurface: LayoutSurface
+	) {
 		self.frame = frame
+		self.layoutSurface = layoutSurface
+		self.containingLayoutSurface = containingLayoutSurface
 	}
 
 	static func constraints(
@@ -58,7 +73,12 @@ class RegularPanelLayoutManager {
 
 		if frame.size == .regular {
 			constraints += [
-				layoutSurface.heightAnchor.constraint(equalTo: containingLayoutSurface.heightAnchor, multiplier: 0.5),
+				layoutSurface.heightAnchor.constraint(
+					equalTo: containingLayoutSurface.heightAnchor,
+					multiplier: 0.5
+				)
+					.with(priority: .defaultHigh),
+				layoutSurface.heightAnchor.constraint(greaterThanOrEqualToConstant: 400),
 			]
 			switch frame.verticalPosition {
 			case .top:
@@ -91,6 +111,14 @@ class RegularPanelLayoutManager {
 			]
 		}
 		return constraints
+	}
+
+	private func updateConstraints() {
+		constraints = Self.constraints(
+			forPositioningLayoutSurface: layoutSurface,
+			withFrame: frame,
+			inLayoutSurface: containingLayoutSurface
+		)
 	}
 }
 
