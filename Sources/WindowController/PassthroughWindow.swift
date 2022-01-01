@@ -32,8 +32,8 @@ class PassthroughWindow: UIWindow {
 
 	var onLayoutSubviews: ((UIWindow) -> Void)?
 
-	private static var obfuscatedCanAffectStatusBarAppearanceSelector: String {
-		return ["_can", "Affect", "Status", "Bar", "Appearance"].joined()
+	private static var obfuscatedCanAffectStatusBarAppearanceSelector: Selector {
+		return Selector(["_can", "Affect", "Status", "Bar", "Appearance"].joined())
 	}
 
 	init() {
@@ -69,7 +69,7 @@ class PassthroughWindow: UIWindow {
 
 		guard let originalMethod = class_getInstanceMethod(
 			self,
-			Selector(obfuscatedCanAffectStatusBarAppearanceSelector)
+			obfuscatedCanAffectStatusBarAppearanceSelector
 		) else {
 			return
 		}
