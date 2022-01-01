@@ -31,13 +31,13 @@ import KEFoundation
 
 public class InstrumentWindowController: OverlayWindowController {
 
-	private let instrumentRootViewController: InstrumentRootViewController
-	private var instrumentRootView: UIView {
-		instrumentRootViewController.view
+	private let panelContainerViewController: PanelContainerViewController
+	private var panelContainerView: UIView {
+		panelContainerViewController.view
 	}
 
 	public init(instrumentSession: InstrumentSession) {
-		instrumentRootViewController = InstrumentRootViewController(instrumentSession: instrumentSession)
+		panelContainerViewController = PanelContainerViewController(instrumentSession: instrumentSession)
 
 		super.init(windowSceneWrapper: instrumentSession.windowSceneWrapper)
 
@@ -50,12 +50,12 @@ public class InstrumentWindowController: OverlayWindowController {
 			NSLayoutConstraint.activate(constraints)
 		}
 
-		contentViewController.addChild(instrumentRootViewController)
-		contentView.addSubview(instrumentRootView)
-		instrumentRootViewController.didMove(toParent: contentViewController)
+		contentViewController.addChild(panelContainerViewController)
+		contentView.addSubview(panelContainerView)
+		panelContainerViewController.didMove(toParent: contentViewController)
 
-		instrumentRootView.translatesAutoresizingMaskIntoConstraints = false
-		constraints += instrumentRootView.constraintsMatchingEdgesOfSuperview()
+		panelContainerView.translatesAutoresizingMaskIntoConstraints = false
+		constraints += panelContainerView.constraintsMatchingEdgesOfSuperview()
 
 		window.tag = 696_969
 	}

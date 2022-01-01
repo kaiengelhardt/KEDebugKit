@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E0C7B85277A545B0072DFD8 /* PassthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B84277A545B0072DFD8 /* PassthroughView.swift */; };
-		5E0C7B87277A54BD0072DFD8 /* InstrumentRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B86277A54BD0072DFD8 /* InstrumentRootViewController.swift */; };
+		5E0C7B87277A54BD0072DFD8 /* PanelContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B86277A54BD0072DFD8 /* PanelContainerViewController.swift */; };
 		5E0C7B8B277A64BA0072DFD8 /* RegularPanelLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B8A277A64BA0072DFD8 /* RegularPanelLayoutManager.swift */; };
 		5E0C7B8D277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B8C277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift */; };
 		5E18C1D226C01429009549C9 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18C1D126C01429009549C9 /* PanelController.swift */; };
@@ -52,7 +52,7 @@
 
 /* Begin PBXFileReference section */
 		5E0C7B84277A545B0072DFD8 /* PassthroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughView.swift; sourceTree = "<group>"; };
-		5E0C7B86277A54BD0072DFD8 /* InstrumentRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentRootViewController.swift; sourceTree = "<group>"; };
+		5E0C7B86277A54BD0072DFD8 /* PanelContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContainerViewController.swift; sourceTree = "<group>"; };
 		5E0C7B8A277A64BA0072DFD8 /* RegularPanelLayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularPanelLayoutManager.swift; sourceTree = "<group>"; };
 		5E0C7B8C277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularPanelLayoutManagerTests.swift; sourceTree = "<group>"; };
 		5E18C1BA26C01272009549C9 /* KEDebugKit-Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Shared.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +161,8 @@
 			children = (
 				5E18C1D126C01429009549C9 /* PanelController.swift */,
 				5E87515326C43788007FA2FD /* PanelToolbarViewController.swift */,
+				5E0C7B86277A54BD0072DFD8 /* PanelContainerViewController.swift */,
+				5E0C7B8A277A64BA0072DFD8 /* RegularPanelLayoutManager.swift */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -316,8 +318,6 @@
 				5EFF892526C01C8100E791E6 /* PassthroughWindow.swift */,
 				5E86B018274132310064CA1A /* WindowSceneWrapper.swift */,
 				5E0C7B84277A545B0072DFD8 /* PassthroughView.swift */,
-				5E0C7B86277A54BD0072DFD8 /* InstrumentRootViewController.swift */,
-				5E0C7B8A277A64BA0072DFD8 /* RegularPanelLayoutManager.swift */,
 			);
 			path = WindowController;
 			sourceTree = "<group>";
@@ -488,7 +488,7 @@
 				5E87514926C30A65007FA2FD /* Instrument.swift in Sources */,
 				5EDE263726F33245004F1017 /* ViewInspectionResult.swift in Sources */,
 				5E0C7B8B277A64BA0072DFD8 /* RegularPanelLayoutManager.swift in Sources */,
-				5E0C7B87277A54BD0072DFD8 /* InstrumentRootViewController.swift in Sources */,
+				5E0C7B87277A54BD0072DFD8 /* PanelContainerViewController.swift in Sources */,
 				5E18C1D226C01429009549C9 /* PanelController.swift in Sources */,
 				5EFF892326C01BC300E791E6 /* OverlayWindowController.swift in Sources */,
 				5EDE263B26F33F91004F1017 /* ViewInspectorWindow.swift in Sources */,

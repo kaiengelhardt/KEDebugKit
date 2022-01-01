@@ -29,7 +29,7 @@
 import UIKit
 import Combine
 
-class InstrumentRootViewController: UIViewController {
+class PanelContainerViewController: UIViewController {
 
 	private let panelContainer = PanelController()
 	private var panelContainerView: UIView {
