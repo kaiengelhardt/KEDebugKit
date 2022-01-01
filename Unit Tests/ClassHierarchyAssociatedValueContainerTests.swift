@@ -33,7 +33,7 @@ import XCTest
 
 class ClassHierarchyAssociatedValueContainerTests: XCTestCase {
 
-	private var container: ClassHierarchyAssociatedValueContainer!
+	private var container: ClassHierarchyAssociatedValueContainer<String>!
 
 	override func setUpWithError() throws {
 		try super.setUpWithError()
@@ -42,5 +42,23 @@ class ClassHierarchyAssociatedValueContainerTests: XCTestCase {
 
 	func testContainerDoesNotContainValueForClassThatWasNotAdded() {
 		XCTAssertFalse(container.containsValue(for: UIView.self))
+	}
+
+	func testContainerContainsValueForClassThatWasAdded() {
+		container.setValue("Test", for: UIView.self)
+		XCTAssertTrue(container.containsValue(for: UIView.self))
+	}
+
+	func testSingleValueIsStored() {
+		container.setValue("Test", for: UIView.self)
+		XCTAssertEqual(container.value(for: UIView.self), "Test")
+	}
+
+	func testMultipleValuesAreStored() {
+		container.setValue("Test 1", for: UIView.self)
+		container.setValue("Test 2", for: UIResponder.self)
+
+		XCTAssertEqual(container.value(for: UIView.self), "Test 1")
+		XCTAssertEqual(container.value(for: UIResponder.self), "Test 2")
 	}
 }

@@ -28,9 +28,23 @@
 
 import Foundation
 
-struct ClassHierarchyAssociatedValueContainer {
+struct ClassHierarchyAssociatedValueContainer<Value> {
 
-	func containsValue(for class: AnyClass) -> Bool {
-		return false
+	private var values: [String: Value] = [:]
+
+	private func key(for `class`: AnyClass) -> String {
+		return String(describing: `class`)
+	}
+
+	mutating func setValue(_ value: Value, for `class`: AnyClass) {
+		values[key(for: `class`)] = value
+	}
+
+	func value(for `class`: AnyClass) -> Value? {
+		return values[key(for: `class`)]
+	}
+
+	func containsValue(for `class`: AnyClass) -> Bool {
+		return values[key(for: `class`)] != nil
 	}
 }
