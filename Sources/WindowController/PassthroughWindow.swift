@@ -32,13 +32,54 @@ class PassthroughWindow: UIWindow {
 
 	var onLayoutSubviews: ((UIWindow) -> Void)?
 
+	private static var obfuscatedCanAffectStatusBarAppearanceSelector: String {
+		return ["_can", "Affect", "Status", "Bar", "Appearance"].joined()
+	}
+
 	init() {
+		Self.swizzleCanAffectStatusBarAppearanceIfNeeded()
 		super.init(frame: .zero)
 		backgroundColor = nil
 	}
 
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
+	}
+
+	private static func swizzleCanAffectStatusBarAppearanceIfNeeded() {
+		DispatchQueue.once {
+			swizzleCanAffectStatusBarAppearance()
+		}
+	}
+
+	private static func swizzleCanAffectStatusBarAppearance() {
+		// Currently the way UIKit determines which view controller should control the status bar appearance, i.e.
+		// `preferStatusBarHidden` and friends, is pretty lame. The view controller needs to be in the front most,
+		// full-frame window which returns `true` from `_canAffectStatusBarAppearance`. "full-frame" in this context
+		// means that the window has the same frame as its associated `UIWindowScene`. When adding auxiliary windows
+		// on top of the main app window, this behavior is usually undesired.
+		//
+		// My original workaround for this was to set the frame of auxiliary windows to be 1 point less in height
+		// than its `UIScreen`. Unfortunately this proved to be problematic, since now the auxiliary window was not
+		// being resized properly, when putting the app into split-screen on the iPad. Scene frame changes are only
+		// propagated for full-frame windows.
+		//
+		// The only viable workaround for now is to swizzle `_canAffectStatusBarAppearance` with an implementation that
+		// returns `false`.
+
+		guard let originalMethod = class_getInstanceMethod(
+			self,
+			Selector(obfuscatedCanAffectStatusBarAppearanceSelector)
+		) else {
+			return
+		}
+		guard let replacementMethod = class_getInstanceMethod(
+			self,
+			#selector(canAffectStatusBarAppearanceReplacement)
+		) else {
+			return
+		}
+		method_exchangeImplementations(originalMethod, replacementMethod)
 	}
 
 	override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -53,5 +94,10 @@ class PassthroughWindow: UIWindow {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		onLayoutSubviews?(self)
+	}
+
+	@objc
+	private func canAffectStatusBarAppearanceReplacement() -> Bool {
+		return false
 	}
 }

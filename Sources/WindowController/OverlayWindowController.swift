@@ -45,8 +45,6 @@ public class OverlayWindowController: UIResponder {
 
 	private func setUpUI(windowSceneWrapper: WindowSceneWrapperProtocol) {
 		windowSceneWrapper.configureScene(on: window)
-		window.bounds = windowSceneWrapper.screenBounds
-		window.setFrameToBeNotEntirelyFullscreenToPreventThisWindowFromSwallowingStatusBarEvents()
 		window.rootViewController = contentViewController
 		window.makeKeyAndVisible()
 	}
