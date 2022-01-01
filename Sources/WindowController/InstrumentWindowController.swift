@@ -56,7 +56,5 @@ public class InstrumentWindowController: OverlayWindowController {
 
 		panelContainerView.translatesAutoresizingMaskIntoConstraints = false
 		constraints += panelContainerView.constraintsMatchingEdgesOfSuperview()
-
-		window.tag = 696_969
 	}
 }
