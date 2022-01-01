@@ -38,6 +38,12 @@ class RegularPanelLayoutManager {
 		}
 	}
 
+	var isActive = false {
+		didSet {
+			updateConstraints()
+		}
+	}
+
 	private let layoutSurface: LayoutSurface
 	private let containingLayoutSurface: LayoutSurface
 
@@ -114,6 +120,10 @@ class RegularPanelLayoutManager {
 	}
 
 	private func updateConstraints() {
+		guard isActive else {
+			constraints = []
+			return
+		}
 		constraints = Self.constraints(
 			forPositioningLayoutSurface: layoutSurface,
 			withFrame: frame,

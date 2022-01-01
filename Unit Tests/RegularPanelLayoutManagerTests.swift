@@ -57,6 +57,8 @@ class RegularPanelLayoutManagerTests: XCTestCase {
 			layoutSurface: panelView,
 			containingLayoutSurface: containingView
 		)
+
+		layoutManager.isActive = true
 	}
 
 	func testTopLeadingRegularLayout() {
@@ -103,6 +105,19 @@ class RegularPanelLayoutManagerTests: XCTestCase {
 	func testTrailingExtraLargeLayout() {
 		setFrame(frame: .init(size: .extraLarge, horizontalPosition: .trailing, verticalPosition: .top))
 		XCTAssertEqual(panelView.frame, CGRect(x: 512, y: 0, width: 512, height: 768))
+	}
+
+	func testInactiveLayoutManagerInstallsNoConstraints() {
+		layoutManager.isActive = false
+		XCTAssertEqual(containingView.constraints.count, 0)
+		XCTAssertEqual(panelView.constraints.count, 0)
+	}
+
+	func testActivatingInactiveLayoutManagerInstallsConstraintsAgain() {
+		layoutManager.isActive = false
+		layoutManager.isActive = true
+		XCTAssertNotEqual(containingView.constraints.count, 0)
+		XCTAssertNotEqual(panelView.constraints.count, 0)
 	}
 
 	private func setFrame(frame: RegularPanelLayoutManager.Frame) {
