@@ -43,6 +43,9 @@ class PanelContainerViewController: UIViewController {
 
 	private var cancellables = Set<AnyCancellable>()
 
+	// swiftlint:disable:next implicitly_unwrapped_optional
+	private var regularPanelLayoutManager: RegularPanelLayoutManager!
+
 	init(instrumentSession: InstrumentSession) {
 		self.instrumentSession = instrumentSession
 		super.init(nibName: nil, bundle: nil)
@@ -57,12 +60,18 @@ class PanelContainerViewController: UIViewController {
 
 	private func setUpUI() {
 		view = PassthroughView()
+		view.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
 
 		addChild(panelContainer)
 		view.addSubview(panelContainerView)
 		panelContainer.didMove(toParent: self)
-		panelContainerView.frame = CGRect(x: 40, y: 40, width: 320, height: 500)
-
+		panelContainerView.translatesAutoresizingMaskIntoConstraints = false
+		regularPanelLayoutManager = RegularPanelLayoutManager(
+			frame: .init(size: .extraLarge, horizontalPosition: .leading, verticalPosition: .top),
+			layoutSurface: panelContainerView,
+			containingLayoutSurface: view.layoutMarginsGuide
+		)
+		regularPanelLayoutManager.isActive = true
 		panelContainer.trailingBarButtonItem = optionsButton
 
 		updateSwitcherButton(instruments: [])
