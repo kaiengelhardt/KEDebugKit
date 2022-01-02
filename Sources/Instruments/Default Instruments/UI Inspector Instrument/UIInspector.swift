@@ -28,7 +28,7 @@
 
 import UIKit
 
-class ViewInspector {
+class UIInspector {
 
 	func topmostView(at location: CGPoint, in view: UIView) -> UIView? {
 		guard view.bounds.contains(location) else {

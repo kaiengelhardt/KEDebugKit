@@ -31,11 +31,11 @@
 import XCTest
 @testable import KEDebugKit
 
-class ViewInspectorInstrumentTests: XCTestCase {
+class UIInspectorInstrumentTests: XCTestCase {
 
 	private var instrumentCenter: InstrumentCenter!
 	private var instrumentSession: InstrumentSession!
-	private var instrument: ViewInspectorInstrument!
+	private var instrument: UIInspectorInstrument!
 
     override func setUpWithError() throws {
 		try super.setUpWithError()
@@ -48,7 +48,7 @@ class ViewInspectorInstrumentTests: XCTestCase {
 			windowSceneWrapper: windowSceneWrapper,
 			instrumentCenter: instrumentCenter
 		)
-		instrument = ViewInspectorInstrument()
+		instrument = UIInspectorInstrument()
 		instrumentCenter.addInstrument(instrument)
 	}
 

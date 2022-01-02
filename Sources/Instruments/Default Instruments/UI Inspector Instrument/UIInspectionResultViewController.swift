@@ -30,9 +30,9 @@ import UIKit
 import Combine
 import KEFoundation
 
-class ViewInspectionResultViewController: ContainerViewController {
+class UIInspectionResultViewController: ContainerViewController {
 
-	private let instrument: ViewInspectorInstrument
+	private let instrument: UIInspectorInstrument
 
 	private var dataSource: UICollectionViewDiffableDataSource<String, String>?
 
@@ -41,7 +41,7 @@ class ViewInspectionResultViewController: ContainerViewController {
 		collectionViewController.collectionView
 	}
 
-	init(instrument: ViewInspectorInstrument) {
+	init(instrument: UIInspectorInstrument) {
 		let configuration = UICollectionLayoutListConfiguration(appearance: .sidebar)
 		let layout = UICollectionViewCompositionalLayout.list(using: configuration)
 		collectionViewController = UICollectionViewController(collectionViewLayout: layout)

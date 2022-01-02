@@ -31,9 +31,9 @@ import XCTest
 
 // swiftlint:disable implicitly_unwrapped_optional
 
-class ViewInspectorTests: XCTestCase {
+class UIInspectorTests: XCTestCase {
 
-	private var viewInspector: ViewInspector!
+	private var inspector: UIInspector!
 
 	private var view: UIView!
 	private var leftSubview: UIView!
@@ -46,7 +46,7 @@ class ViewInspectorTests: XCTestCase {
     override func setUpWithError() throws {
 		try super.setUpWithError()
 
-		viewInspector = ViewInspector()
+		inspector = UIInspector()
 
 		view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
 
@@ -70,42 +70,42 @@ class ViewInspectorTests: XCTestCase {
     }
 
 	func testFindNothingAtEmptySpot() {
-		let result = viewInspector.topmostView(at: CGPoint(x: -1, y: -1), in: view)
+		let result = inspector.topmostView(at: CGPoint(x: -1, y: -1), in: view)
 		XCTAssertNil(result)
 	}
 
 	func testFindOnlyViewAtSpotWithNoSubviews() {
-		let result = viewInspector.topmostView(at: CGPoint(x: 40, y: 0), in: view)
+		let result = inspector.topmostView(at: CGPoint(x: 40, y: 0), in: view)
 		XCTAssertEqual(result, view)
 	}
 
 	func testFindOnlyViewAtSpotWithNoSubviewsWithViewHavingNonZeroOrigin() {
-		let result = viewInspector.topmostView(at: CGPoint(x: 1, y: 1), in: rightSubview)
+		let result = inspector.topmostView(at: CGPoint(x: 1, y: 1), in: rightSubview)
 		XCTAssertEqual(result, rightSubview)
 	}
 
 	func testFindSingleSubviewInNonZeroOriginSuperview() {
-		let result = viewInspector.topmostView(at: CGPoint(x: 20, y: 20), in: rightSubview)
+		let result = inspector.topmostView(at: CGPoint(x: 20, y: 20), in: rightSubview)
 		XCTAssertEqual(result, label)
 	}
 
 	func testFindTopmostViewAtPointWithOverlappingSubviews() {
-		let result = viewInspector.topmostView(at: CGPoint(x: 15, y: 40), in: view)
+		let result = inspector.topmostView(at: CGPoint(x: 15, y: 40), in: view)
 		XCTAssertEqual(result, centerSubview)
 	}
 
 	func testFindViewAtEdge() {
-		let result = viewInspector.topmostView(at: .zero, in: view)
+		let result = inspector.topmostView(at: .zero, in: view)
 		XCTAssertEqual(result, subviewOfLeftSubview)
 	}
 
 	func testUIHierarchyWithNoSubviews() {
-		let result = viewInspector.uiHierarchy(startingAt: label)
+		let result = inspector.uiHierarchy(startingAt: label)
 		XCTAssertEqual(result, UIHierarchy(rootItems: [.view(label, [])]))
 	}
 
 	func testSimpleUIHierarchy() {
-		let result = viewInspector.uiHierarchy(startingAt: rightSubview)
+		let result = inspector.uiHierarchy(startingAt: rightSubview)
 		XCTAssertEqual(
 			result,
 			UIHierarchy(rootItems: [

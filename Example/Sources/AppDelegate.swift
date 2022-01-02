@@ -33,8 +33,8 @@ import KEDebugKit
 class AppDelegate: UIResponder {
 
     private func setUpInstruments() {
-        let viewInspectorInstrument = ViewInspectorInstrument()
-        InstrumentCenter.default.addInstrument(viewInspectorInstrument)
+        let uiInspectorInstrument = UIInspectorInstrument()
+        InstrumentCenter.default.addInstrument(uiInspectorInstrument)
     }
 }
 

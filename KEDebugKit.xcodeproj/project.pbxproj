@@ -13,8 +13,8 @@
 		5E0C7B8D277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B8C277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift */; };
 		5E0C7B8F2780FD150072DFD8 /* ClassHierarchyAssociatedValueContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B8E2780FD150072DFD8 /* ClassHierarchyAssociatedValueContainer.swift */; };
 		5E0C7B912780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B902780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift */; };
-		5E0C7B932781A1D90072DFD8 /* ViewInspectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B922781A1D90072DFD8 /* ViewInspectorTests.swift */; };
-		5E0C7B952781A31C0072DFD8 /* ViewInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B942781A31C0072DFD8 /* ViewInspector.swift */; };
+		5E0C7B932781A1D90072DFD8 /* UIInspectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B922781A1D90072DFD8 /* UIInspectorTests.swift */; };
+		5E0C7B952781A31C0072DFD8 /* UIInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B942781A31C0072DFD8 /* UIInspector.swift */; };
 		5E18C1D226C01429009549C9 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18C1D126C01429009549C9 /* PanelController.swift */; };
 		5E304BFE27413F9D002F917D /* XCUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86B01C27413E130064CA1A /* XCUtilities.swift */; };
 		5E60A74827791395004CBFB7 /* String+Indented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E60A74727791395004CBFB7 /* String+Indented.swift */; };
@@ -31,11 +31,11 @@
 		5E87515826C46082007FA2FD /* NoInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515726C46082007FA2FD /* NoInstrument.swift */; };
 		5E87515A26C460A6007FA2FD /* NoInstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515926C460A6007FA2FD /* NoInstrumentViewController.swift */; };
 		5E98AF6A26C053B5001811C5 /* KEFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98AF6926C053B5001811C5 /* KEFoundation */; };
-		5ECAAA4A274539AE00CD569C /* ViewInspectorInstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAAA49274539AE00CD569C /* ViewInspectorInstrumentTests.swift */; };
-		5EDE263526F331FD004F1017 /* ViewInspectorInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263426F331FD004F1017 /* ViewInspectorInstrument.swift */; };
-		5EDE263926F332EB004F1017 /* ViewInspectionResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263826F332EB004F1017 /* ViewInspectionResultViewController.swift */; };
-		5EDE263B26F33F91004F1017 /* ViewInspectorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263A26F33F91004F1017 /* ViewInspectorWindow.swift */; };
-		5EDE263D26F33FA3004F1017 /* ViewInspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263C26F33FA3004F1017 /* ViewInspectorWindowController.swift */; };
+		5ECAAA4A274539AE00CD569C /* UIInspectorInstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAAA49274539AE00CD569C /* UIInspectorInstrumentTests.swift */; };
+		5EDE263526F331FD004F1017 /* UIInspectorInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263426F331FD004F1017 /* UIInspectorInstrument.swift */; };
+		5EDE263926F332EB004F1017 /* UIInspectionResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263826F332EB004F1017 /* UIInspectionResultViewController.swift */; };
+		5EDE263B26F33F91004F1017 /* UIInspectorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263A26F33F91004F1017 /* UIInspectorWindow.swift */; };
+		5EDE263D26F33FA3004F1017 /* UIInspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263C26F33FA3004F1017 /* UIInspectorWindowController.swift */; };
 		5EEB7FC626C00EA8003326C8 /* KEDebugKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */; };
 		5EEB7FCD26C00EA8003326C8 /* KEDebugKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5EFF892326C01BC300E791E6 /* OverlayWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFF892226C01BC300E791E6 /* OverlayWindowController.swift */; };
@@ -59,8 +59,8 @@
 		5E0C7B8C277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularPanelLayoutManagerTests.swift; sourceTree = "<group>"; };
 		5E0C7B8E2780FD150072DFD8 /* ClassHierarchyAssociatedValueContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHierarchyAssociatedValueContainer.swift; sourceTree = "<group>"; };
 		5E0C7B902780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHierarchyAssociatedValueContainerTests.swift; sourceTree = "<group>"; };
-		5E0C7B922781A1D90072DFD8 /* ViewInspectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorTests.swift; sourceTree = "<group>"; };
-		5E0C7B942781A31C0072DFD8 /* ViewInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspector.swift; sourceTree = "<group>"; };
+		5E0C7B922781A1D90072DFD8 /* UIInspectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInspectorTests.swift; sourceTree = "<group>"; };
+		5E0C7B942781A31C0072DFD8 /* UIInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInspector.swift; sourceTree = "<group>"; };
 		5E18C1BA26C01272009549C9 /* KEDebugKit-Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Shared.xcconfig"; sourceTree = "<group>"; };
 		5E18C1BB26C01272009549C9 /* KEDebugKit-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Release.xcconfig"; sourceTree = "<group>"; };
 		5E18C1BC26C01272009549C9 /* KEDebugKit-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,11 +87,11 @@
 		5E87515526C458FB007FA2FD /* InstrumentSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSession.swift; sourceTree = "<group>"; };
 		5E87515726C46082007FA2FD /* NoInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInstrument.swift; sourceTree = "<group>"; };
 		5E87515926C460A6007FA2FD /* NoInstrumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInstrumentViewController.swift; sourceTree = "<group>"; };
-		5ECAAA49274539AE00CD569C /* ViewInspectorInstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorInstrumentTests.swift; sourceTree = "<group>"; };
-		5EDE263426F331FD004F1017 /* ViewInspectorInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorInstrument.swift; sourceTree = "<group>"; };
-		5EDE263826F332EB004F1017 /* ViewInspectionResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectionResultViewController.swift; sourceTree = "<group>"; };
-		5EDE263A26F33F91004F1017 /* ViewInspectorWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorWindow.swift; sourceTree = "<group>"; };
-		5EDE263C26F33FA3004F1017 /* ViewInspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorWindowController.swift; sourceTree = "<group>"; };
+		5ECAAA49274539AE00CD569C /* UIInspectorInstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInspectorInstrumentTests.swift; sourceTree = "<group>"; };
+		5EDE263426F331FD004F1017 /* UIInspectorInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInspectorInstrument.swift; sourceTree = "<group>"; };
+		5EDE263826F332EB004F1017 /* UIInspectionResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInspectionResultViewController.swift; sourceTree = "<group>"; };
+		5EDE263A26F33F91004F1017 /* UIInspectorWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInspectorWindow.swift; sourceTree = "<group>"; };
+		5EDE263C26F33FA3004F1017 /* UIInspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInspectorWindowController.swift; sourceTree = "<group>"; };
 		5EEB7FBC26C00EA8003326C8 /* KEDebugKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KEDebugKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEB7FBF26C00EA8003326C8 /* KEDebugKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KEDebugKit.h; sourceTree = "<group>"; };
 		5EEB7FC026C00EA8003326C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -178,16 +178,16 @@
 			path = "Unit Tests";
 			sourceTree = "<group>";
 		};
-		5E58C87926C4FAA800AAEC63 /* View Inspector Instrument */ = {
+		5E58C87926C4FAA800AAEC63 /* UI Inspector Instrument */ = {
 			isa = PBXGroup;
 			children = (
-				5EDE263426F331FD004F1017 /* ViewInspectorInstrument.swift */,
-				5E0C7B942781A31C0072DFD8 /* ViewInspector.swift */,
-				5EDE263826F332EB004F1017 /* ViewInspectionResultViewController.swift */,
-				5EDE263C26F33FA3004F1017 /* ViewInspectorWindowController.swift */,
-				5EDE263A26F33F91004F1017 /* ViewInspectorWindow.swift */,
+				5EDE263426F331FD004F1017 /* UIInspectorInstrument.swift */,
+				5E0C7B942781A31C0072DFD8 /* UIInspector.swift */,
+				5EDE263826F332EB004F1017 /* UIInspectionResultViewController.swift */,
+				5EDE263C26F33FA3004F1017 /* UIInspectorWindowController.swift */,
+				5EDE263A26F33F91004F1017 /* UIInspectorWindow.swift */,
 			);
-			path = "View Inspector Instrument";
+			path = "UI Inspector Instrument";
 			sourceTree = "<group>";
 		};
 		5E60A74627791387004CBFB7 /* Utilities */ = {
@@ -230,7 +230,7 @@
 		5E87514E26C30C83007FA2FD /* Default Instruments */ = {
 			isa = PBXGroup;
 			children = (
-				5E58C87926C4FAA800AAEC63 /* View Inspector Instrument */,
+				5E58C87926C4FAA800AAEC63 /* UI Inspector Instrument */,
 				5E87516526C46536007FA2FD /* No Instrument */,
 			);
 			path = "Default Instruments";
@@ -285,11 +285,11 @@
 				5E86B01B27413DF90064CA1A /* Utilities */,
 				5E86B01127410E800064CA1A /* InstrumentCenterTests.swift */,
 				5E86B013274115970064CA1A /* InstrumentSessionTests.swift */,
-				5ECAAA49274539AE00CD569C /* ViewInspectorInstrumentTests.swift */,
+				5ECAAA49274539AE00CD569C /* UIInspectorInstrumentTests.swift */,
 				5E60A749277913B7004CBFB7 /* String+IndentedTests.swift */,
 				5E0C7B8C277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift */,
 				5E0C7B902780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift */,
-				5E0C7B922781A1D90072DFD8 /* ViewInspectorTests.swift */,
+				5E0C7B922781A1D90072DFD8 /* UIInspectorTests.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -489,21 +489,21 @@
 				5E87515626C458FB007FA2FD /* InstrumentSession.swift in Sources */,
 				5E87515026C30D6F007FA2FD /* InstrumentWindowController.swift in Sources */,
 				5E60A74827791395004CBFB7 /* String+Indented.swift in Sources */,
-				5EDE263526F331FD004F1017 /* ViewInspectorInstrument.swift in Sources */,
+				5EDE263526F331FD004F1017 /* UIInspectorInstrument.swift in Sources */,
 				5E87514926C30A65007FA2FD /* Instrument.swift in Sources */,
 				5E0C7B8F2780FD150072DFD8 /* ClassHierarchyAssociatedValueContainer.swift in Sources */,
 				5E0C7B8B277A64BA0072DFD8 /* RegularPanelLayoutManager.swift in Sources */,
 				5E0C7B87277A54BD0072DFD8 /* PanelContainerViewController.swift in Sources */,
 				5E18C1D226C01429009549C9 /* PanelController.swift in Sources */,
 				5EFF892326C01BC300E791E6 /* OverlayWindowController.swift in Sources */,
-				5EDE263B26F33F91004F1017 /* ViewInspectorWindow.swift in Sources */,
+				5EDE263B26F33F91004F1017 /* UIInspectorWindow.swift in Sources */,
 				5E87515826C46082007FA2FD /* NoInstrument.swift in Sources */,
-				5EDE263926F332EB004F1017 /* ViewInspectionResultViewController.swift in Sources */,
+				5EDE263926F332EB004F1017 /* UIInspectionResultViewController.swift in Sources */,
 				5EFF892626C01C8100E791E6 /* PassthroughWindow.swift in Sources */,
-				5EDE263D26F33FA3004F1017 /* ViewInspectorWindowController.swift in Sources */,
+				5EDE263D26F33FA3004F1017 /* UIInspectorWindowController.swift in Sources */,
 				5E86B01A274133DC0064CA1A /* WindowSceneWrapper.swift in Sources */,
 				5E87514726C30A45007FA2FD /* InstrumentCenter.swift in Sources */,
-				5E0C7B952781A31C0072DFD8 /* ViewInspector.swift in Sources */,
+				5E0C7B952781A31C0072DFD8 /* UIInspector.swift in Sources */,
 				5E87515A26C460A6007FA2FD /* NoInstrumentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,9 +518,9 @@
 				5E304BFE27413F9D002F917D /* XCUtilities.swift in Sources */,
 				5E0C7B912780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift in Sources */,
 				5E60A74A277913B7004CBFB7 /* String+IndentedTests.swift in Sources */,
-				5E0C7B932781A1D90072DFD8 /* ViewInspectorTests.swift in Sources */,
+				5E0C7B932781A1D90072DFD8 /* UIInspectorTests.swift in Sources */,
 				5E0C7B8D277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift in Sources */,
-				5ECAAA4A274539AE00CD569C /* ViewInspectorInstrumentTests.swift in Sources */,
+				5ECAAA4A274539AE00CD569C /* UIInspectorInstrumentTests.swift in Sources */,
 				5E86B014274115970064CA1A /* InstrumentSessionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

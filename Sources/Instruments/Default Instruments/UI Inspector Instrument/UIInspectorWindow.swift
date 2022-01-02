@@ -29,7 +29,7 @@
 import UIKit
 import KEFoundation
 
-class ViewInspectorWindow: UIWindow {
+class UIInspectorWindow: UIWindow {
 
 	var isInspectingViews = false
 

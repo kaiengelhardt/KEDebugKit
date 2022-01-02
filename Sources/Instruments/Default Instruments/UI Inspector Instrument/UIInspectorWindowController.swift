@@ -29,17 +29,17 @@
 import UIKit
 import KEFoundation
 
-protocol ViewInspectorWindowControllerDelegate: AnyObject {
+protocol UIInspectorWindowControllerDelegate: AnyObject {
 
-	func viewInspectorWindowConroller(
-		_ windowController: ViewInspectorWindowController,
+	func uiInspectorWindowConroller(
+		_ windowController: UIInspectorWindowController,
 		didPerformTapAtLocation location: CGPoint
 	)
 }
 
-class ViewInspectorWindowController: UIResponder {
+class UIInspectorWindowController: UIResponder {
 
-	weak var delegate: ViewInspectorWindowControllerDelegate?
+	weak var delegate: UIInspectorWindowControllerDelegate?
 
 	var isInspectingViews: Bool {
 		get {
@@ -51,11 +51,11 @@ class ViewInspectorWindowController: UIResponder {
 		}
 	}
 
-	let window: ViewInspectorWindow
-	private let rootViewController = ViewInspectorWindowRootViewController()
+	let window: UIInspectorWindow
+	private let rootViewController = UIInspectorWindowRootViewController()
 
 	init(windowSceneWrapper: WindowSceneWrapperProtocol) {
-		window = ViewInspectorWindow()
+		window = UIInspectorWindow()
 		super.init()
 		setUpUI(windowSceneWrapper: windowSceneWrapper)
 	}
@@ -80,12 +80,12 @@ class ViewInspectorWindowController: UIResponder {
 			}
 
 			let location = touch.location(in: self.window)
-			self.delegate?.viewInspectorWindowConroller(self, didPerformTapAtLocation: location)
+			self.delegate?.uiInspectorWindowConroller(self, didPerformTapAtLocation: location)
 		}
 	}
 }
 
-private class ViewInspectorWindowRootViewController: UIViewController {
+private class UIInspectorWindowRootViewController: UIViewController {
 
 	var onTouchesEnded: ((Set<UITouch>, UIEvent?) -> Void)?
 

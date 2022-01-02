@@ -29,12 +29,12 @@
 import UIKit
 import Combine
 
-public class ViewInspectorInstrument: Instrument {
+public class UIInspectorInstrument: Instrument {
 
 	public let title = "View Inspector"
 
-	private(set) var windowControllers: [InstrumentSession: ViewInspectorWindowController] = [:]
-	private var instrumentSessions: [ViewInspectorWindowController: InstrumentSession] = [:]
+	private(set) var windowControllers: [InstrumentSession: UIInspectorWindowController] = [:]
+	private var instrumentSessions: [UIInspectorWindowController: InstrumentSession] = [:]
 
 	private var cancellables = Set<AnyCancellable>()
 
@@ -42,13 +42,13 @@ public class ViewInspectorInstrument: Instrument {
 
 	public func makeViewController() -> UIViewController {
 		let navigationController = UINavigationController()
-		let viewController = ViewInspectionResultViewController(instrument: self)
+		let viewController = UIInspectionResultViewController(instrument: self)
 		navigationController.viewControllers = [viewController]
 		return navigationController
 	}
 
 	public func didBecomeActive(in session: InstrumentSession) {
-		let windowController = ViewInspectorWindowController(windowSceneWrapper: session.windowSceneWrapper)
+		let windowController = UIInspectorWindowController(windowSceneWrapper: session.windowSceneWrapper)
 		windowControllers[session] = windowController
 		instrumentSessions[windowController] = session
 		windowController.delegate = self
@@ -74,10 +74,10 @@ public class ViewInspectorInstrument: Instrument {
 	}
 }
 
-extension ViewInspectorInstrument: ViewInspectorWindowControllerDelegate {
+extension UIInspectorInstrument: UIInspectorWindowControllerDelegate {
 
-	func viewInspectorWindowConroller(
-		_ windowController: ViewInspectorWindowController,
+	func uiInspectorWindowConroller(
+		_ windowController: UIInspectorWindowController,
 		didPerformTapAtLocation location: CGPoint
 	) {
 		endInspecting()
