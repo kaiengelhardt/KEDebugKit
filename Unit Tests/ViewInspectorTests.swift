@@ -99,16 +99,16 @@ class ViewInspectorTests: XCTestCase {
 		XCTAssertEqual(result, subviewOfLeftSubview)
 	}
 
-	func testViewHierarchyWithNoSubviews() {
-		let result = viewInspector.viewHierarchy(startingAt: label)
-		XCTAssertEqual(result, ViewHierarchy(rootItems: [.view(label, [])]))
+	func testUIHierarchyWithNoSubviews() {
+		let result = viewInspector.uiHierarchy(startingAt: label)
+		XCTAssertEqual(result, UIHierarchy(rootItems: [.view(label, [])]))
 	}
 
-	func testSimpleViewHierarchy() {
-		let result = viewInspector.viewHierarchy(startingAt: rightSubview)
+	func testSimpleUIHierarchy() {
+		let result = viewInspector.uiHierarchy(startingAt: rightSubview)
 		XCTAssertEqual(
 			result,
-			ViewHierarchy(rootItems: [
+			UIHierarchy(rootItems: [
 				.view(rightSubview, [
 					.view(label, []),
 				]),

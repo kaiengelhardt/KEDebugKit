@@ -42,52 +42,52 @@ class ViewInspector {
 		return view
 	}
 
-	func viewHierarchy(startingAt participator: ViewHierarchyParticipator) -> ViewHierarchy {
-		return ViewHierarchy(rootItems: [participator.item])
+	func uiHierarchy(startingAt participator: UIHierarchyParticipator) -> UIHierarchy {
+		return UIHierarchy(rootItems: [participator.item])
 	}
 }
 
-struct ViewHierarchy: Equatable {
+struct UIHierarchy: Equatable {
 
 	let rootItems: [Item]
 }
 
-protocol ViewHierarchyParticipator {
+protocol UIHierarchyParticipator {
 
-	var item: ViewHierarchy.Item { get }
-	var subitems: [ViewHierarchy.Item] { get }
+	var item: UIHierarchy.Item { get }
+	var subitems: [UIHierarchy.Item] { get }
 }
 
-extension ViewHierarchyParticipator {
+extension UIHierarchyParticipator {
 
-	var subitems: [ViewHierarchy.Item] {
+	var subitems: [UIHierarchy.Item] {
 		return []
 	}
 }
 
-extension UIApplication: ViewHierarchyParticipator {
+extension UIApplication: UIHierarchyParticipator {
 
-	var item: ViewHierarchy.Item {
+	var item: UIHierarchy.Item {
 		return .application(self, subitems)
 	}
 
-	var subitems: [ViewHierarchy.Item] {
+	var subitems: [UIHierarchy.Item] {
 		return connectedScenes.map {
 			$0.item
 		}
 	}
 }
 
-extension UIScene: ViewHierarchyParticipator {
+extension UIScene: UIHierarchyParticipator {
 
-	var item: ViewHierarchy.Item {
+	var item: UIHierarchy.Item {
 		return .scene(self, subitems)
 	}
 }
 
 extension UIWindowScene {
 
-	var subitems: [ViewHierarchy.Item] {
+	var subitems: [UIHierarchy.Item] {
 		return windowsSortedByLevelAndKeyWindowStatus.map {
 			$0.item
 		}
@@ -105,10 +105,10 @@ extension UIWindowScene {
 	}
 }
 
-extension UIView: ViewHierarchyParticipator {
+extension UIView: UIHierarchyParticipator {
 
-	var item: ViewHierarchy.Item {
-		let viewItem: ViewHierarchy.Item = .view(self, subitems)
+	var item: UIHierarchy.Item {
+		let viewItem: UIHierarchy.Item = .view(self, subitems)
 		if let viewController = viewController {
 			return .viewController(viewController, [viewItem])
 		} else {
@@ -116,7 +116,7 @@ extension UIView: ViewHierarchyParticipator {
 		}
 	}
 
-	var subitems: [ViewHierarchy.Item] {
+	var subitems: [UIHierarchy.Item] {
 		return subviews.map {
 			$0.item
 		}
@@ -138,7 +138,7 @@ extension UIView: ViewHierarchyParticipator {
 	}
 }
 
-extension ViewHierarchy {
+extension UIHierarchy {
 
 	enum Item: Equatable, CustomDebugStringConvertible {
 
