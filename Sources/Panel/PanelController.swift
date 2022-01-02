@@ -47,7 +47,8 @@ class PanelController: UIViewController {
 		container.view
 	}
 
-	private let toolbar = UIToolbar()
+	// We need to use `init(frame:)` here, since `init()` produces constraints conflict logs.
+	private let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
 
 	var leadingBarButtonItem: UIBarButtonItem? {
 		get {
