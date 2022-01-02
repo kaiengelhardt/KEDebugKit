@@ -25,7 +25,6 @@
 		5E87514726C30A45007FA2FD /* InstrumentCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514626C30A45007FA2FD /* InstrumentCenter.swift */; };
 		5E87514926C30A65007FA2FD /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514826C30A65007FA2FD /* Instrument.swift */; };
 		5E87515026C30D6F007FA2FD /* InstrumentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87514F26C30D6F007FA2FD /* InstrumentWindowController.swift */; };
-		5E87515426C43788007FA2FD /* PanelToolbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515326C43788007FA2FD /* PanelToolbarViewController.swift */; };
 		5E87515626C458FB007FA2FD /* InstrumentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515526C458FB007FA2FD /* InstrumentSession.swift */; };
 		5E87515826C46082007FA2FD /* NoInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515726C46082007FA2FD /* NoInstrument.swift */; };
 		5E87515A26C460A6007FA2FD /* NoInstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E87515926C460A6007FA2FD /* NoInstrumentViewController.swift */; };
@@ -82,7 +81,6 @@
 		5E87514626C30A45007FA2FD /* InstrumentCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentCenter.swift; sourceTree = "<group>"; };
 		5E87514826C30A65007FA2FD /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
 		5E87514F26C30D6F007FA2FD /* InstrumentWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentWindowController.swift; sourceTree = "<group>"; };
-		5E87515326C43788007FA2FD /* PanelToolbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelToolbarViewController.swift; sourceTree = "<group>"; };
 		5E87515526C458FB007FA2FD /* InstrumentSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentSession.swift; sourceTree = "<group>"; };
 		5E87515726C46082007FA2FD /* NoInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInstrument.swift; sourceTree = "<group>"; };
 		5E87515926C460A6007FA2FD /* NoInstrumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInstrumentViewController.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				5E18C1D126C01429009549C9 /* PanelController.swift */,
-				5E87515326C43788007FA2FD /* PanelToolbarViewController.swift */,
 				5E0C7B86277A54BD0072DFD8 /* PanelContainerViewController.swift */,
 				5E0C7B8A277A64BA0072DFD8 /* RegularPanelLayoutManager.swift */,
 			);
@@ -485,7 +482,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E87515426C43788007FA2FD /* PanelToolbarViewController.swift in Sources */,
 				5E0C7B85277A545B0072DFD8 /* PassthroughView.swift in Sources */,
 				5E87515626C458FB007FA2FD /* InstrumentSession.swift in Sources */,
 				5E87515026C30D6F007FA2FD /* InstrumentWindowController.swift in Sources */,
