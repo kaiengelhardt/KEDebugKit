@@ -33,8 +33,6 @@ public class ViewInspectorInstrument: Instrument {
 
 	public let title = "View Inspector"
 
-	let viewInspectionResult = CurrentValueSubject<ViewInspectionResult, Never>(ViewInspectionResult(rootItems: []))
-
 	private(set) var windowControllers: [InstrumentSession: ViewInspectorWindowController] = [:]
 	private var instrumentSessions: [ViewInspectorWindowController: InstrumentSession] = [:]
 
@@ -72,22 +70,6 @@ public class ViewInspectorInstrument: Instrument {
 	func endInspecting() {
 		for windowController in windowControllers.values {
 			windowController.isInspectingViews = false
-		}
-	}
-
-	private func findViews(at location: CGPoint, in view: UIView) -> [UIView] {
-		var allSubviews = [view]
-		appendAllSubviews(of: view, to: &allSubviews)
-		let filterdSubviews = allSubviews.filter { view in
-			view.frame.contains(location)
-		}
-		return filterdSubviews
-	}
-
-	private func appendAllSubviews(of view: UIView, to queue: inout [UIView]) {
-		queue.append(contentsOf: view.subviews)
-		for subview in view.subviews {
-			appendAllSubviews(of: subview, to: &queue)
 		}
 	}
 }

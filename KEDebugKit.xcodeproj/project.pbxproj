@@ -33,7 +33,6 @@
 		5E98AF6A26C053B5001811C5 /* KEFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 5E98AF6926C053B5001811C5 /* KEFoundation */; };
 		5ECAAA4A274539AE00CD569C /* ViewInspectorInstrumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAAA49274539AE00CD569C /* ViewInspectorInstrumentTests.swift */; };
 		5EDE263526F331FD004F1017 /* ViewInspectorInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263426F331FD004F1017 /* ViewInspectorInstrument.swift */; };
-		5EDE263726F33245004F1017 /* ViewInspectionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263626F33245004F1017 /* ViewInspectionResult.swift */; };
 		5EDE263926F332EB004F1017 /* ViewInspectionResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263826F332EB004F1017 /* ViewInspectionResultViewController.swift */; };
 		5EDE263B26F33F91004F1017 /* ViewInspectorWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263A26F33F91004F1017 /* ViewInspectorWindow.swift */; };
 		5EDE263D26F33FA3004F1017 /* ViewInspectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDE263C26F33FA3004F1017 /* ViewInspectorWindowController.swift */; };
@@ -90,7 +89,6 @@
 		5E87515926C460A6007FA2FD /* NoInstrumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInstrumentViewController.swift; sourceTree = "<group>"; };
 		5ECAAA49274539AE00CD569C /* ViewInspectorInstrumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorInstrumentTests.swift; sourceTree = "<group>"; };
 		5EDE263426F331FD004F1017 /* ViewInspectorInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorInstrument.swift; sourceTree = "<group>"; };
-		5EDE263626F33245004F1017 /* ViewInspectionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectionResult.swift; sourceTree = "<group>"; };
 		5EDE263826F332EB004F1017 /* ViewInspectionResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectionResultViewController.swift; sourceTree = "<group>"; };
 		5EDE263A26F33F91004F1017 /* ViewInspectorWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorWindow.swift; sourceTree = "<group>"; };
 		5EDE263C26F33FA3004F1017 /* ViewInspectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorWindowController.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 			children = (
 				5EDE263426F331FD004F1017 /* ViewInspectorInstrument.swift */,
 				5E0C7B942781A31C0072DFD8 /* ViewInspector.swift */,
-				5EDE263626F33245004F1017 /* ViewInspectionResult.swift */,
 				5EDE263826F332EB004F1017 /* ViewInspectionResultViewController.swift */,
 				5EDE263C26F33FA3004F1017 /* ViewInspectorWindowController.swift */,
 				5EDE263A26F33F91004F1017 /* ViewInspectorWindow.swift */,
@@ -495,7 +492,6 @@
 				5EDE263526F331FD004F1017 /* ViewInspectorInstrument.swift in Sources */,
 				5E87514926C30A65007FA2FD /* Instrument.swift in Sources */,
 				5E0C7B8F2780FD150072DFD8 /* ClassHierarchyAssociatedValueContainer.swift in Sources */,
-				5EDE263726F33245004F1017 /* ViewInspectionResult.swift in Sources */,
 				5E0C7B8B277A64BA0072DFD8 /* RegularPanelLayoutManager.swift in Sources */,
 				5E0C7B87277A54BD0072DFD8 /* PanelContainerViewController.swift in Sources */,
 				5E18C1D226C01429009549C9 /* PanelController.swift in Sources */,
