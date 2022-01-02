@@ -70,32 +70,32 @@ class ViewInspectorTests: XCTestCase {
     }
 
 	func testFindNothingAtEmptySpot() {
-		let result = viewInspector.findTopmostView(at: CGPoint(x: -1, y: -1), in: view)
+		let result = viewInspector.topmostView(at: CGPoint(x: -1, y: -1), in: view)
 		XCTAssertNil(result)
 	}
 
 	func testFindOnlyViewAtSpotWithNoSubviews() {
-		let result = viewInspector.findTopmostView(at: CGPoint(x: 40, y: 0), in: view)
+		let result = viewInspector.topmostView(at: CGPoint(x: 40, y: 0), in: view)
 		XCTAssertEqual(result, view)
 	}
 
 	func testFindOnlyViewAtSpotWithNoSubviewsWithViewHavingNonZeroOrigin() {
-		let result = viewInspector.findTopmostView(at: CGPoint(x: 1, y: 1), in: rightSubview)
+		let result = viewInspector.topmostView(at: CGPoint(x: 1, y: 1), in: rightSubview)
 		XCTAssertEqual(result, rightSubview)
 	}
 
 	func testFindSingleSubviewInNonZeroOriginSuperview() {
-		let result = viewInspector.findTopmostView(at: CGPoint(x: 20, y: 20), in: rightSubview)
+		let result = viewInspector.topmostView(at: CGPoint(x: 20, y: 20), in: rightSubview)
 		XCTAssertEqual(result, label)
 	}
 
 	func testFindTopmostViewAtPointWithOverlappingSubviews() {
-		let result = viewInspector.findTopmostView(at: CGPoint(x: 15, y: 40), in: view)
+		let result = viewInspector.topmostView(at: CGPoint(x: 15, y: 40), in: view)
 		XCTAssertEqual(result, centerSubview)
 	}
 
 	func testFindViewAtEdge() {
-		let result = viewInspector.findTopmostView(at: .zero, in: view)
+		let result = viewInspector.topmostView(at: .zero, in: view)
 		XCTAssertEqual(result, subviewOfLeftSubview)
 	}
 }
