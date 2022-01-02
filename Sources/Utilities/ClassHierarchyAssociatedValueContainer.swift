@@ -67,7 +67,11 @@ struct ClassValueAssociation<Value: Equatable>: Equatable {
 	let `class`: AnyClass
 	let value: Value
 
+	var className: String {
+		return String(describing: `class`)
+	}
+
 	static func == (lhs: ClassValueAssociation<Value>, rhs: ClassValueAssociation<Value>) -> Bool {
-		return String(describing: lhs.class) == String(describing: rhs.class) && lhs.value == rhs.value
+		return lhs.className == rhs.className && lhs.value == rhs.value
 	}
 }
