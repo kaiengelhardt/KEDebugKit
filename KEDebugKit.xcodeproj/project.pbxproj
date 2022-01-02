@@ -13,6 +13,8 @@
 		5E0C7B8D277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B8C277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift */; };
 		5E0C7B8F2780FD150072DFD8 /* ClassHierarchyAssociatedValueContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B8E2780FD150072DFD8 /* ClassHierarchyAssociatedValueContainer.swift */; };
 		5E0C7B912780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B902780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift */; };
+		5E0C7B932781A1D90072DFD8 /* ViewInspectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B922781A1D90072DFD8 /* ViewInspectorTests.swift */; };
+		5E0C7B952781A31C0072DFD8 /* ViewInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C7B942781A31C0072DFD8 /* ViewInspector.swift */; };
 		5E18C1D226C01429009549C9 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18C1D126C01429009549C9 /* PanelController.swift */; };
 		5E304BFE27413F9D002F917D /* XCUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86B01C27413E130064CA1A /* XCUtilities.swift */; };
 		5E60A74827791395004CBFB7 /* String+Indented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E60A74727791395004CBFB7 /* String+Indented.swift */; };
@@ -58,6 +60,8 @@
 		5E0C7B8C277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularPanelLayoutManagerTests.swift; sourceTree = "<group>"; };
 		5E0C7B8E2780FD150072DFD8 /* ClassHierarchyAssociatedValueContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHierarchyAssociatedValueContainer.swift; sourceTree = "<group>"; };
 		5E0C7B902780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassHierarchyAssociatedValueContainerTests.swift; sourceTree = "<group>"; };
+		5E0C7B922781A1D90072DFD8 /* ViewInspectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspectorTests.swift; sourceTree = "<group>"; };
+		5E0C7B942781A31C0072DFD8 /* ViewInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInspector.swift; sourceTree = "<group>"; };
 		5E18C1BA26C01272009549C9 /* KEDebugKit-Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Shared.xcconfig"; sourceTree = "<group>"; };
 		5E18C1BB26C01272009549C9 /* KEDebugKit-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Release.xcconfig"; sourceTree = "<group>"; };
 		5E18C1BC26C01272009549C9 /* KEDebugKit-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "KEDebugKit-Debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				5EDE263426F331FD004F1017 /* ViewInspectorInstrument.swift */,
+				5E0C7B942781A31C0072DFD8 /* ViewInspector.swift */,
 				5EDE263626F33245004F1017 /* ViewInspectionResult.swift */,
 				5EDE263826F332EB004F1017 /* ViewInspectionResultViewController.swift */,
 				5EDE263C26F33FA3004F1017 /* ViewInspectorWindowController.swift */,
@@ -287,6 +292,7 @@
 				5E60A749277913B7004CBFB7 /* String+IndentedTests.swift */,
 				5E0C7B8C277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift */,
 				5E0C7B902780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift */,
+				5E0C7B922781A1D90072DFD8 /* ViewInspectorTests.swift */,
 			);
 			path = "Unit Tests";
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				5EDE263D26F33FA3004F1017 /* ViewInspectorWindowController.swift in Sources */,
 				5E86B01A274133DC0064CA1A /* WindowSceneWrapper.swift in Sources */,
 				5E87514726C30A45007FA2FD /* InstrumentCenter.swift in Sources */,
+				5E0C7B952781A31C0072DFD8 /* ViewInspector.swift in Sources */,
 				5E87515A26C460A6007FA2FD /* NoInstrumentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,6 +522,7 @@
 				5E304BFE27413F9D002F917D /* XCUtilities.swift in Sources */,
 				5E0C7B912780FD2E0072DFD8 /* ClassHierarchyAssociatedValueContainerTests.swift in Sources */,
 				5E60A74A277913B7004CBFB7 /* String+IndentedTests.swift in Sources */,
+				5E0C7B932781A1D90072DFD8 /* ViewInspectorTests.swift in Sources */,
 				5E0C7B8D277A65BE0072DFD8 /* RegularPanelLayoutManagerTests.swift in Sources */,
 				5ECAAA4A274539AE00CD569C /* ViewInspectorInstrumentTests.swift in Sources */,
 				5E86B014274115970064CA1A /* InstrumentSessionTests.swift in Sources */,
