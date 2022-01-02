@@ -66,11 +66,11 @@ class PanelController: UIViewController {
 		}
 	}
 
-	private let leadingSpaceItem = UIBarButtonItem(systemItem: .flexibleSpace, primaryAction: nil, menu: nil)
+	private let leadingSpaceItem = UIBarButtonItem(systemItem: .flexibleSpace)
 
 	private let titleLabel = UILabel()
 
-	private let trailingSpaceItem = UIBarButtonItem(systemItem: .flexibleSpace, primaryAction: nil, menu: nil)
+	private let trailingSpaceItem = UIBarButtonItem(systemItem: .flexibleSpace)
 
 	var trailingBarButtonItem: UIBarButtonItem? {
 		get {
