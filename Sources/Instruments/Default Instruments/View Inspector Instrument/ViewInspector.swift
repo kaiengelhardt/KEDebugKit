@@ -30,7 +30,15 @@ import UIKit
 
 class ViewInspector {
 
-	func findView(at position: CGPoint, in view: UIView) -> UIView? {
+	func findTopmostView(at location: CGPoint, in view: UIView) -> UIView? {
+		guard view.bounds.contains(location) else {
+			return nil
+		}
+		for subview in view.subviews.reversed() {
+			if let topmostView = findTopmostView(at: view.convert(location, to: subview), in: subview) {
+				return topmostView
+			}
+		}
 		return view
 	}
 }
